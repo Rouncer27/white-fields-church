@@ -26,3 +26,29 @@ export const bodyCopyTwo = `
   ${fontSizer(1.6, 2.1, 76.8, 150, 1.8)};
   line-height: 1.43;
 `
+
+export const bodyCopySemiBold = `
+  font-family: ${fonts.fontPrimary};
+  ${fontSizer(1.6, 2, 76.8, 150, 1.8)};
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+`
+
+export const footerType = `
+  font-family: ${fonts.fontPrimary};
+  ${fontSizer(1.1, 1.2, 76.8, 150, 1.6)};
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: normal;
+  color: ${colors.white};
+`
+
+export const footerTypeSemiBold = `
+  ${footerType};
+  font-weight: 600;
+`

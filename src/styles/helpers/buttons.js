@@ -2,21 +2,21 @@ import { colors } from "./index"
 import { fonts, fontSizer } from "./index"
 
 const buttonBaseStyles = `
-  ${fontSizer(1.4, 1.6, 76.8, 150, 1.8)};
+  ${fontSizer(1.4, 1.8, 76.8, 150, 1.8)};
   display: inline-block;
-  padding: 0.25rem 2rem;
+  min-width: 25rem;
+  padding: 2rem;
   transition: all 0.3s ease;
-  border-radius: 0.2rem;
-  border: solid 0.1rem ${colors.colorShad};
-  box-shadow: none;
+  border-radius: 2rem;
+  border: solid 0.1rem ${colors.colorPrimary};
+  box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.16);
   font-family: ${fonts.fontPrimary};
-  font-style: normal;
-  font-stretch: normal;
   font-weight: normal;
-  line-height: 1.5;
-  letter-spacing: normal;
-  text-align: center;
+  font-stretch: normal;
+  font-style: normal;
   text-transform: uppercase;
+  line-height: 1.11;
+  letter-spacing: normal;
 
   &:hover {
     cursor: pointer;
@@ -34,13 +34,14 @@ const buttonBaseStyles = `
 
 export const buttonOne = `
   ${buttonBaseStyles};
-  background: ${colors.colorShad};
-  color: ${colors.colorAccent};
+  border-color: ${colors.colorPrimary};
+  background: ${colors.white};
+  color: ${colors.colorPrimary};
 
   &:hover {
-    color: ${colors.colorShad};
-    background: ${colors.colorAlt};
-    border-color: ${colors.colorAlt};
+    color: ${colors.white};
+    background: ${colors.colorSecondary};
+    border-color: ${colors.colorSecondary};
   }
 `
 
