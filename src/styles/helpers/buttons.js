@@ -7,13 +7,14 @@ const buttonBaseStyles = `
   min-width: 25rem;
   padding: 2rem;
   transition: all 0.3s ease;
-  border-radius: 2rem;
+  border-radius: 2.9rem;
   border: solid 0.1rem ${colors.colorPrimary};
   box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.16);
   font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
+  text-align: center;
   text-transform: uppercase;
   line-height: 1.11;
   letter-spacing: normal;
@@ -47,13 +48,13 @@ export const buttonOne = `
 
 export const buttonOneAlt = `
   ${buttonBaseStyles};
-  border-color: ${colors.colorTertiary};
-  background: ${colors.colorTertiary};
-  color: ${colors.greyBrown};
+  border-color: ${colors.colorSecondary};
+  background: ${colors.colorPrimary};
+  color: ${colors.colorSecondary};
 
   &:hover {
-    background: ${colors.colorAccent};
-    border-color: ${colors.colorAccent};
+    color: ${colors.colorPrimary};
+    background: ${colors.colorSecondary};
   }
 `
 

@@ -7,15 +7,17 @@ const PlayWrap = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+
   svg {
     width: 100%;
     max-width: 3rem;
     margin: 0 2rem;
+    cursor: pointer;
   }
 
   .prefix__cls-1 {
     transition: all 0.3s ease-in;
-    fill: ${colors.colorPrimary};
+    fill: ${props => (props.color ? props.color : colors.colorPrimary)};
     cursor: pointer;
   }
 
@@ -26,9 +28,9 @@ const PlayWrap = styled.div`
   }
 `
 
-const Play = () => {
+const Play = ({ color }) => {
   return (
-    <PlayWrap>
+    <PlayWrap color={color}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.18 29.18">
         <g
           id="prefix__Group_3338"

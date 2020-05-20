@@ -11,6 +11,7 @@ const FooterNav = styled.div`
     margin: 0;
     padding: 0;
     margin-bottom: 1rem;
+
     a {
       ${footerTypeSemiBold};
     }

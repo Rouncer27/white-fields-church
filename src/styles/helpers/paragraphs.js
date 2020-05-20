@@ -23,7 +23,7 @@ export const bodyCopyOne = `
 
 export const bodyCopyTwo = `
   ${bodyBase};
-  ${fontSizer(1.6, 2.1, 76.8, 150, 1.8)};
+  ${fontSizer(1.4, 1.4, 76.8, 150, 1.8)};
   line-height: 1.43;
 `
 

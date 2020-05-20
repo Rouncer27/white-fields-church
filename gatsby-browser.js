@@ -1,7 +1,8 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
-
-// You can delete this file if you're not using it
+// const { ScrollMagicPluginGsap } = require("scrollmagic-plugin-gsap")
+// const gsap = require("gsap")
+// const ScrollMagic = require("scrollmagic")
+// const isBrowser = typeof window !== `undefined`
+// exports.onClientEntry = () => {
+//   if (!isBrowser) return
+//   ScrollMagicPluginGsap(ScrollMagic, gsap)
+// }

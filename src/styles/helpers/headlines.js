@@ -22,10 +22,10 @@ export const headlineOneRev = `
 // Headline Styles #2 //
 export const headlineTwo = `
     ${headlineBase};
-    ${fontSizer(2, 3.2, 76.8, 150, 2)}
-    color: ${colors.greyBrown};
+    ${fontSizer(3, 4, 76.8, 150, 2.8)}
     font-family: ${fonts.fontSecondary};
-    line-height: 1.31;
+    font-weight: 900;
+    line-height: 1.25;
 `
 // Headline Styles #2  REVERSED //
 export const headlineTwoRev = `
@@ -48,10 +48,10 @@ export const headlineThreeRev = `
 // Headline Styles #4 //
 export const headlineFour = `
     ${headlineBase};
-    ${fontSizer(1.8, 2.2, 76.8, 160, 2)};
+    ${fontSizer(1.6, 2.2, 76.8, 160, 1.8)};
     font-family: ${fonts.fontSecondary};
-    line-height: 1.36;
-    font-weight: 700;
+    font-weight: 900;
+    line-height: 1.3;
 `
 export const headlineFourRev = `
     ${headlineFour};

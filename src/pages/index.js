@@ -1,15 +1,130 @@
 import React from "react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import VideoHero from "../components/VideoHero"
+import BannerLiveStream from "../components/BannerLiveStream"
+import CardLinks from "../components/CardLinks"
+import ContentWrapper from "../components/ContentWrapper"
+import TimesLocation from "../components/TimesLocation"
+import RequestPrayer from "../components/RequestPrayer"
+import OurMissions from "../components/Home/OurMissions"
+import HappeningNow from "../components/Home/HappeningNow"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-  </Layout>
-)
+const IndexPage = props => {
+  const {
+    heroVideo,
+    cardLinks,
+    services,
+    requestPrayer,
+    ourMission,
+    happeningNow,
+  } = props.data
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <VideoHero
+        logoDisplay={heroVideo.acf._wfc_hv_display_logo}
+        quote={heroVideo.acf._wfc_hv_quote}
+      />
+      <BannerLiveStream />
+      <CardLinks cards={cardLinks} />
+      <ContentWrapper>
+        <TimesLocation services={services} />
+        <RequestPrayer requestPrayer={requestPrayer} />
+      </ContentWrapper>
+      <OurMissions ourMission={ourMission} />
+      <HappeningNow happeningNow={happeningNow} />
+    </Layout>
+  )
+}
+
+export const homeQuery = graphql`
+  {
+    heroVideo: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_hv_display_logo
+        _wfc_hv_quote
+      }
+    }
+
+    cardLinks: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_card_links {
+          title
+          link
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1370) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    services: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_service_times {
+          title
+          details
+        }
+        _wfc_service_directions
+      }
+    }
+
+    requestPrayer: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_rap_title
+        _wfc_rap_content
+      }
+    }
+
+    ourMission: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_om_title
+        _wfc_om_content
+        _wfc_om_button_link
+        _wfc_om_image {
+          alt_text
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1250) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+
+    happeningNow: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_hpn_title
+        _wfc_hpn_events {
+          title
+          excerpt
+          url
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1250) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
