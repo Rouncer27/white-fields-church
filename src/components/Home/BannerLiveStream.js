@@ -1,8 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { colors, standardWrapper, headlineTwo } from "../styles/helpers"
-import Play from "./Icons/Play"
+
+import { colors, standardWrapper, headlineTwo } from "../../styles/helpers"
+import Play from "../Icons/Play"
 
 const BannerLiveStreamSection = styled.section`
   background-color: ${colors.colorPrimary};

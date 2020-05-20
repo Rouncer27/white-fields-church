@@ -1,7 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { headlineTwo, colors, bodyCopyOne, buttonOne } from "../styles/helpers"
+
+import {
+  headlineTwo,
+  colors,
+  bodyCopyOne,
+  buttonOne,
+} from "../../styles/helpers"
 
 const RequestPrayerDiv = styled.div`
   width: 100%;

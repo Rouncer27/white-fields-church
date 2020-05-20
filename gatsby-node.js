@@ -1,5 +1,33 @@
 const path = require(`path`)
 
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules:
+        stage === "build-html"
+          ? [
+              {
+                test: /ScrollMagic/,
+                use: loaders.null(),
+              },
+              {
+                test: /scrollmagic/,
+                use: loaders.null(),
+              },
+            ]
+          : [],
+    },
+    resolve: {
+      alias: {
+        "debug.addIndicators": path.resolve(
+          "node_modules",
+          "scrollmagic/scrollmagic/uncompressed/plugins/debug.addIndicators.js"
+        ),
+      },
+    },
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   try {

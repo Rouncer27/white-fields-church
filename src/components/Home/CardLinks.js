@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import { colors } from "../styles/helpers"
 
+import { colors } from "../../styles/helpers"
 import Card from "./Card"
 
 const CardLinksSection = styled.section`

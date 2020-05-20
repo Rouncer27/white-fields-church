@@ -3,11 +3,11 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import BGImg from "gatsby-background-image"
 
-import { createSlug } from "../utils/helperFunc"
-import { headlineTwo, colors } from "../styles/helpers"
-import Bible from "./Icons/Bible"
-import Cross from "./Icons/Cross"
-import Stars from "./Icons/Stars"
+import { createSlug } from "../../utils/helperFunc"
+import { headlineTwo, colors } from "../../styles/helpers"
+import Bible from "../Icons/Bible"
+import Cross from "../Icons/Cross"
+import Stars from "../Icons/Stars"
 
 const CardStyled = styled(Link)`
   position: relative;

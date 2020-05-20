@@ -1,11 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+
 import {
   headlineTwo,
   colors,
   headlineFour,
   bodyCopyTwo,
-} from "../styles/helpers"
+  buttonOne,
+} from "../../styles/helpers"
 
 const TimesLocationDiv = styled.div`
   width: 100%;
@@ -29,6 +31,16 @@ const TimesLocationDiv = styled.div`
       color: ${colors.colorPrimary};
     }
   }
+
+  .directions {
+    width: 100%;
+    padding-top: 2rem;
+    text-align: center;
+
+    a {
+      ${buttonOne};
+    }
+  }
 `
 
 const TimeStyled = styled.div`
@@ -46,6 +58,7 @@ const TimeStyled = styled.div`
 
 const TimesLocation = ({ services }) => {
   const times = services.acf._wfc_service_times
+  const directions = services.acf._wfc_service_directions
   return (
     <TimesLocationDiv>
       <div className="header">
@@ -63,6 +76,9 @@ const TimesLocation = ({ services }) => {
           </TimeStyled>
         )
       })}
+      <div className="directions">
+        <a href={`${directions}`}>Get Directions</a>
+      </div>
     </TimesLocationDiv>
   )
 }

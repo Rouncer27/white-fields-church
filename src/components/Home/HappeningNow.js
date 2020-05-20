@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import {
@@ -9,6 +9,10 @@ import {
   bodyCopyTwo,
   buttonOne,
 } from "../../styles/helpers"
+
+// Animations Packages. //
+import * as ScrollMagic from "scrollmagic"
+import gsap from "gsap"
 
 const HappeningNowSection = styled.section`
   padding: 4rem 0;
@@ -68,11 +72,38 @@ const EventItem = styled.div`
 `
 
 const HappeningNow = ({ happeningNow }) => {
+  const eleContainer = useRef(null)
   const title = happeningNow.acf._wfc_hpn_title
   const events = happeningNow.acf._wfc_hpn_events
+  let cards = []
+
+  useEffect(() => {
+    const controller = new ScrollMagic.Controller()
+
+    cards = [...eleContainer.current.querySelectorAll(".eventItem")]
+
+    const timeLine = gsap
+      .timeline()
+      .fromTo(
+        cards,
+        { duration: 1.5, y: 300, autoAlpha: 0, ease: "back", stagger: 0.3 },
+        { y: 0, autoAlpha: 1, stagger: 0.3 },
+        "<-0.5"
+      )
+
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerElement: ".title",
+      reverse: false,
+    })
+      .setTween(timeLine)
+      .addTo(controller)
+  }, [])
+
   return (
     <HappeningNowSection>
-      <div className="wrapper">
+      <div ref={eleContainer} className="wrapper">
         <div className="title">
           <h2>{title}</h2>
         </div>
@@ -80,7 +111,7 @@ const HappeningNow = ({ happeningNow }) => {
         {events.map((event, index) => {
           const imgFluid = event.image.localFile.childImageSharp.fluid
           return (
-            <EventItem key={index}>
+            <EventItem key={index} className="eventItem">
               <div>
                 <Img fluid={imgFluid} />
               </div>
