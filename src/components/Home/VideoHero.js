@@ -5,14 +5,12 @@ import LogoWhite from "../Logos/LogoWhite"
 import GuitarImage from "../../images/guitar.jpg"
 import GuitarVideo from "../../assets/guitar.mp4"
 
-import { headlineFour, colors } from "../../styles/helpers"
+import { H4LatoWhite, colors } from "../../styles/helpers"
 
 // Animations Packages. //
 import * as ScrollMagic from "scrollmagic"
 import gsap from "gsap"
-import addIndicators from "debug.addIndicators"
-
-console.log("addIndicators", addIndicators)
+// import addIndicators from "debug.addIndicators"
 
 const VideoHeroSection = styled.section`
   position: relative;
@@ -54,7 +52,7 @@ const VideoHeroSection = styled.section`
       text-align: center;
 
       p {
-        ${headlineFour};
+        ${H4LatoWhite};
         margin: 0;
         color: ${colors.white};
       }
@@ -88,6 +86,7 @@ const VideoHero = ({ logoDisplay, quote, video }) => {
       reverse: true,
     })
       .setTween(timeLine)
+      // .addIndicators()
       .addTo(controller)
   }, [])
 

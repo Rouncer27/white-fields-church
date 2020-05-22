@@ -11,6 +11,18 @@ const bodyBase = `
   letter-spacing: normal;
 `
 
+export const B1OpenSans = `
+  ${fontSizer(1.6, 2, 76.8, 150, 1.6)};
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: var(--white);
+`
+
 export const bodyCopy = `
   ${bodyBase};
   ${fontSizer(1.6, 1.8, 76.8, 150, 1.6)};

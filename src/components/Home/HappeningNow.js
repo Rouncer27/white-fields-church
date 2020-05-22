@@ -1,18 +1,18 @@
 import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import * as ScrollMagic from "scrollmagic"
+import gsap from "gsap"
+// import addIndicators from "debug.addIndicators"
+
 import {
   colors,
   medWrapper,
-  headlineTwo,
+  H2LatoBlue,
   bodyCopyOne,
   bodyCopyTwo,
-  buttonOne,
+  buttonOneWhite,
 } from "../../styles/helpers"
-
-// Animations Packages. //
-import * as ScrollMagic from "scrollmagic"
-import gsap from "gsap"
 
 const HappeningNowSection = styled.section`
   padding: 4rem 0;
@@ -29,7 +29,7 @@ const HappeningNowSection = styled.section`
     text-align: center;
 
     h2 {
-      ${headlineTwo};
+      ${H2LatoBlue};
       margin: 0;
       color: ${colors.colorPrimary};
     }
@@ -41,13 +41,14 @@ const HappeningNowSection = styled.section`
     text-align: center;
 
     a {
-      ${buttonOne};
+      ${buttonOneWhite};
     }
   }
 `
 
 const EventItem = styled.div`
   width: 100%;
+  margin: 3rem auto;
 
   @media (min-width: 768px) {
     width: calc(33.33% - 4rem);
@@ -62,6 +63,7 @@ const EventItem = styled.div`
     h3 {
       ${bodyCopyOne};
       color: ${colors.white};
+      text-transform: uppercase;
     }
 
     p {
@@ -98,6 +100,7 @@ const HappeningNow = ({ happeningNow }) => {
       reverse: false,
     })
       .setTween(timeLine)
+      // .addIndicators()
       .addTo(controller)
   }, [])
 

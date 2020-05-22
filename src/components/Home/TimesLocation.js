@@ -2,18 +2,20 @@ import React from "react"
 import styled from "styled-components"
 
 import {
-  headlineTwo,
-  colors,
-  headlineFour,
+  H2LatoBlue,
+  H4LatoGold,
   bodyCopyTwo,
-  buttonOne,
+  buttonOneWhite,
+  colors,
 } from "../../styles/helpers"
 
 const TimesLocationDiv = styled.div`
   width: 100%;
+  margin: 2rem auto 4rem;
 
   @media (min-width: 768px) {
     width: calc(50%);
+    margin: 2rem 3rem;
   }
 
   @media (min-width: 1024px) {
@@ -26,7 +28,7 @@ const TimesLocationDiv = styled.div`
     text-align: center;
 
     h2 {
-      ${headlineTwo};
+      ${H2LatoBlue};
       margin-bottom: 3rem;
       color: ${colors.colorPrimary};
     }
@@ -38,7 +40,7 @@ const TimesLocationDiv = styled.div`
     text-align: center;
 
     a {
-      ${buttonOne};
+      ${buttonOneWhite};
     }
   }
 `
@@ -47,7 +49,7 @@ const TimeStyled = styled.div`
   text-align: center;
 
   h2 {
-    ${headlineFour};
+    ${H4LatoGold};
     color: ${colors.colorSecondary};
   }
 

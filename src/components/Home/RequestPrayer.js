@@ -3,17 +3,19 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 import {
-  headlineTwo,
+  H2LatoBlue,
   colors,
   bodyCopyOne,
-  buttonOne,
+  buttonOneWhite,
 } from "../../styles/helpers"
 
 const RequestPrayerDiv = styled.div`
   width: 100%;
+  margin: 2rem auto 4rem;
 
   @media (min-width: 768px) {
     width: calc(50%);
+    margin: 2rem 3rem;
   }
 
   @media (min-width: 1024px) {
@@ -26,7 +28,7 @@ const RequestPrayerDiv = styled.div`
     text-align: center;
 
     h2 {
-      ${headlineTwo};
+      ${H2LatoBlue};
       margin-bottom: 3rem;
       color: ${colors.colorPrimary};
     }
@@ -48,7 +50,7 @@ const RequestPrayerDiv = styled.div`
     text-align: center;
 
     a {
-      ${buttonOne};
+      ${buttonOneWhite};
     }
   }
 `

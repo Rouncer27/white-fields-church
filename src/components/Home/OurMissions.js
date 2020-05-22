@@ -5,9 +5,9 @@ import { Link } from "gatsby"
 
 import {
   colors,
-  headlineTwo,
+  H2LatoGold,
   bodyCopyTwo,
-  buttonOneAlt,
+  buttonOneBlue,
 } from "../../styles/helpers"
 import { createSlug } from "../../utils/helperFunc"
 
@@ -22,10 +22,12 @@ const OurMissionsSection = styled.section`
 
   .content {
     width: 100%;
+    padding: 5rem 0;
     background-color: ${colors.colorPrimary};
 
     @media (min-width: 768px) {
       width: calc(50%);
+      padding: 0;
     }
 
     &__inner {
@@ -42,8 +44,7 @@ const OurMissionsSection = styled.section`
 
     &__title {
       h2 {
-        ${headlineTwo};
-        color: ${colors.colorSecondary};
+        ${H2LatoGold};
       }
     }
 
@@ -57,7 +58,7 @@ const OurMissionsSection = styled.section`
 
     &__link {
       a {
-        ${buttonOneAlt};
+        ${buttonOneBlue};
       }
     }
   }
@@ -65,6 +66,7 @@ const OurMissionsSection = styled.section`
   .image {
     position: relative;
     width: 100%;
+    min-height: 30rem;
 
     @media (min-width: 768px) {
       width: calc(50%);

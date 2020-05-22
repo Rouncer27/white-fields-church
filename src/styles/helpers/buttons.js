@@ -1,7 +1,7 @@
 import { colors } from "./index"
 import { fonts, fontSizer } from "./index"
 
-const buttonBaseStyles = `
+const buttonOne = `
   ${fontSizer(1.4, 1.8, 76.8, 150, 1.8)};
   display: inline-block;
   min-width: 25rem;
@@ -9,7 +9,7 @@ const buttonBaseStyles = `
   transition: all 0.3s ease;
   border-radius: 2.9rem;
   border: solid 0.1rem ${colors.colorPrimary};
-  box-shadow: 1px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0.1rem 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.16);
   font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
@@ -33,8 +33,8 @@ const buttonBaseStyles = `
   }
 `
 
-export const buttonOne = `
-  ${buttonBaseStyles};
+export const buttonOneWhite = `
+  ${buttonOne};
   border-color: ${colors.colorPrimary};
   background: ${colors.white};
   color: ${colors.colorPrimary};
@@ -46,8 +46,8 @@ export const buttonOne = `
   }
 `
 
-export const buttonOneAlt = `
-  ${buttonBaseStyles};
+export const buttonOneBlue = `
+  ${buttonOne};
   border-color: ${colors.colorSecondary};
   background: ${colors.colorPrimary};
   color: ${colors.colorSecondary};
@@ -55,25 +55,5 @@ export const buttonOneAlt = `
   &:hover {
     color: ${colors.colorPrimary};
     background: ${colors.colorSecondary};
-  }
-`
-
-export const buttonTwo = `
-  ${buttonBaseStyles};
-  color: ${colors.colorShad};
-
-  &:hover {
-    border-color: ${colors.colorAlt};
-    color: ${colors.colorAlt};
-  }
-`
-
-export const buttonTwoAlt = `
-  color: ${colors.colorTertiary};
-  border-color: ${colors.colorTertiary};
-
-  &:hover {
-    border-color: ${colors.colorAccent};
-    color: ${colors.colorAccent};
   }
 `

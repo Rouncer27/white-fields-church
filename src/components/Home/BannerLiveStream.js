@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
-import { colors, standardWrapper, headlineTwo } from "../../styles/helpers"
+import { colors, standardWrapper, H2LatoWhite } from "../../styles/helpers"
 import Play from "../Icons/Play"
 
 const BannerLiveStreamSection = styled.section`
@@ -17,17 +17,28 @@ const BannerLiveStreamSection = styled.section`
     text-align: center;
 
     h2 {
-      ${headlineTwo};
+      ${H2LatoWhite};
       margin: 0;
-      padding: 2rem;
+      padding: 5rem 2rem;
       transition: all 0.3s ease-in;
-      color: ${colors.white};
+
+      @media (min-width: 768px) {
+        padding: 2rem;
+      }
     }
 
     .playIcon {
       position: absolute;
-      top: 3rem;
+      top: 5rem;
       right: -5rem;
+
+      @media (min-width: 768px) {
+        top: 2.5rem;
+      }
+
+      @media (min-width: 1025px) {
+        top: 3rem;
+      }
     }
 
     a {

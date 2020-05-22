@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import BGImg from "gatsby-background-image"
 
 import { createSlug } from "../../utils/helperFunc"
-import { headlineTwo, colors } from "../../styles/helpers"
+import { H2LatoWhite } from "../../styles/helpers"
 import Bible from "../Icons/Bible"
 import Cross from "../Icons/Cross"
 import Stars from "../Icons/Stars"
@@ -44,9 +44,8 @@ const CardStyled = styled(Link)`
     }
 
     h2 {
-      ${headlineTwo};
+      ${H2LatoWhite};
       margin: 0 auto;
-      color: ${colors.white};
     }
   }
 

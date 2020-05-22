@@ -18,7 +18,7 @@ const HeaderBottomNavItem = ({ item }) => {
   const slug = createSlug(item.url)
   return (
     <NavItem>
-      <Link to={slug}>{item.title}</Link>
+      <Link to={`/${slug}`}>{item.title}</Link>
     </NavItem>
   )
 }
