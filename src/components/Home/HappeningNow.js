@@ -13,8 +13,10 @@ import {
   B2OpenSansWhiteBold,
   buttonOneWhite,
 } from "../../styles/helpers"
+import BrushStroke from "../Graphics/BrushStroke"
 
 const HappeningNowSection = styled.section`
+  position: relative;
   padding: 4rem 0;
   background-color: ${colors.white};
 
@@ -44,11 +46,24 @@ const HappeningNowSection = styled.section`
       ${buttonOneWhite};
     }
   }
+
+  .backgroundGraphic {
+    position: absolute;
+    bottom: -12.75rem;
+    right: 2.5%;
+    width: 33rem;
+    height: 113.8rem;
+    z-index: 1;
+  }
 `
 
 const EventItem = styled.div`
+  position: relative;
   width: 100%;
   margin: 3rem auto;
+  transition: all 0.3s ease-in;
+  box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.26);
+  z-index: 10;
 
   @media (min-width: 768px) {
     width: calc(33.33% - 4rem);
@@ -57,16 +72,35 @@ const EventItem = styled.div`
 
   .content {
     padding: 1rem 4rem;
+    transition: all 0.3s ease-in;
     background-color: ${colors.colorPrimary};
     text-align: center;
 
     h3 {
       ${B2OpenSansWhiteBold};
+      transition: all 0.3s ease-in;
       text-transform: uppercase;
     }
 
     p {
       ${B1OpenSansWhite};
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 0.75rem 1rem 0 rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+
+    .content {
+      background-color: ${colors.colorTertiary};
+      h3 {
+        color: ${colors.colorPrimary};
+      }
+
+      p {
+        color: ${colors.colorPrimary};
+      }
     }
   }
 `
@@ -128,6 +162,9 @@ const HappeningNow = ({ happeningNow }) => {
         <div className="calBtn">
           <a href="https://example.com">Event Calendar</a>
         </div>
+      </div>
+      <div className="backgroundGraphic">
+        <BrushStroke />
       </div>
     </HappeningNowSection>
   )

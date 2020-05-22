@@ -12,7 +12,9 @@ import {
 import { createSlug } from "../../utils/helperFunc"
 
 const OurMissionsSection = styled.section`
+  position: relative;
   background-color: ${colors.white};
+  z-index: 10;
 
   .wrapper {
     display: flex;
