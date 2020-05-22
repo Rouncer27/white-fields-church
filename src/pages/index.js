@@ -11,6 +11,7 @@ import TimesLocation from "../components/Home/TimesLocation"
 import RequestPrayer from "../components/Home/RequestPrayer"
 import OurMissions from "../components/Home/OurMissions"
 import HappeningNow from "../components/Home/HappeningNow"
+import BannerSocialMedia from "../components/Home/BannerSocialMedia"
 
 const IndexPage = props => {
   const {
@@ -37,6 +38,7 @@ const IndexPage = props => {
       </ContentWrapper>
       <OurMissions ourMission={ourMission} />
       <HappeningNow happeningNow={happeningNow} />
+      <BannerSocialMedia />
     </Layout>
   )
 }

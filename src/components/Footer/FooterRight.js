@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import FooterRightForm from "./FooterRightForm"
 import FooterRightSocial from "./FooterRightSocial"
-import { bodyCopySemiBold, colors } from "../../styles/helpers"
+import { B2OpenSansWhiteBold } from "../../styles/helpers"
 
 const FooterRightSection = styled.div`
   width: 100%;
@@ -27,9 +27,8 @@ const FooterRightSection = styled.div`
     text-align: right;
 
     p {
-      ${bodyCopySemiBold};
+      ${B2OpenSansWhiteBold};
       margin-bottom: 2rem;
-      color: ${colors.white};
     }
   }
 `

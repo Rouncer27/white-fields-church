@@ -9,8 +9,8 @@ import {
   colors,
   medWrapper,
   H2LatoBlue,
-  bodyCopyOne,
-  bodyCopyTwo,
+  B1OpenSansWhite,
+  B2OpenSansWhiteBold,
   buttonOneWhite,
 } from "../../styles/helpers"
 
@@ -61,14 +61,12 @@ const EventItem = styled.div`
     text-align: center;
 
     h3 {
-      ${bodyCopyOne};
-      color: ${colors.white};
+      ${B2OpenSansWhiteBold};
       text-transform: uppercase;
     }
 
     p {
-      ${bodyCopyTwo};
-      color: ${colors.white};
+      ${B1OpenSansWhite};
     }
   }
 `

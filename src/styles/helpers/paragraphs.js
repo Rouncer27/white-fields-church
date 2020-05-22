@@ -1,54 +1,86 @@
 import { colors } from "./index"
 import { fonts, fontSizer } from "./index"
 
-const bodyBase = `
-  color: ${colors.greyBrown};
-  font-family: ${fonts.fontPrimary};
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.39;
-  letter-spacing: normal;
-`
-
+// Body copy ONE //
 export const B1OpenSans = `
-  ${fontSizer(1.6, 2, 76.8, 150, 1.6)};
-  font-family: Lato;
-  font-size: 20px;
+  ${fontSizer(1.4, 1.4, 76.8, 150, 1.6)};
+  font-family: ${fonts.fontPrimary};
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.3;
+  line-height: 1.57;
   letter-spacing: normal;
-  color: var(--white);
 `
 
-export const bodyCopy = `
-  ${bodyBase};
-  ${fontSizer(1.6, 1.8, 76.8, 150, 1.6)};
+export const B1OpenSansWhite = `
+  ${B1OpenSans};
+  color: ${colors.white};
 `
 
-export const bodyCopyOne = `
-  ${bodyBase};
-  ${fontSizer(1.6, 1.8, 76.8, 150, 1.6)};
+export const B1OpenSansBlue = `
+  ${B1OpenSans};
+  color: ${colors.colorPrimary};
 `
 
-export const bodyCopyTwo = `
-  ${bodyBase};
-  ${fontSizer(1.4, 1.4, 76.8, 150, 1.8)};
-  line-height: 1.43;
+export const B1OpenSansGrey = `
+  ${B1OpenSans};
+  color: ${colors.colorShad};
 `
 
-export const bodyCopySemiBold = `
-  font-family: ${fonts.fontPrimary};
+// Body copy TWO //
+export const B2OpenSans = `
   ${fontSizer(1.6, 2, 76.8, 150, 1.8)};
-  font-weight: 600;
+  font-family: ${fonts.fontPrimary};
+  font-weight: 400;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.3;
   letter-spacing: normal;
 `
 
+export const B2OpenSansWhite = `
+  ${B2OpenSans};
+  color: ${colors.white};
+`
+
+export const B2OpenSansWhiteBold = `
+  ${B2OpenSansWhite};
+  font-weight: 600;
+`
+
+export const B2OpenSansBlue = `
+  ${B2OpenSans};
+  color: ${colors.colorPrimary};
+`
+
+export const B2OpenSansBlueBold = `
+  ${B2OpenSansBlue};
+  font-weight: 600;
+`
+
+// Body copy THREE //
+export const B3OpenSans = `
+  ${fontSizer(1.4, 1.4, 76.8, 150, 1.6)};
+  font-family: ${fonts.fontPrimary};
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+`
+
+export const B3OpenSansBlue = `
+  ${B3OpenSans};
+  color: ${colors.colorPrimary};
+`
+
+export const B3OpenSansGold = `
+  ${B3OpenSans};
+  color: ${colors.colorSecondary};
+`
+
+// Body copy FOOTER //
 export const footerType = `
   font-family: ${fonts.fontPrimary};
   ${fontSizer(1.1, 1.2, 76.8, 150, 1.6)};

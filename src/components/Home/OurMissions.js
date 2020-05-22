@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 import {
   colors,
   H2LatoGold,
-  bodyCopyTwo,
+  B1OpenSansWhite,
   buttonOneBlue,
 } from "../../styles/helpers"
 import { createSlug } from "../../utils/helperFunc"
@@ -51,8 +51,7 @@ const OurMissionsSection = styled.section`
     &__para {
       padding: 2rem 0;
       p {
-        ${bodyCopyTwo};
-        color: ${colors.white};
+        ${B1OpenSansWhite};
       }
     }
 

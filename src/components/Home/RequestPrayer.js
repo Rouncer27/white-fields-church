@@ -5,8 +5,8 @@ import { Link } from "gatsby"
 import {
   H2LatoBlue,
   colors,
-  bodyCopyOne,
   buttonOneWhite,
+  B1OpenSansBlue,
 } from "../../styles/helpers"
 
 const RequestPrayerDiv = styled.div`
@@ -40,7 +40,7 @@ const RequestPrayerDiv = styled.div`
     text-align: center;
 
     p {
-      ${bodyCopyOne};
+      ${B1OpenSansBlue};
       margin: 0;
     }
   }

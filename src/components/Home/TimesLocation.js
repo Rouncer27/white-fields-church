@@ -4,7 +4,7 @@ import styled from "styled-components"
 import {
   H2LatoBlue,
   H4LatoGold,
-  bodyCopyTwo,
+  B1OpenSansBlue,
   buttonOneWhite,
   colors,
 } from "../../styles/helpers"
@@ -54,7 +54,7 @@ const TimeStyled = styled.div`
   }
 
   p {
-    ${bodyCopyTwo};
+    ${B1OpenSansBlue};
   }
 `
 
