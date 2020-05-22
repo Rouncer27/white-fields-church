@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
+// Animations Packages. //
+import * as ScrollMagic from "scrollmagic"
+import gsap from "gsap"
+// import addIndicators from "debug.addIndicators"
 
 import LogoWhite from "../Logos/LogoWhite"
 import GuitarImage from "../../images/guitar.jpg"
 import GuitarVideo from "../../assets/guitar.mp4"
 
 import { H4LatoWhite, colors } from "../../styles/helpers"
-
-// Animations Packages. //
-import * as ScrollMagic from "scrollmagic"
-import gsap from "gsap"
-// import addIndicators from "debug.addIndicators"
 
 const VideoHeroSection = styled.section`
   position: relative;
@@ -24,6 +23,7 @@ const VideoHeroSection = styled.section`
 
   @media (min-width: 1025px) {
     height: 85vh;
+    min-height: 55rem;
   }
 
   .heroContent {
@@ -77,11 +77,15 @@ const VideoHero = ({ logoDisplay, quote, video }) => {
     const controller = new ScrollMagic.Controller()
     const timeLine = gsap
       .timeline()
-      .to(".heroContent", { y: -200, scale: 0.5, duration: 3 })
+      .fromTo(
+        ".heroContent",
+        { y: 100, scale: 1, duration: 3 },
+        { y: -250, scale: 0.75, duration: 3 }
+      )
 
     new ScrollMagic.Scene({
-      duration: 750,
-      offset: 500,
+      duration: 1500,
+      offset: 190,
       triggerElement: "#boxTrigger",
       reverse: true,
     })

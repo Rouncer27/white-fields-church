@@ -9,10 +9,12 @@ import Bible from "../Icons/Bible"
 import Cross from "../Icons/Cross"
 import Stars from "../Icons/Stars"
 
-const CardStyled = styled(Link)`
+const CardStyled = styled.div`
+  display: block;
   position: relative;
   width: 100%;
   height: 40rem;
+  transition: flex 0.3s linear;
   background: #fff;
 
   @media (min-width: 768px) {
@@ -22,6 +24,14 @@ const CardStyled = styled(Link)`
     &:hover {
       flex: 1.5;
     }
+  }
+
+  a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .content {
@@ -95,15 +105,17 @@ const Card = ({ card, index }) => {
   }
 
   return (
-    <CardStyled to={`/${url}`}>
-      <div className="content">
-        <div className={`content__icon content__icon--${index}`}>{icon}</div>
-        <h2>{title}</h2>
-      </div>
-      <div className="backgroundImage">
-        <BGImg className="backgroundImage__image" tag="div" fluid={fluid} />
-      </div>
-      <div className="backgroundImage__overlay" />
+    <CardStyled>
+      <Link to={`/${url}`}>
+        <div className="content">
+          <div className={`content__icon content__icon--${index}`}>{icon}</div>
+          <h2>{title}</h2>
+        </div>
+        <div className="backgroundImage">
+          <BGImg className="backgroundImage__image" tag="div" fluid={fluid} />
+        </div>
+        <div className="backgroundImage__overlay" />
+      </Link>
     </CardStyled>
   )
 }
