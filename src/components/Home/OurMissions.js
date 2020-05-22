@@ -35,11 +35,13 @@ const OurMissionsSection = styled.section`
     &__inner {
       width: 100%;
       max-width: 41rem;
-      margin-right: 6.5rem;
+      margin-right: auto;
       margin-left: auto;
       padding: 2rem;
 
       @media (min-width: 768px) {
+        margin-right: 6.5rem;
+        margin-left: auto;
         padding: 5rem 1rem;
       }
     }

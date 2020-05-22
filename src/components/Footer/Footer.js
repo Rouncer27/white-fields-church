@@ -25,11 +25,21 @@ const FooterSection = styled.footer`
 
   .footerGraphic {
     position: absolute;
-    bottom: -2.5rem;
-    right: 2.5%;
+    bottom: -10rem;
+    right: auto;
+    left: 10rem;
     width: 88.5rem;
     height: 22.2rem;
+    transform: rotate(-90deg);
+    transform-origin: center left;
     z-index: 1;
+
+    @media (min-width: 768px) {
+      bottom: -2.5rem;
+      right: 2.5%;
+      left: auto;
+      transform: rotate(0deg);
+    }
   }
 `
 

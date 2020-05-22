@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { colors } from "../../styles/helpers"
 
@@ -13,8 +13,10 @@ const InputStyled = styled.div`
     width: calc(25%);
     margin: 0;
     padding: 1.25rem 0;
-    background: ${colors.colorTertiary};
-    color: ${colors.white};
+    transition: all 0.3s ease-in;
+    background: ${props =>
+      props.isFocused ? colors.colorSecondary : colors.colorTertiary};
+    color: ${props => (props.isFocused ? colors.colorPrimary : colors.white)};
     text-align: center;
   }
 
@@ -22,6 +24,7 @@ const InputStyled = styled.div`
     width: calc(75%);
     margin: 0;
     padding: 1.25rem;
+    transition: all 0.3s ease-in;
 
     &:focus {
       outline-color: ${colors.colorSecondary};
@@ -32,8 +35,12 @@ const InputStyled = styled.div`
 `
 
 const FormInput = ({ label, name, id, type, value, handleOnChange }) => {
+  const [isFocused, setIsFocused] = useState(false)
+  const handleOnFocus = () => {
+    setIsFocused(!isFocused)
+  }
   return (
-    <InputStyled>
+    <InputStyled isFocused={isFocused}>
       <label htmlFor={name}>{label}</label>
       <input
         id={id}
@@ -41,6 +48,8 @@ const FormInput = ({ label, name, id, type, value, handleOnChange }) => {
         type={type}
         value={value}
         onChange={e => handleOnChange(e)}
+        onFocus={handleOnFocus}
+        onBlur={handleOnFocus}
       />
     </InputStyled>
   )
