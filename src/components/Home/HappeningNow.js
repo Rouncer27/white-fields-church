@@ -61,7 +61,7 @@ const EventItem = styled.div`
   position: relative;
   width: 100%;
   margin: 3rem auto;
-  transition: all 0.3s ease-in;
+  transition: box-shadow 0.3s ease-in;
   box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.26);
   z-index: 10;
 
@@ -72,19 +72,19 @@ const EventItem = styled.div`
 
   .content {
     padding: 1rem 4rem;
-    transition: all 0.3s ease-in;
+    transition: background-color 0.3s ease-in;
     background-color: ${colors.colorPrimary};
     text-align: center;
 
     h3 {
       ${B2OpenSansWhiteBold};
-      transition: all 0.3s ease-in;
+      transition: color 0.3s ease-in;
       text-transform: uppercase;
     }
 
     p {
       ${B1OpenSansWhite};
-      transition: all 0.3s ease-in;
+      transition: color 0.3s ease-in;
     }
   }
 
