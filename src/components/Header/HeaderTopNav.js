@@ -20,15 +20,15 @@ const TopNav = styled.div`
   }
 `
 
-const HeaderTopNav = () => {
+const HeaderTopNav = ({ handleModalState }) => {
   return (
     <TopNav>
       <Link to="/">
         <Play />
       </Link>
-      <Link to="/">
+      <div onClick={handleModalState}>
         <Gift />
-      </Link>
+      </div>
       <Link to="/">
         <Contact />
       </Link>

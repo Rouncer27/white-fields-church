@@ -27,12 +27,12 @@ const TopHeaderSec = styled.div`
   }
 `
 
-const HeaderTop = ({ siteTitle }) => {
+const HeaderTop = ({ siteTitle, handleModalState }) => {
   return (
     <TopHeaderSec>
       <div className="wrapper">
         <HeaderTopLogo siteTitle={siteTitle} />
-        <HeaderTopNav />
+        <HeaderTopNav handleModalState={handleModalState} />
       </div>
     </TopHeaderSec>
   )

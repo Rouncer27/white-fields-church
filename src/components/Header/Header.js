@@ -1,11 +1,11 @@
 import React from "react"
-import TopHeader from "./HeaderTop"
+import HeaderTop from "./HeaderTop"
 import HeaderBottom from "./HeaderBottom"
 
-const Header = ({ siteTitle, location }) => {
+const Header = ({ siteTitle, location, handleModalState }) => {
   return (
     <header>
-      <TopHeader siteTitle={siteTitle} />
+      <HeaderTop siteTitle={siteTitle} handleModalState={handleModalState} />
       <HeaderBottom location={location} />
     </header>
   )
