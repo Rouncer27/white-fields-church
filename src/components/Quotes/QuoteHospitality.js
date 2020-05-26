@@ -3,16 +3,16 @@ import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
-const QuoteMMWrap = styled.div`
+const QuoteHospitalityWrap = styled.div`
   width: 100%;
   height: 100%;
 `
 
 const getData = graphql`
   {
-    quote: file(relativePath: { eq: "quote-mens-ministries.png" }) {
+    quote: file(relativePath: { eq: "quote-hospitality.png" }) {
       childImageSharp {
-        fluid(quality: 100, maxWidth: 925) {
+        fluid(quality: 100, maxWidth: 1000) {
           ...GatsbyImageSharpFluid_withWebp
         }
       }
@@ -20,17 +20,14 @@ const getData = graphql`
   }
 `
 
-const QuoteMM = () => {
+const QuoteHospitality = () => {
   const data = useStaticQuery(getData)
   const imageData = data.quote.childImageSharp.fluid
   return (
-    <QuoteMMWrap>
-      <Img
-        fluid={imageData}
-        alt="White Fields Calvary Church - Men Ministries"
-      />
-    </QuoteMMWrap>
+    <QuoteHospitalityWrap>
+      <Img fluid={imageData} alt="White Fields Calvary Church - Hospitality" />
+    </QuoteHospitalityWrap>
   )
 }
 
-export default QuoteMM
+export default QuoteHospitality

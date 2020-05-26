@@ -2,6 +2,7 @@ import React from "react"
 import BGImg from "gatsby-background-image"
 import styled from "styled-components"
 import { colors, H2LatoGold, B1OpenSansWhite } from "../../styles/helpers"
+import QuoteHospitality from "../Quotes/QuoteHospitality"
 
 const HospitalitySection = styled.section`
   position: relative;
@@ -39,8 +40,17 @@ const HospitalitySection = styled.section`
       padding: 8.5rem 0;
     }
 
+    .title {
+      margin-bottom: 3rem;
+    }
+
+    .quote {
+      margin-bottom: 3rem;
+    }
+
     h2 {
       ${H2LatoGold};
+      margin: 0;
     }
 
     p {
@@ -76,8 +86,11 @@ const Hospitality = ({ hospitality }) => {
     <HospitalitySection>
       <div className="wrapper">
         <div className="content">
-          <div>
+          <div className="title">
             <h2>{hospitality.acf._wfc_hos_title}</h2>
+          </div>
+          <div className="quote">
+            <QuoteHospitality />
           </div>
           <div
             dangerouslySetInnerHTML={{
