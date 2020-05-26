@@ -88,11 +88,13 @@ const ContentTop = styled.section`
     }
 
     &__bot {
+      display: none;
       position: relative;
       width: 100%;
       min-height: 30rem;
 
       @media (min-width: 768px) {
+        display: block;
         min-height: auto;
       }
 

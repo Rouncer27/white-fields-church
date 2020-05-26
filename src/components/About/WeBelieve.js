@@ -79,8 +79,13 @@ const WeBelieveSection = styled.section`
 
     .imageBot {
       width: 100%;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+      padding: 2rem;
 
       @media (min-width: 1025px) {
+        margin-top: auto;
+        margin-bottom: auto;
         padding: 5rem;
       }
     }
