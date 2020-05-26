@@ -5,14 +5,16 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import AboutHero from "../components/About/AboutHero"
 import ContentBlockTop from "../components/About/ContentBlockTop"
+import TheTeam from "../components/About/TheTeam"
 
 const About = props => {
-  const { aboutHero, contentBlockTop } = props.data
+  const { aboutHero, contentBlockTop, theTeam } = props.data
   return (
     <Layout>
       <SEO title="About us" />
       <AboutHero aboutHero={aboutHero} />
       <ContentBlockTop contentBlockTop={contentBlockTop} />
+      <TheTeam theTeam={theTeam} />
     </Layout>
   )
 }
@@ -57,6 +59,26 @@ export const aboutQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+
+    theTeam: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _wfc_tts_the_team {
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          name
+          title
+          description
         }
       }
     }
