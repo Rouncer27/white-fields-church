@@ -1,12 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import Img from "gatsby-image"
 import BGImg from "gatsby-background-image"
 import {
   medWrapper,
   H2LatoBlue,
   B1OpenSansBlue,
-  buttonOneWhite,
   colors,
 } from "../../styles/helpers"
 

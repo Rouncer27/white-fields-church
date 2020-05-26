@@ -118,7 +118,7 @@ const Youth = ({ wfYouth }) => {
             dangerouslySetInnerHTML={{ __html: wfYouth.acf._wfc_wfy_content }}
           />
           <div className="content__link">
-            <Link to="/">Event Calendar</Link>
+            <Link to="/events">Event Calendar</Link>
           </div>
         </div>
         <div className="image">
