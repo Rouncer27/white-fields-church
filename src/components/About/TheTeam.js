@@ -35,6 +35,7 @@ const TheTeamSection = styled.section`
 
 const Member = styled.div`
   width: 100%;
+  margin: 2rem auto;
   text-align: center;
 
   @media (min-width: 768px) {
@@ -47,13 +48,19 @@ const Member = styled.div`
     margin: 3rem 5rem;
   }
 
+  .memberImage {
+    width: 100%;
+  }
+
   .memberName {
+    width: 100%;
     h3 {
       ${H3LatoBlue};
     }
   }
 
   .memberTitle {
+    width: 100%;
     h4 {
       ${B2OpenSansBlueBold};
       text-transform: uppercase;
@@ -61,6 +68,7 @@ const Member = styled.div`
   }
 
   .memberdesciption {
+    width: 100%;
     p {
       ${B1OpenSansBlue};
     }
@@ -68,7 +76,6 @@ const Member = styled.div`
 `
 
 const TheTeam = ({ theTeam }) => {
-  console.log(theTeam)
   const team = theTeam.acf._wfc_tts_the_team
   return (
     <TheTeamSection>
@@ -80,6 +87,12 @@ const TheTeam = ({ theTeam }) => {
           {team.map((member, index) => {
             return (
               <Member key={index}>
+                <div className="memberImage">
+                  <Img
+                    fluid={member.image.localFile.childImageSharp.fluid}
+                    alt={member.name}
+                  />
+                </div>
                 <div className="memberName">
                   <h3>{member.name}</h3>
                 </div>
