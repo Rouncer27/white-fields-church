@@ -106,6 +106,15 @@ const Details = styled.div`
   .paragraph {
     p {
       ${B1OpenSansWhite};
+
+      a {
+        ${B1OpenSansWhite};
+        color: ${colors.colorSecondary};
+
+        &:hover {
+          color: ${colors.colorAccent};
+        }
+      }
     }
 
     p.paragraph__contact {
@@ -186,10 +195,13 @@ const Donate = ({ isActive, handleModalState }) => {
                 Login to online or mobile banking at your participating
                 financial institution Choose Interac e-Transfer within the
                 Transfer/Payment menu options Create/Select a recipient by
-                entering email address: accounting@whitefields.ca Follow the
-                instructions to confirm the information and complete the
-                transfer Interac e-Transfer confirmation numbers are saved in
-                your online banking history You will receive an email
+                entering email address:{" "}
+                <a href="mailto: accounting@whitefields.ca?subject=Donation">
+                  accounting@whitefields.ca
+                </a>{" "}
+                Follow the instructions to confirm the information and complete
+                the transfer Interac e-Transfer confirmation numbers are saved
+                in your online banking history You will receive an email
                 notification and/or text message once the transfer has gone
                 through depending on your set up with your financial institution
                 White Fields is set up for automatic deposit so no password is
@@ -197,7 +209,11 @@ const Donate = ({ isActive, handleModalState }) => {
               </p>
               <p className="paragraph__contact">
                 If you have any further questions, please email Michelle Duffy
-                at admin@whitefields.ca or call 587-997-4886.
+                at{" "}
+                <a href="mailto: admin@whitefields.ca?subject=Donation%20Question">
+                  admin@whitefields.ca
+                </a>{" "}
+                or call <a href="tel: +1-587-997-4886">587-997-4886</a>.
               </p>
             </div>
           </Details>

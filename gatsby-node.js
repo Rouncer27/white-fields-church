@@ -85,6 +85,14 @@ exports.createPages = async ({ graphql, actions }) => {
             id: node.wordpress_id,
           },
         })
+      } else if (node.template === "tpl-contact.php") {
+        createPage({
+          path: `/${node.slug}`,
+          component: path.resolve(`./src/templates/contact.js`),
+          context: {
+            id: node.wordpress_id,
+          },
+        })
       } else if (node.template === "tpl-ministries.php") {
         createPage({
           path: `/${node.slug}`,

@@ -29,7 +29,7 @@ const HeaderTopNav = ({ handleModalState }) => {
       <div onClick={handleModalState}>
         <Gift />
       </div>
-      <Link to="/">
+      <Link to="/contact">
         <Contact />
       </Link>
     </TopNav>
