@@ -1,11 +1,24 @@
 import React from "react"
+import Img from "gatsby-image"
 
 const Youth = ({ wfYouth }) => {
-  console.log("youth: ", wfYouth)
   return (
     <div>
       <div>
-        <h2>Youth</h2>
+        <div>
+          <div>
+            <h2>{wfYouth.acf._wfc_wfy_title}</h2>
+          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: wfYouth.acf._wfc_wfy_content }}
+          />
+        </div>
+        <div>
+          <Img
+            fluid={wfYouth.acf._wfc_wfy_image.localFile.childImageSharp.fluid}
+            alt={wfYouth.acf._wfc_wfy_image.alt_text}
+          />
+        </div>
       </div>
     </div>
   )
