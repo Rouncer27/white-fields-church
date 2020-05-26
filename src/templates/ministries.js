@@ -3,14 +3,14 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
-import MinistriesHero from "../components/Ministries/MinistriesHero"
+import HeroImage from "../components/Heros/HeroImage"
 
 const Ministries = props => {
   const { hero } = props.data
   return (
     <Layout>
       <SEO title="Ministries Page" />
-      <MinistriesHero hero={hero} />
+      <HeroImage hero={hero} />
     </Layout>
   )
 }
