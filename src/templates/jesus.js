@@ -4,13 +4,15 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import HeroImage from "../components/Heros/HeroImage"
+import WheatStockContent from "../components/Jesus/WheatStockContent"
 
 const Jesus = props => {
-  const { hero } = props.data
+  const { hero, wheatContent } = props.data
   return (
     <Layout>
       <SEO />
       <HeroImage hero={hero} />
+      <WheatStockContent wheatContent={wheatContent} />
     </Layout>
   )
 }
@@ -30,6 +32,12 @@ export const jesusQuery = graphql`
           }
         }
         _wfc_min_hero_title
+      }
+    }
+
+    wheatContent: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _wfc_whsto_main_content
       }
     }
   }
