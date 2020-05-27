@@ -6,15 +6,17 @@ import SEO from "../components/seo"
 import HeroImage from "../components/Heros/HeroImage"
 import WheatStockContent from "../components/Jesus/WheatStockContent"
 import NowWhat from "../components/Jesus/NowWhat"
+import BoxLinks from "../components/Jesus/BoxLinks"
 
 const Jesus = props => {
-  const { hero, wheatContent, soNowWhat } = props.data
+  const { hero, wheatContent, soNowWhat, boxLinks } = props.data
   return (
     <Layout>
       <SEO title="Why Jesus?" />
       <HeroImage hero={hero} />
       <WheatStockContent wheatContent={wheatContent} />
       <NowWhat soNowWhat={soNowWhat} />
+      <BoxLinks boxLinks={boxLinks} />
     </Layout>
   )
 }
@@ -56,6 +58,26 @@ export const jesusQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+
+    boxLinks: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _wfc_bxlk_box_links {
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          title
+          description
+          link
         }
       }
     }
