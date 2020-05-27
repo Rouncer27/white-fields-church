@@ -2,7 +2,6 @@ import React from "react"
 import BGImg from "gatsby-background-image"
 import styled from "styled-components"
 import {
-  medWrapper,
   colors,
   H2LatoBlue,
   B1OpenSansBlue,
@@ -10,7 +9,7 @@ import {
 } from "../../styles/helpers"
 
 const ContentBlocksSection = styled.section`
-  padding: 5rem 0;
+  padding: 0 0 5rem;
 
   @media (min-width: 768px) {
     padding: 7.5rem 0;
@@ -119,7 +118,6 @@ const ContentBlocksSection = styled.section`
 `
 
 const ContentBlocks = ({ contentBlocks }) => {
-  console.log(contentBlocks)
   return (
     <ContentBlocksSection>
       {contentBlocks.acf._wfc_cnbl_blocks.map((block, index) => {
