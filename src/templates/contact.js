@@ -5,14 +5,16 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import HeroImage from "../components/Heros/HeroImage"
 import TimesLocation from "../components/Contact/TimesLocation"
+import ContactForm from "../components/Contact/ContactForm"
 
 const Contact = props => {
-  const { hero, timesLocations } = props.data
+  const { hero, timesLocations, contactForm } = props.data
   return (
     <Layout>
       <SEO title="contact Page" />
       <HeroImage hero={hero} />
       <TimesLocation timesLocations={timesLocations} />
+      <ContactForm contactForm={contactForm} />
     </Layout>
   )
 }
@@ -42,6 +44,23 @@ export const contactQuery = graphql`
           details
         }
         _wfc_tal_directions
+      }
+    }
+
+    contactForm: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _wfc_cofor_title
+        _wfc_cofor_content
+        _wfc_cofor_image {
+          alt_text
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
       }
     }
   }
