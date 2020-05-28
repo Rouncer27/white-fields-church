@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import BGImage from "gatsby-background-image"
 import styled from "styled-components"
-
 import FormInput from "../Form/FormInput"
 import FormTextarea from "../Form/FormTextarea"
 import {
