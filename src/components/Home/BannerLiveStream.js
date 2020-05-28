@@ -62,7 +62,7 @@ const BannerLiveStream = () => {
     <BannerLiveStreamSection>
       <div className="wrapper">
         <div className="bannerContent">
-          <Link to="/">
+          <Link to="/live-feed">
             <h2>Live Stream Sunday Service </h2>
             <div className="playIcon">
               <Play color={colors.white} />

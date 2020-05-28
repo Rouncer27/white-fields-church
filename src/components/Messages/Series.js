@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { Link } from "gatsby"
 import { standardWrapper } from "../../styles/helpers"
 
 const SeriesSection = styled.section`
@@ -9,7 +10,7 @@ const SeriesSection = styled.section`
   }
 `
 
-const SeriesItem = styled.div`
+const SeriesItem = styled(Link)`
   width: 100%;
 
   @media (min-width: 768px) {
@@ -28,7 +29,10 @@ const Series = ({ series }) => {
       <div className="wrapper">
         {series.edges.map(item => {
           return (
-            <SeriesItem key={item.node.wordpress_id}>
+            <SeriesItem
+              key={item.node.wordpress_id}
+              to={`/series/${item.node.slug}`}
+            >
               <div>
                 <Img
                   fluid={

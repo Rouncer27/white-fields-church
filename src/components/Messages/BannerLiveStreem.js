@@ -114,7 +114,7 @@ const BannerLiveStream = ({ liveFeed }) => {
               __html: liveFeed.acf._wcf_lifee_content,
             }}
           />
-          <Link className="bannerContent__link" to="/">
+          <Link className="bannerContent__link" to="/live-feed">
             <div className="playIcon" />
           </Link>
         </div>

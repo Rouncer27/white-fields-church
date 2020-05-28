@@ -59,6 +59,15 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
+
+        series: allWordpressWpMessageType {
+          edges {
+            node {
+              wordpress_id
+              slug
+            }
+          }
+        }
       }
     `)
 
@@ -125,6 +134,14 @@ exports.createPages = async ({ graphql, actions }) => {
             id: node.wordpress_id,
           },
         })
+      } else if (node.template === "tpl-livefeed.php") {
+        createPage({
+          path: `/${node.slug}`,
+          component: path.resolve(`./src/templates/liveFeed.js`),
+          context: {
+            id: node.wordpress_id,
+          },
+        })
       } else if (node.template === "tpl-page-home.php") {
         createPage({
           path: `/${node.slug}`,
@@ -153,6 +170,21 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: node.slug,
           prev: index === 0 ? null : posts[index - 1].node.slug,
           next: index === posts.length - 1 ? null : posts[index + 1].node.slug,
+        },
+      })
+    })
+
+    const series = data.series.edges
+    series.forEach(({ node }, index) => {
+      createPage({
+        path: `/series/${node.slug}/`,
+        component: path.resolve("./src/templates/series.js"),
+        context: {
+          id: node.wordpress_id,
+          slug: node.slug,
+          prev: index === 0 ? null : series[index - 1].node.slug,
+          next:
+            index === series.length - 1 ? null : series[index + 1].node.slug,
         },
       })
     })
