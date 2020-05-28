@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
+import SeriesHero from "../components/SingleMessage/SeriesHero"
 
 const Series = props => {
   const { series } = props.data
@@ -10,7 +11,7 @@ const Series = props => {
   return (
     <Layout>
       <SEO title="Series" />
-      <h1>{series.name}</h1>
+      <SeriesHero series={series} />
     </Layout>
   )
 }
@@ -19,6 +20,18 @@ export const seriesQuery = graphql`
   query seriesPage($id: Int!) {
     series: wordpressWpMessageType(wordpress_id: { eq: $id }) {
       name
+      acf {
+        _wfc_mescat_featured_image {
+          alt_text
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
     }
   }
 `
