@@ -5,12 +5,10 @@ import styled from "styled-components"
 import {
   colors,
   standardWrapper,
-  H2LatoWhite,
   H2LatoGold,
   B1OpenSansWhite,
   fonts,
 } from "../../styles/helpers"
-import Play from "../Icons/Play"
 
 const BannerLiveStreamSection = styled.section`
   padding: 5rem 0;
@@ -103,7 +101,6 @@ const BannerLiveStreamSection = styled.section`
 `
 
 const BannerLiveStream = ({ liveFeed }) => {
-  console.log(liveFeed)
   return (
     <BannerLiveStreamSection>
       <div className="wrapper">

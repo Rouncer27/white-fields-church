@@ -5,14 +5,16 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import MessagesIntro from "../components/Messages/MessagsIntro"
 import BannerLiveStreem from "../components/Messages/BannerLiveStreem"
+import Series from "../components/Messages/Series"
 
 const Messages = props => {
-  const { messagesIntro, liveFeed } = props.data
+  const { messagesIntro, liveFeed, series } = props.data
   return (
     <Layout>
       <SEO />
       <MessagesIntro messagesIntro={messagesIntro} />
       <BannerLiveStreem liveFeed={liveFeed} />
+      <Series series={series} />
     </Layout>
   )
 }
@@ -40,6 +42,30 @@ export const messagesQuery = graphql`
       acf {
         _wcf_lifee_content
         _wcf_lifee_url
+      }
+    }
+
+    series: allWordpressWpMessageType {
+      edges {
+        node {
+          acf {
+            dummy
+            _wfc_mescat_featured_image {
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
+              }
+            }
+          }
+          wordpress_id
+          slug
+          name
+          count
+        }
       }
     }
   }
