@@ -11,7 +11,7 @@ const Messages = props => {
   const { messagesIntro, liveFeed, series } = props.data
   return (
     <Layout>
-      <SEO />
+      <SEO title="Messages" />
       <MessagesIntro messagesIntro={messagesIntro} />
       <BannerLiveStreem liveFeed={liveFeed} />
       <Series series={series} />

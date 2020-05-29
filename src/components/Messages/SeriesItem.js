@@ -1,13 +1,22 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
+// Animations Packages. //
+import * as ScrollMagic from "scrollmagic"
+import gsap from "gsap"
+// import addIndicators from "debug.addIndicators"
 import { B2OpenSansWhite, buttonOneClear } from "../../styles/helpers"
+
+const getRandomInt = (max, min) => {
+  return Math.floor(Math.random() * Math.floor(max)) + min
+}
 
 const SeriesItemStyled = styled.div`
   position: relative;
   width: calc(100%);
   margin: 2rem auto;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.26);
 
   @media (min-width: 768px) {
     width: calc(50% - 4rem);
@@ -15,8 +24,15 @@ const SeriesItemStyled = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: calc(50% - 4rem);
-    margin: 3rem 2rem;
+    width: calc(
+      50% - ${props => props.marginValues.marginRight}rem -
+        ${props => props.marginValues.marginLeft}rem
+    );
+    margin: 5rem 2rem;
+    margin-top: ${props => props.marginValues.marginTop}rem;
+    margin-right: ${props => props.marginValues.marginRight}rem;
+    margin-bottom: ${props => props.marginValues.marginBottom}rem;
+    margin-left: ${props => props.marginValues.marginLeft}rem;
   }
 
   .image {
@@ -78,8 +94,48 @@ const SeriesItemStyled = styled.div`
 `
 
 const SeriesItem = ({ item }) => {
+  const [marginValues, setMarginValues] = useState({
+    marginTop: 5,
+    marginRight: 2,
+    marginBottom: 5,
+    marginLeft: 2,
+  })
+  const element = useRef(null)
+
+  useEffect(() => {
+    const marginTop = getRandomInt(10, 5)
+    const marginRight = getRandomInt(5, 2)
+    const marginBottom = getRandomInt(10, 5)
+    const marginLeft = getRandomInt(5, 2)
+    setMarginValues({ marginTop, marginRight, marginBottom, marginLeft })
+
+    const controller = new ScrollMagic.Controller()
+    const timeLine = gsap
+      .timeline()
+      .fromTo(
+        element.current,
+        { y: getRandomInt(250, 100), duration: 1, ease: "none" },
+        { y: 0, duration: 1, ease: "none" }
+      )
+
+    new ScrollMagic.Scene({
+      duration: 1500,
+      offset: 0,
+      triggerHook: 1,
+      triggerElement: element.current,
+      reverse: true,
+    })
+      .setTween(timeLine)
+      // .addIndicators()
+      .addTo(controller)
+  }, [])
+
   return (
-    <SeriesItemStyled key={item.node.wordpress_id}>
+    <SeriesItemStyled
+      key={item.node.wordpress_id}
+      ref={element}
+      marginValues={marginValues}
+    >
       <Link to={`/series/${item.node.slug}`}>
         <div className="image">
           <Img

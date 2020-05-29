@@ -10,6 +10,10 @@ const SeriesSection = styled.section`
   position: relative;
   overflow: hidden;
 
+  @media (min-width: 768px) {
+    padding-bottom: 10rem;
+  }
+
   .wrapper {
     ${medWrapper};
     align-items: center;
