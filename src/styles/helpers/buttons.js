@@ -57,3 +57,15 @@ export const buttonOneBlue = `
     background: ${colors.colorSecondary};
   }
 `
+
+export const buttonOneClear = `
+  ${buttonOne};
+  border-color: ${colors.white};
+  background: transparent;
+  color: ${colors.white};
+
+  &:hover {
+    color: ${colors.colorPrimary};
+    background: ${colors.colorSecondary};
+  }
+`

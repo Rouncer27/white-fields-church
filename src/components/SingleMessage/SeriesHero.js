@@ -13,7 +13,7 @@ const HeroImageSection = styled.section`
   }
 
   @media (min-width: 1025px) {
-    min-height: 67.5rem;
+    min-height: 60rem;
   }
 
   .title {
