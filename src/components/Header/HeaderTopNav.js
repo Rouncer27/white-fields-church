@@ -23,7 +23,7 @@ const TopNav = styled.div`
 const HeaderTopNav = ({ handleModalState }) => {
   return (
     <TopNav>
-      <Link to="/">
+      <Link to="/live-feed">
         <Play />
       </Link>
       <div onClick={handleModalState}>

@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
-// Animations Packages. //
 import * as ScrollMagic from "scrollmagic"
 import gsap from "gsap"
-import addIndicators from "debug.addIndicators"
 import { B2OpenSansWhite, buttonOneClear } from "../../styles/helpers"
 
 const getRandomInt = (max, min) => {
@@ -113,7 +111,6 @@ const SeriesItem = ({ item }) => {
     const marginRight = getRandomInt(3, 2)
     const marginBottom = getRandomInt(3, 0)
     const marginLeft = getRandomInt(3, 2)
-
     const startPosition = getRandomInt(200, 100)
 
     setMarginValues({
@@ -149,7 +146,6 @@ const SeriesItem = ({ item }) => {
       reverse: false,
     })
       .setTween(timeLineStart)
-      // .addIndicators()
       .addTo(controllerStart)
 
     const controller = new ScrollMagic.Controller()
@@ -162,14 +158,13 @@ const SeriesItem = ({ item }) => {
       )
 
     new ScrollMagic.Scene({
-      duration: 1500,
+      duration: 1250,
       offset: 0,
       triggerHook: 0.75,
       triggerElement: element.current,
       reverse: true,
     })
       .setTween(timeLine)
-      // .addIndicators()
       .addTo(controller)
   }, [])
 
