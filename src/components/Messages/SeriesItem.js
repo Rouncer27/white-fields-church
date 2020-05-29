@@ -114,8 +114,8 @@ const SeriesItem = ({ item }) => {
       .timeline()
       .fromTo(
         element.current,
-        { y: getRandomInt(250, 100), duration: 1, ease: "none" },
-        { y: 0, duration: 1, ease: "none" }
+        { y: getRandomInt(200, 100), duration: 1, ease: "none" },
+        { y: -1 * getRandomInt(50, 0), duration: 1, ease: "none" }
       )
 
     new ScrollMagic.Scene({
