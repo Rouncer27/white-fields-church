@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 // Animations Packages. //
 import * as ScrollMagic from "scrollmagic"
 import gsap from "gsap"
-// import addIndicators from "debug.addIndicators"
+import addIndicators from "debug.addIndicators"
 import { B2OpenSansWhite, buttonOneClear } from "../../styles/helpers"
 
 const getRandomInt = (max, min) => {
@@ -25,7 +25,12 @@ const SeriesItemStyled = styled.div`
 
   @media (min-width: 1025px) {
     width: calc(
-      50% - ${props => props.marginValues.marginRight}rem -
+      ${props =>
+          props.marginValues.itemWidth === 3
+            ? 33.333333
+            : props.marginValues.itemWidth === 2
+            ? 50
+            : 66.666666}% - ${props => props.marginValues.marginRight}rem -
         ${props => props.marginValues.marginLeft}rem
     );
     margin: 5rem 2rem;
@@ -60,7 +65,7 @@ const SeriesItemStyled = styled.div`
       position: absolute;
       top: 50%;
       left: 50%;
-      transition: all 0.4s ease-out;
+      transition: all 0.3s ease-out;
       transform: translate(-50%, 100%);
       opacity: 0;
       z-index: 10;
@@ -76,7 +81,7 @@ const SeriesItemStyled = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      transition: all 0.4s ease-out;
+      transition: all 0.3s ease-out;
       background-color: rgba(55, 93, 119, 0.4);
       z-index: 5;
     }
@@ -103,25 +108,63 @@ const SeriesItem = ({ item }) => {
   const element = useRef(null)
 
   useEffect(() => {
-    const marginTop = getRandomInt(10, 5)
-    const marginRight = getRandomInt(5, 2)
-    const marginBottom = getRandomInt(10, 5)
-    const marginLeft = getRandomInt(5, 2)
-    setMarginValues({ marginTop, marginRight, marginBottom, marginLeft })
+    const itemWidth = getRandomInt(3, 1)
+    const marginTop = getRandomInt(3, 0)
+    const marginRight = getRandomInt(3, 2)
+    const marginBottom = getRandomInt(3, 0)
+    const marginLeft = getRandomInt(3, 2)
+
+    const startPosition = getRandomInt(200, 100)
+
+    setMarginValues({
+      itemWidth,
+      marginTop,
+      marginRight,
+      marginBottom,
+      marginLeft,
+    })
+
+    const controllerStart = new ScrollMagic.Controller()
+    const timeLineStart = gsap.timeline().fromTo(
+      element.current,
+      {
+        y: 500,
+        autoAlpha: 0,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+      {
+        y: startPosition,
+        autoAlpha: 1,
+        duration: 0.5,
+        ease: "power2.out",
+      }
+    )
+
+    new ScrollMagic.Scene({
+      duration: 0,
+      offset: 0,
+      triggerHook: 0.9,
+      triggerElement: element.current,
+      reverse: false,
+    })
+      .setTween(timeLineStart)
+      // .addIndicators()
+      .addTo(controllerStart)
 
     const controller = new ScrollMagic.Controller()
     const timeLine = gsap
       .timeline()
       .fromTo(
         element.current,
-        { y: getRandomInt(200, 100), duration: 1, ease: "none" },
+        { y: startPosition, duration: 1, ease: "none" },
         { y: -1 * getRandomInt(50, 0), duration: 1, ease: "none" }
       )
 
     new ScrollMagic.Scene({
       duration: 1500,
       offset: 0,
-      triggerHook: 1,
+      triggerHook: 0.75,
       triggerElement: element.current,
       reverse: true,
     })
