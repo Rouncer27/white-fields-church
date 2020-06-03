@@ -111,7 +111,7 @@ const ContentTop = styled.section`
 
 const ContentBlockTop = ({ contentBlockTop }) => {
   return (
-    <ContentTop>
+    <ContentTop id="purpose">
       <div className="wrapper">
         <div className="content">
           <div

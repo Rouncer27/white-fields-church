@@ -78,7 +78,7 @@ const Member = styled.div`
 const TheTeam = ({ theTeam }) => {
   const team = theTeam.acf._wfc_tts_the_team
   return (
-    <TheTeamSection>
+    <TheTeamSection id="team">
       <div className="wrapper">
         <div className="title">
           <h2>The Team</h2>

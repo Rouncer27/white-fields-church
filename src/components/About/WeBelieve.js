@@ -129,7 +129,7 @@ const WeBelieveSection = styled.section`
 
 const WeBelieve = ({ weBelieve }) => {
   return (
-    <WeBelieveSection>
+    <WeBelieveSection id="believe">
       <div className="wrapper">
         <div className="pointsContainer">
           <div className="mainTitle">

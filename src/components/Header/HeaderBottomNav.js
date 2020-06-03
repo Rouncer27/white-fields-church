@@ -29,13 +29,12 @@ const getData = graphql`
         target
         type
         url
-        # Not sub menu for this website. In needed activate the bottom params. //
-        # wordpress_children {
-        #   wordpress_id
-        #   title
-        #   object_slug
-        #   url
-        # }
+        wordpress_children {
+          wordpress_id
+          title
+          object_slug
+          url
+        }
       }
     }
   }

@@ -9,7 +9,7 @@ const HeaderBottomSec = styled.div`
   position: relative;
   background-color: ${colors.colorAccent};
   box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.2);
-  z-index: 5;
+  z-index: 9999999999999999999;
 
   @media (min-width: 768px) {
     display: block;
