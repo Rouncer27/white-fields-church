@@ -7,8 +7,9 @@ import EventsIntro from "../components/Events/EventsIntro"
 
 const Events = props => {
   const { eventsIntro } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO />
       <EventsIntro eventsIntro={eventsIntro} />
     </Layout>

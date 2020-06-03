@@ -7,9 +7,10 @@ import SeriesHero from "../components/SingleMessage/SeriesHero"
 
 const Series = props => {
   const { series } = props.data
+  const location = props.location
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Series" />
       <SeriesHero series={series} />
     </Layout>

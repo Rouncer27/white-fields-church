@@ -20,10 +20,11 @@ const HeaderBottomSec = styled.div`
 
     @media (min-width: 768px) {
       justify-content: flex-end;
+      padding: 0 2rem;
     }
 
     @media (min-width: 1025px) {
-      padding: 2rem 5rem;
+      padding: 0 5rem;
     }
   }
 `

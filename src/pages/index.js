@@ -22,9 +22,10 @@ const IndexPage = props => {
     ourMission,
     happeningNow,
   } = props.data
+  const location = props.location
 
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Home" />
       <VideoHero
         logoDisplay={heroVideo.acf._wfc_hv_display_logo}

@@ -9,8 +9,9 @@ import Churches from "../components/Missions/Churches"
 
 const Mission = props => {
   const { quoteSection, contentBlocks, churches } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Our Missions" />
       <IntroQuote quoteSection={quoteSection} />
       <ContentBlocks contentBlocks={contentBlocks} />

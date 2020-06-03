@@ -25,8 +25,9 @@ const Ministries = props => {
     worship,
     hospitality,
   } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Ministries Page" />
       <HeroImage hero={hero} />
       <Kids wfKids={wfKids} />

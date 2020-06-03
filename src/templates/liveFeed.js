@@ -8,8 +8,9 @@ import LiveFeedLink from "../components/LiveFeed/LiveFeedLink"
 
 const LiveFeed = props => {
   const { suggestedTopics, liveFeed, series } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Live Feed" />
       <LiveFeedLink liveFeed={liveFeed} />
       <SuggestedTopics suggestedTopics={suggestedTopics} series={series} />

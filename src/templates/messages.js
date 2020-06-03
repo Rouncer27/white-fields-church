@@ -9,8 +9,9 @@ import Series from "../components/Messages/Series"
 
 const Messages = props => {
   const { messagesIntro, liveFeed, series } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Messages" />
       <MessagesIntro messagesIntro={messagesIntro} />
       <BannerLiveStreem liveFeed={liveFeed} />

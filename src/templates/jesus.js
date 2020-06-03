@@ -10,8 +10,9 @@ import BoxLinks from "../components/Jesus/BoxLinks"
 
 const Jesus = props => {
   const { hero, wheatContent, soNowWhat, boxLinks } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="Why Jesus?" />
       <HeroImage hero={hero} />
       <WheatStockContent wheatContent={wheatContent} />

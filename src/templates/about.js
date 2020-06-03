@@ -10,8 +10,9 @@ import WeBelieve from "../components/About/WeBelieve"
 
 const About = props => {
   const { aboutHero, contentBlockTop, theTeam, weBelieve } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="About us" />
       <AboutHero aboutHero={aboutHero} />
       <ContentBlockTop contentBlockTop={contentBlockTop} />

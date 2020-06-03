@@ -9,8 +9,9 @@ import ContactForm from "../components/Contact/ContactForm"
 
 const Contact = props => {
   const { hero, timesLocations, contactForm } = props.data
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO title="contact Page" />
       <HeroImage hero={hero} />
       <TimesLocation timesLocations={timesLocations} />

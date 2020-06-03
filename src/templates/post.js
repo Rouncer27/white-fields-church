@@ -4,9 +4,10 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 
-const Post = () => {
+const Post = props => {
+  const location = props.location
   return (
-    <Layout>
+    <Layout location={location}>
       <SEO />
       <h1>Post</h1>
     </Layout>
