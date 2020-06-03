@@ -35,6 +35,7 @@ const SuggestedTopicsSection = styled.section`
   .suggestions {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     @media (min-width: 768px) {
@@ -46,10 +47,13 @@ const SuggestedTopicsSection = styled.section`
 const Topic = styled.div`
   position: relative;
   width: calc(100%);
+  height: 20rem;
+  margin-bottom: 0.5rem;
 
   @media (min-width: 768px) {
     width: calc(33.33%);
-    height: 175rem;
+    height: 17.5rem;
+    margin-bottom: 0;
   }
 
   @media (min-width: 1025px) {
