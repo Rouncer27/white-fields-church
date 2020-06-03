@@ -5,6 +5,7 @@ import styled from "styled-components"
 import LogoBlue from "../Logos/LogoBlue"
 
 const HeaderLogoWrap = styled.div`
+  align-self: center;
   width: 25rem;
   padding: 0 2rem;
 

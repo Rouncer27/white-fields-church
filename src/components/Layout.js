@@ -42,6 +42,7 @@ const Layout = ({ children, location }) => {
             siteTitle={data.site.siteMetadata.title}
             location={location}
             handleModalState={handelModalState}
+            isActive={isActive}
           />
           <MobileNav handleModalState={handelModalState} />
           <main>{children}</main>

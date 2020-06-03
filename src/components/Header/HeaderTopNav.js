@@ -5,10 +5,11 @@ import { Link } from "gatsby"
 import Play from "../Icons/Play"
 import Gift from "../Icons/Gift"
 import Contact from "../Icons/Contact"
+import { colors } from "../../styles/helpers"
 
 const TopNav = styled.div`
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
@@ -20,18 +21,49 @@ const TopNav = styled.div`
   }
 `
 
-const HeaderTopNav = ({ handleModalState }) => {
+const TopDiv = styled.div`
+  background-color: ${props =>
+    props.active ? colors.colorPrimary : "transparent"};
+
+  span {
+    display: block;
+    padding: 4.5rem 0;
+
+    @media (min-width: 1025px) {
+      padding: 4.4rem 0;
+    }
+  }
+
+  svg {
+    path {
+      fill: ${props =>
+        props.active ? colors.colorSecondary : colors.colorPrimary} !important;
+    }
+  }
+`
+
+const HeaderTopNav = ({ handleModalState, location, isActive }) => {
   return (
     <TopNav>
-      <Link to="/live-feed">
-        <Play />
-      </Link>
-      <div onClick={handleModalState}>
-        <Gift />
-      </div>
-      <Link to="/contact">
-        <Contact />
-      </Link>
+      <TopDiv active={location.pathname === "/live-feed" ? true : undefined}>
+        <Link to="/live-feed">
+          <span>
+            <Play />
+          </span>
+        </Link>
+      </TopDiv>
+      <TopDiv active={isActive} onClick={handleModalState}>
+        <span>
+          <Gift />
+        </span>
+      </TopDiv>
+      <TopDiv active={location.pathname === "/contact" ? true : undefined}>
+        <Link to="/contact">
+          <span>
+            <Contact />
+          </span>
+        </Link>
+      </TopDiv>
     </TopNav>
   )
 }

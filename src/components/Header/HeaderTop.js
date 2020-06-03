@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 
 import HeaderTopLogo from "./HeaderTopLogo"
@@ -22,17 +21,21 @@ const TopHeaderSec = styled.div`
     }
 
     @media (min-width: 1025px) {
-      padding: 2rem 5rem;
+      padding: 0 5rem;
     }
   }
 `
 
-const HeaderTop = ({ siteTitle, handleModalState }) => {
+const HeaderTop = ({ siteTitle, handleModalState, location, isActive }) => {
   return (
     <TopHeaderSec>
       <div className="wrapper">
         <HeaderTopLogo siteTitle={siteTitle} />
-        <HeaderTopNav handleModalState={handleModalState} />
+        <HeaderTopNav
+          handleModalState={handleModalState}
+          location={location}
+          isActive={isActive}
+        />
       </div>
     </TopHeaderSec>
   )
