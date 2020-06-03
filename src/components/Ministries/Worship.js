@@ -27,10 +27,12 @@ const WorshipSection = styled.section`
 
   .content {
     width: 100%;
-    margin-bottom: 5rem;
+    margin-top: 5rem;
 
     @media (min-width: 768px) {
       width: calc(60% - 3rem);
+      margin-top: 0;
+      margin-bottom: 5rem;
       margin-left: 3rem;
     }
 

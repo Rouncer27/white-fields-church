@@ -12,9 +12,11 @@ import { Link } from "gatsby"
 
 const MensSection = styled.section`
   position: relative;
+  padding-bottom: 5rem;
   background: ${colors.colorPrimary};
 
   @media (min-width: 1025px) {
+    padding-bottom: 0;
     background: linear-gradient(
       to left,
       ${colors.colorPrimary} 0%,

@@ -58,10 +58,12 @@ const BannerLiveStreamSection = styled.section`
 
     &__link {
       width: 100%;
+      margin-top: 5rem;
       text-align: center;
 
       @media (min-width: 768px) {
         width: calc(25%);
+        margin-top: 0;
       }
 
       @media (min-width: 1025px) {

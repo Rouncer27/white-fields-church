@@ -24,9 +24,10 @@ const NavItem = styled.li`
 `
 
 const MobileNavItem = ({ item }) => {
+  console.log(item)
   return (
     <NavItem>
-      <Link to="/about">{item.title}</Link>
+      <Link to={`/${item.object_slug}`}>{item.title}</Link>
     </NavItem>
   )
 }

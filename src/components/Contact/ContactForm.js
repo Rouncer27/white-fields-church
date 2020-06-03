@@ -30,12 +30,17 @@ const ContactFormSection = styled.section`
   }
 
   .graphicWheat {
+    display: none;
     position: absolute;
     left: 0rem;
     bottom: 0rem;
     width: calc(171.3rem / 4);
     height: calc(217.1rem / 4);
     z-index: 1;
+
+    @media (min-width: 768px) {
+      display: block;
+    }
   }
 
   .graphicDove {
