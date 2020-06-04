@@ -4,15 +4,17 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import SeriesHero from "../components/SingleMessage/SeriesHero"
+import MessagesList from "../components/SingleMessage/MessagesList"
 
 const Series = props => {
-  const { series } = props.data
+  const { series, messages } = props.data
   const location = props.location
 
   return (
     <Layout location={location}>
       <SEO title="Series" />
       <SeriesHero series={series} />
+      <MessagesList series={series} messages={messages} />
     </Layout>
   )
 }
@@ -30,6 +32,16 @@ export const seriesQuery = graphql`
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
+          }
+        }
+      }
+    }
+
+    messages: allWordpressWpAudioMessages {
+      edges {
+        node {
+          acf {
+            _wfc_mespod_audio_embed
           }
         }
       }
