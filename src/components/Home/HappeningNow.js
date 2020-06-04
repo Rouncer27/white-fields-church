@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { Link } from "gatsby"
 import * as ScrollMagic from "scrollmagic"
 import gsap from "gsap"
 // import addIndicators from "debug.addIndicators"
@@ -160,7 +161,7 @@ const HappeningNow = ({ happeningNow }) => {
           )
         })}
         <div className="calBtn">
-          <a href="https://example.com">Event Calendar</a>
+          <Link to="/events">Event Calendar</Link>
         </div>
       </div>
       <div className="backgroundGraphic">
