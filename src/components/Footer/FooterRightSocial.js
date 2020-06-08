@@ -56,6 +56,11 @@ const FooterSocial = styled.div`
       content: "\f099";
     }
   }
+  a.instagramIcon {
+    &::after {
+      content: "\f16d";
+    }
+  }
 `
 
 const FooterRightSocial = () => {
@@ -80,6 +85,15 @@ const FooterRightSocial = () => {
           title="Twitter Account"
         >
           <span>Twitter</span>
+        </a>
+        <a
+          href="https://www.instagram.com/whitefieldscalvarychurch/"
+          className="instagramIcon"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Instagram Account"
+        >
+          <span>Instagram</span>
         </a>
       </p>
     </FooterSocial>
