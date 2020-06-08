@@ -106,7 +106,7 @@ const OurMissions = ({ ourMission }) => {
               dangerouslySetInnerHTML={{ __html: content }}
             />
             <div className="content__link">
-              <Link to={`/${slug}`}>Learn More</Link>
+              <Link to={`/${slug}`}>Contact Us</Link>
             </div>
           </div>
         </div>
