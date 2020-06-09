@@ -8,11 +8,16 @@ import ContentBlocks from "../components/Missions/ContentBlocks"
 import Churches from "../components/Missions/Churches"
 
 const Mission = props => {
-  const { quoteSection, contentBlocks, churches } = props.data
+  const { seoInfo, quoteSection, contentBlocks, churches } = props.data
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO title="Our Missions" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <IntroQuote quoteSection={quoteSection} />
       <ContentBlocks contentBlocks={contentBlocks} />
       <Churches churches={churches} />
@@ -22,6 +27,18 @@ const Mission = props => {
 
 export const missionQuery = graphql`
   query missionPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     quoteSection: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_mqc_title

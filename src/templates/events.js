@@ -6,11 +6,16 @@ import SEO from "../components/seo"
 import EventsIntro from "../components/Events/EventsIntro"
 
 const Events = props => {
-  const { eventsIntro } = props.data
+  const { seoInfo, eventsIntro } = props.data
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <EventsIntro eventsIntro={eventsIntro} />
     </Layout>
   )
@@ -18,6 +23,17 @@ const Events = props => {
 
 export const eventsQuery = graphql`
   query eventsPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
     eventsIntro: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_evin_title

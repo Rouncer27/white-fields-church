@@ -9,11 +9,16 @@ import NowWhat from "../components/Jesus/NowWhat"
 import BoxLinks from "../components/Jesus/BoxLinks"
 
 const Jesus = props => {
-  const { hero, wheatContent, soNowWhat, boxLinks } = props.data
+  const { seoInfo, hero, wheatContent, soNowWhat, boxLinks } = props.data
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO title="Why Jesus?" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <HeroImage hero={hero} />
       <WheatStockContent wheatContent={wheatContent} />
       <NowWhat soNowWhat={soNowWhat} />
@@ -24,6 +29,17 @@ const Jesus = props => {
 
 export const jesusQuery = graphql`
   query jesusPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
     hero: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_min_hero_img {

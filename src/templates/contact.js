@@ -8,11 +8,16 @@ import TimesLocation from "../components/Contact/TimesLocation"
 import ContactForm from "../components/Contact/ContactForm"
 
 const Contact = props => {
-  const { hero, timesLocations, contactForm } = props.data
+  const { hero, timesLocations, contactForm, seoInfo } = props.data
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO title="contact Page" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <HeroImage hero={hero} />
       <TimesLocation timesLocations={timesLocations} />
       <ContactForm contactForm={contactForm} />
@@ -22,6 +27,18 @@ const Contact = props => {
 
 export const contactQuery = graphql`
   query contactPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     hero: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_min_hero_img {

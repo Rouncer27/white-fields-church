@@ -46,6 +46,18 @@ const IndexPage = props => {
 
 export const homeQuery = graphql`
   {
+    seoInfo: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     heroVideo: wordpressPage(slug: { eq: "home" }) {
       acf {
         _wfc_hv_display_logo

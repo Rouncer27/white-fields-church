@@ -7,11 +7,16 @@ import SuggestedTopics from "../components/LiveFeed/SuggestedTopics"
 import LiveFeedLink from "../components/LiveFeed/LiveFeedLink"
 
 const LiveFeed = props => {
-  const { suggestedTopics, liveFeed, series } = props.data
+  const { seoInfo, suggestedTopics, liveFeed, series } = props.data
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO title="Live Feed" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <LiveFeedLink liveFeed={liveFeed} />
       <SuggestedTopics suggestedTopics={suggestedTopics} series={series} />
     </Layout>
@@ -20,6 +25,18 @@ const LiveFeed = props => {
 
 export const liveFeedQuery = graphql`
   query liveFeedPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     liveFeed: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_linkfeed_life_feed

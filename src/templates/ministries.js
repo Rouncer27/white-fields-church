@@ -15,6 +15,7 @@ import Hospitality from "../components/Ministries/Hospitality"
 
 const Ministries = props => {
   const {
+    seoInfo,
     hero,
     wfKids,
     wfYouth,
@@ -28,7 +29,12 @@ const Ministries = props => {
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO title="Ministries Page" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <HeroImage hero={hero} />
       <Kids wfKids={wfKids} />
       <Youth wfYouth={wfYouth} />
@@ -44,6 +50,18 @@ const Ministries = props => {
 
 export const ministriesQuery = graphql`
   query ministriesPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     hero: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_min_hero_img {

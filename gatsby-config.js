@@ -4,8 +4,11 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `White Fields Calvary Church`,
-    description: ``,
+    description: `White Fields Calvary Church`,
     author: `@switchback4ever`,
+    metaImg: `src/images/default-SEO-image.png`,
+    siteLogo: `src/images/white-fields-calary-church.png`,
+    siteUrl: `https://www.whitefields.ca/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

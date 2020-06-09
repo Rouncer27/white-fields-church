@@ -9,11 +9,16 @@ import TheTeam from "../components/About/TheTeam"
 import WeBelieve from "../components/About/WeBelieve"
 
 const About = props => {
-  const { aboutHero, contentBlockTop, theTeam, weBelieve } = props.data
+  const { seoInfo, aboutHero, contentBlockTop, theTeam, weBelieve } = props.data
   const location = props.location
   return (
     <Layout location={location}>
-      <SEO title="About us" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <AboutHero aboutHero={aboutHero} />
       <ContentBlockTop contentBlockTop={contentBlockTop} />
       <TheTeam theTeam={theTeam} />
@@ -24,6 +29,18 @@ const About = props => {
 
 export const aboutQuery = graphql`
   query aboutPage($id: Int!) {
+    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _swb_theme_meta_title
+        _swb_theme_description
+        _swb_theme_image {
+          localFile {
+            publicURL
+          }
+        }
+      }
+    }
+
     aboutHero: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_mhs_hero_image {
