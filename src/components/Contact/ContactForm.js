@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import BGImage from "gatsby-background-image"
 import styled from "styled-components"
+import axios from "axios"
 import FormInput from "../Form/FormInput"
 import FormTextarea from "../Form/FormTextarea"
 import {
@@ -11,6 +12,9 @@ import {
 } from "../../styles/helpers"
 import WheatStock from "../Graphics/WheatStock"
 import Dove from "../Graphics/Dove"
+import FormSubmit from "../modals/FormSubmit"
+import FormErrors from "../modals/FormErrors"
+import FormSuccess from "../modals/FormSuccess"
 
 const ContactFormSection = styled.section`
   padding-top: 10rem;
@@ -121,13 +125,83 @@ const ContactFormSection = styled.section`
   }
 `
 
+const submitToWebServer = async (formID, data) => {
+  const FORM_POST_URL = `https://whitefields.swbdatabases.ca/wp-json/contact-form-7/v1/contact-forms/${formID}/feedback`
+  const config = { headers: { "Content-Type": "multipart/form-data" } }
+  const serverResponse = await axios.post(FORM_POST_URL, data, config)
+  if (serverResponse.data.status === "mail_sent") {
+    return { errors: false, errorMessages: [] }
+  } else {
+    return { errors: true, errorMessages: serverResponse.data.invalidFields }
+  }
+}
+
 const ContactForm = ({ contactForm }) => {
-  console.log(contactForm)
   const [formField, setFormFeilds] = useState({})
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    errorWarnDisplay: false,
+    success: false,
+    errors: [],
+  })
 
   const handleFieldChange = e => {
     setFormFeilds({ ...formField, [e.target.name]: e.target.value })
   }
+
+  const handleFormSubmit = async e => {
+    e.preventDefault()
+    setFormStatus({
+      ...formStatus,
+      submitting: true,
+    })
+    const formDataArray = Object.entries(formField)
+    const bodyFormData = new FormData()
+    formDataArray.forEach(field => {
+      bodyFormData.append(field[0], field[1])
+    })
+    const response = await submitToWebServer(347, bodyFormData)
+    handleUpdateServerResponse(response)
+  }
+
+  const handleUpdateServerResponse = response => {
+    if (!response.errors) {
+      setFormStatus({
+        ...formStatus,
+        submitting: false,
+        errorWarnDisplay: false,
+        success: true,
+        errors: [],
+      })
+    } else {
+      setFormStatus({
+        ...formStatus,
+        submitting: false,
+        errorWarnDisplay: true,
+        success: false,
+        errors: response.errorMessages,
+      })
+    }
+  }
+
+  const handleErrorModalClose = () => {
+    setFormStatus({
+      submitting: false,
+      errorWarnDisplay: false,
+      success: false,
+    })
+  }
+
+  const handleSuccessModalClose = () => {
+    setFormStatus({
+      submitting: false,
+      errorWarnDisplay: false,
+      success: false,
+      errors: [],
+    })
+    setFormFeilds({})
+  }
+
   return (
     <ContactFormSection>
       <div className="contactWrapper">
@@ -142,29 +216,29 @@ const ContactForm = ({ contactForm }) => {
           />
         </div>
         <div className="contactForm">
-          <form>
+          <form onSubmit={e => handleFormSubmit(e)}>
             <FormInput
               label="Full Name"
               name="fullName"
               id="fullName"
               type="text"
-              value={formField.name ? formField.name : ""}
+              value={formField.fullName ? formField.fullName : ""}
               handleOnChange={handleFieldChange}
             />
             <FormInput
               label="Email"
-              name="email"
-              id="email"
+              name="yourEmail"
+              id="yourEmail"
               type="email"
-              value={formField.email ? formField.email : ""}
+              value={formField.yourEmail ? formField.yourEmail : ""}
               handleOnChange={handleFieldChange}
             />
             <FormInput
               label="Phone"
-              name="phone"
-              id="phone"
+              name="phoneNumber"
+              id="phoneNumber"
               type="text"
-              value={formField.phone ? formField.phone : ""}
+              value={formField.phoneNumber ? formField.phoneNumber : ""}
               handleOnChange={handleFieldChange}
             />
             <FormTextarea
@@ -196,6 +270,15 @@ const ContactForm = ({ contactForm }) => {
           }
         />
       </div>
+      <FormSubmit isActive={formStatus.submitting} />
+      <FormErrors
+        isActive={formStatus.errorWarnDisplay}
+        handleClose={handleErrorModalClose}
+      />
+      <FormSuccess
+        isActive={formStatus.success}
+        handleClose={handleSuccessModalClose}
+      />
     </ContactFormSection>
   )
 }
