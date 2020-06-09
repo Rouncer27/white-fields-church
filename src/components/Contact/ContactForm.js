@@ -186,6 +186,7 @@ const ContactForm = ({ contactForm }) => {
 
   const handleErrorModalClose = () => {
     setFormStatus({
+      ...formStatus,
       submitting: false,
       errorWarnDisplay: false,
       success: false,
@@ -194,6 +195,7 @@ const ContactForm = ({ contactForm }) => {
 
   const handleSuccessModalClose = () => {
     setFormStatus({
+      ...formStatus,
       submitting: false,
       errorWarnDisplay: false,
       success: false,
@@ -201,6 +203,8 @@ const ContactForm = ({ contactForm }) => {
     })
     setFormFeilds({})
   }
+
+  const errors = formStatus.errors
 
   return (
     <ContactFormSection>
@@ -222,6 +226,7 @@ const ContactForm = ({ contactForm }) => {
               name="fullName"
               id="fullName"
               type="text"
+              errors={errors}
               value={formField.fullName ? formField.fullName : ""}
               handleOnChange={handleFieldChange}
             />
@@ -230,6 +235,7 @@ const ContactForm = ({ contactForm }) => {
               name="yourEmail"
               id="yourEmail"
               type="email"
+              errors={errors}
               value={formField.yourEmail ? formField.yourEmail : ""}
               handleOnChange={handleFieldChange}
             />
@@ -238,6 +244,7 @@ const ContactForm = ({ contactForm }) => {
               name="phoneNumber"
               id="phoneNumber"
               type="text"
+              errors={errors}
               value={formField.phoneNumber ? formField.phoneNumber : ""}
               handleOnChange={handleFieldChange}
             />
@@ -246,6 +253,7 @@ const ContactForm = ({ contactForm }) => {
               name="comment"
               id="comment"
               rows={12}
+              errors={errors}
               value={formField.comment ? formField.comment : ""}
               handleOnChange={handleFieldChange}
             />

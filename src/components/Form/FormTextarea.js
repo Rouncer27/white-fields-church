@@ -1,13 +1,28 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { colors } from "../../styles/helpers"
+import { colors, B1OpenSans } from "../../styles/helpers"
 
 const TextareaStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  position: relative;
   width: 100%;
   margin-bottom: 2.5rem;
+
+  .errorMessage {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+
+    p {
+      ${B1OpenSans};
+      margin: 0;
+      padding: 0;
+      color: red;
+    }
+  }
 
   label {
     width: calc(25%);
@@ -35,14 +50,30 @@ const TextareaStyled = styled.div`
   }
 `
 
-const FormTextarea = ({ label, name, id, rows, value, handleOnChange }) => {
+const FormTextarea = ({
+  label,
+  name,
+  id,
+  rows,
+  value,
+  handleOnChange,
+  errors = [],
+}) => {
   const [isFocused, setIsFocused] = useState(false)
   const handleOnFocus = () => {
     setIsFocused(!isFocused)
   }
+  const errorMess = errors.find(err => err.idref === id)
+  const errMessDisplay =
+    errorMess !== undefined ? (
+      <div className="errorMessage">
+        <p>{errorMess.message}</p>
+      </div>
+    ) : null
   return (
     <TextareaStyled isFocused={isFocused}>
       <label htmlFor={name}>{label}</label>
+      {errMessDisplay}
       <textarea
         id={id}
         name={name}
