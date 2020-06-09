@@ -226,6 +226,7 @@ const ContactForm = ({ contactForm }) => {
               name="fullName"
               id="fullName"
               type="text"
+              required={true}
               errors={errors}
               value={formField.fullName ? formField.fullName : ""}
               handleOnChange={handleFieldChange}
@@ -235,6 +236,7 @@ const ContactForm = ({ contactForm }) => {
               name="yourEmail"
               id="yourEmail"
               type="email"
+              required={true}
               errors={errors}
               value={formField.yourEmail ? formField.yourEmail : ""}
               handleOnChange={handleFieldChange}
@@ -244,6 +246,7 @@ const ContactForm = ({ contactForm }) => {
               name="phoneNumber"
               id="phoneNumber"
               type="text"
+              required={true}
               errors={errors}
               value={formField.phoneNumber ? formField.phoneNumber : ""}
               handleOnChange={handleFieldChange}
@@ -252,6 +255,7 @@ const ContactForm = ({ contactForm }) => {
               label="Comment"
               name="comment"
               id="comment"
+              required={true}
               rows={12}
               errors={errors}
               value={formField.comment ? formField.comment : ""}

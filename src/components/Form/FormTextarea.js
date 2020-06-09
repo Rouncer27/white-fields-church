@@ -12,6 +12,21 @@ const TextareaStyled = styled.div`
 
   .errorMessage {
     position: absolute;
+    top: 2.5rem;
+    right: 0;
+    width: 100%;
+    text-align: right;
+
+    p {
+      ${B1OpenSans};
+      margin: 0;
+      padding: 0;
+      color: red;
+    }
+  }
+
+  .fieldRequired {
+    position: absolute;
     top: -2rem;
     left: 0;
     width: 100%;
@@ -20,7 +35,6 @@ const TextareaStyled = styled.div`
       ${B1OpenSans};
       margin: 0;
       padding: 0;
-      color: red;
     }
   }
 
@@ -58,6 +72,7 @@ const FormTextarea = ({
   value,
   handleOnChange,
   errors = [],
+  required,
 }) => {
   const [isFocused, setIsFocused] = useState(false)
   const handleOnFocus = () => {
@@ -74,11 +89,17 @@ const FormTextarea = ({
     <TextareaStyled isFocused={isFocused}>
       <label htmlFor={name}>{label}</label>
       {errMessDisplay}
+      {required && (
+        <div className="fieldRequired">
+          <p>&#42; Required field</p>
+        </div>
+      )}
       <textarea
         id={id}
         name={name}
         rows={rows}
         value={value}
+        required={required}
         onChange={e => handleOnChange(e)}
         onFocus={handleOnFocus}
         onBlur={handleOnFocus}

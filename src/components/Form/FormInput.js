@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import { colors, B1OpenSans } from "../../styles/helpers"
+import { colors, B1OpenSans, fontSizer } from "../../styles/helpers"
 
 const InputStyled = styled.div`
   display: flex;
@@ -13,8 +13,9 @@ const InputStyled = styled.div`
   .errorMessage {
     position: absolute;
     top: -2rem;
-    left: 0;
+    right: 0;
     width: 100%;
+    text-align: right;
 
     p {
       ${B1OpenSans};
@@ -24,10 +25,23 @@ const InputStyled = styled.div`
     }
   }
 
+  .fieldRequired {
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    width: 100%;
+
+    p {
+      ${B1OpenSans};
+      margin: 0;
+      padding: 0;
+    }
+  }
+
   label {
     width: calc(25%);
     margin: 0;
-    padding: 1.25rem 0;
+    padding: 1.25rem 0.75rem;
     transition: all 0.3s ease-in;
     background: ${props =>
       props.isFocused ? colors.colorSecondary : colors.colorTertiary};
@@ -57,6 +71,7 @@ const FormInput = ({
   value,
   handleOnChange,
   errors = [],
+  required,
 }) => {
   const [isFocused, setIsFocused] = useState(false)
   const handleOnFocus = () => {
@@ -72,12 +87,18 @@ const FormInput = ({
   return (
     <InputStyled isFocused={isFocused}>
       {errMessDisplay}
+      {required && (
+        <div className="fieldRequired">
+          <p>&#42; Required field</p>
+        </div>
+      )}
       <label htmlFor={name}>{label}</label>
       <input
         id={id}
         name={name}
         type={type}
         value={value}
+        required={required}
         onChange={e => handleOnChange(e)}
         onFocus={handleOnFocus}
         onBlur={handleOnFocus}
