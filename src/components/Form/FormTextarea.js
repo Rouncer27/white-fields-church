@@ -35,6 +35,7 @@ const TextareaStyled = styled.div`
       ${B1OpenSans};
       margin: 0;
       padding: 0;
+      color: rgba(120, 119, 124, 0.5);
     }
   }
 
