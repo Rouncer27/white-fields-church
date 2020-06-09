@@ -7,17 +7,12 @@ import SeriesHero from "../components/SingleMessage/SeriesHero"
 import MessagesList from "../components/SingleMessage/MessagesList"
 
 const Series = props => {
-  const { seoInfo, series, messages } = props.data
+  const { series, messages } = props.data
   const location = props.location
 
   return (
     <Layout location={location}>
-      <SEO
-        title={seoInfo.acf._swb_theme_meta_title}
-        description={seoInfo.acf._swb_theme_description}
-        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
-        location={props.location.pathname}
-      />
+      <SEO title={"messages"} />
       <SeriesHero series={series} />
       <MessagesList series={series} messages={messages} />
     </Layout>
@@ -26,18 +21,6 @@ const Series = props => {
 
 export const seriesQuery = graphql`
   query seriesPage($id: Int!) {
-    seoInfo: wordpressPage(wordpress_id: { eq: $id }) {
-      acf {
-        _swb_theme_meta_title
-        _swb_theme_description
-        _swb_theme_image {
-          localFile {
-            publicURL
-          }
-        }
-      }
-    }
-
     series: wordpressWpMessageType(wordpress_id: { eq: $id }) {
       name
       acf {
