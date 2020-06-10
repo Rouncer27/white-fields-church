@@ -88,6 +88,7 @@ const EventsIntroSection = styled.section`
     right: 1rem;
     width: calc(152.2rem / 4);
     height: calc(140.1rem / 4);
+    opacity: 0.2;
     z-index: 5;
   }
 `

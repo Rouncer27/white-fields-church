@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import BGImage from "gatsby-background-image"
 import QuoteNowWhat from "../Quotes/QuoteNowWhat"
-import Dove from "../Graphics/Dove"
+import DoveWhite from "../Graphics/DoveWhite"
 import { colors, B1OpenSansWhite, H2LatoGold } from "../../styles/helpers"
 
 const NowWhatSection = styled.section`
@@ -89,6 +89,7 @@ const NowWhatSection = styled.section`
     right: 1rem;
     width: calc(152.2rem / 4);
     height: calc(140.1rem / 4);
+    opacity: 0.3;
     z-index: 10;
   }
 `
@@ -118,7 +119,7 @@ const NowWhat = ({ soNowWhat }) => {
         </div>
       </div>
       <div className="graphic">
-        <Dove />
+        <DoveWhite />
       </div>
     </NowWhatSection>
   )

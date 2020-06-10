@@ -75,6 +75,7 @@ const KidsSection = styled.section`
     right: 10rem;
     width: calc(152.2rem / 3.5);
     height: calc(140.1rem / 3.5);
+    opacity: 0.15;
     z-index: 10;
   }
 `

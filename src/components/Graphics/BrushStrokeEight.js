@@ -3,7 +3,7 @@ import BgImg from "gatsby-background-image"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "styled-components"
 
-const DoveStyles = styled(BgImg)`
+const BrushStrokeStyles = styled(BgImg)`
   display: flex;
   position: absolute !important;
   flex-wrap: wrap;
@@ -18,9 +18,9 @@ const DoveStyles = styled(BgImg)`
 
 const getData = graphql`
   {
-    dove: file(relativePath: { eq: "white-fields-church-dove-2.png" }) {
+    brushStroke: file(relativePath: { eq: "brush-stroke-8.png" }) {
       childImageSharp {
-        fluid(quality: 100, maxWidth: 1500) {
+        fluid(quality: 100, maxWidth: 2000) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -28,14 +28,14 @@ const getData = graphql`
   }
 `
 
-const Dove = props => {
+const BrushStrokeEight = props => {
   const data = useStaticQuery(getData)
-  const imageData = data.dove.childImageSharp.fluid
+  const imageData = data.brushStroke.childImageSharp.fluid
   return (
-    <DoveStyles Tag="div" fluid={imageData}>
+    <BrushStrokeStyles Tag="div" fluid={imageData}>
       {props.children}
-    </DoveStyles>
+    </BrushStrokeStyles>
   )
 }
 
-export default Dove
+export default BrushStrokeEight

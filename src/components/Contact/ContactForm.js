@@ -53,6 +53,7 @@ const ContactFormSection = styled.section`
     left: 7.5rem;
     width: calc(152.2rem / 5);
     height: calc(140.1rem / 5);
+    opacity: 0.15;
     z-index: 2;
   }
 

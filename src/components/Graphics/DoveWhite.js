@@ -18,7 +18,7 @@ const DoveStyles = styled(BgImg)`
 
 const getData = graphql`
   {
-    dove: file(relativePath: { eq: "white-fields-church-dove-2.png" }) {
+    dove: file(relativePath: { eq: "white-fields-church-dove-white.png" }) {
       childImageSharp {
         fluid(quality: 100, maxWidth: 1500) {
           ...GatsbyImageSharpFluid
@@ -28,7 +28,7 @@ const getData = graphql`
   }
 `
 
-const Dove = props => {
+const DoveWhite = props => {
   const data = useStaticQuery(getData)
   const imageData = data.dove.childImageSharp.fluid
   return (
@@ -38,4 +38,4 @@ const Dove = props => {
   )
 }
 
-export default Dove
+export default DoveWhite
