@@ -2,9 +2,8 @@ import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
-import * as ScrollMagic from "scrollmagic"
-import gsap from "gsap"
-// import addIndicators from "debug.addIndicators"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import {
   colors,
@@ -15,6 +14,8 @@ import {
   buttonOneWhite,
 } from "../../styles/helpers"
 import BrushStroke from "../Graphics/BrushStroke"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const HappeningNowSection = styled.section`
   position: relative;
@@ -113,28 +114,23 @@ const HappeningNow = ({ happeningNow }) => {
   let cards = []
 
   useEffect(() => {
-    const controller = new ScrollMagic.Controller()
-
     cards = [...eleContainer.current.querySelectorAll(".eventItem")]
-
-    const timeLine = gsap
-      .timeline()
-      .fromTo(
-        cards,
-        { duration: 1.5, y: 300, autoAlpha: 0, ease: "back", stagger: 0.3 },
-        { y: 0, autoAlpha: 1, stagger: 0.3 },
-        "<-0.5"
-      )
-
-    new ScrollMagic.Scene({
-      duration: 0,
-      offset: 0,
-      triggerElement: ".title",
-      reverse: false,
+    gsap.set(cards, { autoAlpha: 0, y: 200 })
+    gsap.to(cards, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: {
+        each: 0.25,
+        from: "center",
+      },
+      scrollTrigger: {
+        trigger: cards,
+        markers: false,
+        start: "top 90%",
+        end: "bottom 0%",
+      },
     })
-      .setTween(timeLine)
-      // .addIndicators()
-      .addTo(controller)
   }, [])
 
   return (

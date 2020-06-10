@@ -3,8 +3,6 @@ import styled from "styled-components"
 // Animations Packages. //
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-// import addIndicators from "debug.addIndicators"
-
 import LogoWhite from "../Logos/LogoWhite"
 import GuitarImage from "../../images/guitar.jpg"
 import GuitarVideo from "../../assets/guitar.mp4"
@@ -84,7 +82,7 @@ const VideoHero = ({ logoDisplay, quote, video }) => {
         trigger: "#boxTrigger",
         markers: false,
         scrub: true,
-        start: "top 25%%",
+        start: "top 25%",
         end: "bottom -75%",
       },
     })
