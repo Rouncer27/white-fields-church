@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
-import * as ScrollMagic from "scrollmagic"
-import gsap from "gsap"
-// import addIndicators from "debug.addIndicators"
-
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Card from "./Card"
 import { colors } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const CardLinksSection = styled.section`
   background-color: ${colors.white};
@@ -28,38 +28,36 @@ const CardLinks = props => {
 
   useEffect(() => {
     const cardsItems = [...cardWrapper.current.children]
-    const controller = new ScrollMagic.Controller()
-    const timeLine = gsap
-      .timeline()
+    gsap.set(cardsItems[0], { autoAlpha: 0, x: -100 })
+    gsap.set(cardsItems[1], { autoAlpha: 0, y: 100 })
+    gsap.set(cardsItems[2], { autoAlpha: 0, x: 100 })
+
+    const tl = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: cardTrigger.current,
+          start: "top 75%",
+          end: "bottom top",
+          toggleActions: "restart none none reverse",
+          markers: false,
+        },
+      })
       .add("start")
-      .fromTo(
+      .to(
         cardsItems[1],
-        { autoAlpha: 0, y: 100 },
-        { ease: "power2.out", autoAlpha: 1, y: 0, duration: 0.75 },
+        { ease: "power2.out", autoAlpha: 1, y: 0, duration: 1.25 },
         "start"
       )
-      .fromTo(
+      .to(
         cardsItems[0],
-        { autoAlpha: 0, x: -100 },
-        { ease: "power2.out", autoAlpha: 1, x: 0, duration: 0.75 },
-        "start+=0.375"
+        { ease: "power2.out", autoAlpha: 1, x: 0, duration: 1.25 },
+        "start+=0.5"
       )
-
-      .fromTo(
+      .to(
         cardsItems[2],
-        { autoAlpha: 0, x: 100 },
-        { ease: "power2.out", autoAlpha: 1, x: 0, duration: 0.75 },
-        "start+=0.375"
+        { ease: "power2.out", autoAlpha: 1, x: 0, duration: 1.25 },
+        "start+=0.5"
       )
-
-    new ScrollMagic.Scene({
-      offset: -150,
-      reverse: false,
-      triggerElement: cardTrigger.current,
-    })
-      .setTween(timeLine)
-      // .addIndicators()
-      .addTo(controller)
   }, [])
 
   return (
