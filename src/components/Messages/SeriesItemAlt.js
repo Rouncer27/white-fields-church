@@ -1,39 +1,13 @@
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { B2OpenSansWhite, buttonOneClear } from "../../styles/helpers"
-
-gsap.registerPlugin(ScrollTrigger)
-
-const getRandomInt = (max, min) => {
-  return Math.floor(Math.random() * Math.floor(max)) + min
-}
 
 const SeriesItemStyled = styled.div`
   position: relative;
-  width: calc(100%);
-  margin: 2rem auto;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.26);
-
-  @media (min-width: 768px) {
-    width: calc(50% - 4rem);
-    margin: 2rem;
-  }
-
-  @media (min-width: 1025px) {
-    width: calc(
-      ${props =>
-          props.widthValue === 3
-            ? 33.333333
-            : props.widthValue === 2
-            ? 50
-            : 66.666666}% - 4rem
-    );
-    margin: 5rem 2rem;
-  }
+  width: 100vw;
+  height: 100vw;
 
   .image {
     width: 100%;
@@ -93,45 +67,9 @@ const SeriesItemStyled = styled.div`
   }
 `
 
-const SeriesItem = ({ item, itemIndex }) => {
-  const element = useRef(null)
-
-  useEffect(() => {
-    gsap.set(element.current, { y: 400, autoAlpha: 0 })
-    gsap.to(element.current, {
-      y: 100,
-      autoAlpha: 1,
-      duration: 0.25,
-      onComplete: () => startPara(),
-      scrollTrigger: {
-        trigger: `.item-${itemIndex}`,
-        start: "top 75%",
-        markers: false,
-        scrub: false,
-      },
-    })
-  }, [])
-
-  const startPara = () => {
-    gsap.to(element.current, {
-      y: -100,
-      scrollTrigger: {
-        trigger: `.item-${itemIndex}`,
-        start: "top 100%",
-        end: "bottom 0%",
-        markers: false,
-        scrub: 2,
-      },
-    })
-  }
-
+const SeriesItemAlt = ({ item }) => {
   return (
-    <SeriesItemStyled
-      key={item.node.wordpress_id}
-      ref={element}
-      widthValue={getRandomInt(3, 1)}
-      className={`item-${itemIndex}`}
-    >
+    <SeriesItemStyled key={item.node.wordpress_id}>
       <Link to={`/series/${item.node.slug}`}>
         <div className="image">
           <Img
@@ -156,4 +94,4 @@ const SeriesItem = ({ item, itemIndex }) => {
   )
 }
 
-export default SeriesItem
+export default SeriesItemAlt

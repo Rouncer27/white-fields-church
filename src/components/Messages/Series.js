@@ -11,7 +11,7 @@ const SeriesSection = styled.section`
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding-bottom: 10rem;
+    padding-bottom: 50rem;
   }
 
   .wrapper {
@@ -67,9 +67,15 @@ const Series = ({ series }) => {
   return (
     <SeriesSection>
       <div className="wrapper">
-        {series.edges.map(item => (
-          <SeriesItem key={item.node.wordpress_id} item={item} />
-        ))}
+        {series.edges.map((item, index) => {
+          return (
+            <SeriesItem
+              key={item.node.wordpress_id}
+              item={item}
+              itemIndex={index}
+            />
+          )
+        })}
       </div>
       <div className="graphic">
         <BrushStrokeSeven />

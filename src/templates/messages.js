@@ -72,7 +72,7 @@ export const messagesQuery = graphql`
               alt_text
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 1000) {
+                  fluid(maxWidth: 2000) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
