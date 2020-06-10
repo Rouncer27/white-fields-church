@@ -48,8 +48,17 @@ const CardStyled = styled.div`
       right: 0;
       left: 0;
 
+      svg {
+        width: 100%;
+      }
+
       &--2 {
-        top: -10rem;
+        top: -15.25rem;
+        width: 7.5rem;
+        margin: 0 auto;
+      }
+
+      &--2 {
       }
     }
 

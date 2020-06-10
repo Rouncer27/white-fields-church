@@ -10,6 +10,7 @@ const ContactWrap = styled.div`
   svg {
     width: 100%;
     max-width: 3rem;
+    height: 3rem;
     margin: 0 2rem;
   }
 
