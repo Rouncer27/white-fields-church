@@ -106,7 +106,7 @@ const SeriesItem = ({ item, itemIndex }) => {
       scrollTrigger: {
         trigger: `.item-${itemIndex}`,
         start: "top 90%",
-        markers: true,
+        markers: false,
         scrub: false,
       },
     })
