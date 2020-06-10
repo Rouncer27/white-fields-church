@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
@@ -101,11 +101,11 @@ const SeriesItem = ({ item, itemIndex }) => {
     gsap.to(element.current, {
       y: 100,
       autoAlpha: 1,
-      duration: 0.25,
+      duration: 0.75,
       onComplete: () => startPara(),
       scrollTrigger: {
         trigger: `.item-${itemIndex}`,
-        start: "top 75%",
+        start: "top 90%",
         markers: false,
         scrub: false,
       },
@@ -120,7 +120,7 @@ const SeriesItem = ({ item, itemIndex }) => {
         start: "top 100%",
         end: "bottom 0%",
         markers: false,
-        scrub: 2,
+        scrub: 1.25,
       },
     })
   }
