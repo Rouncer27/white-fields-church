@@ -129,6 +129,7 @@ const HappeningNow = ({ happeningNow }) => {
         markers: false,
         start: "top 90%",
         end: "bottom 0%",
+        toggleActions: "play none none reverse",
       },
     })
   }, [])

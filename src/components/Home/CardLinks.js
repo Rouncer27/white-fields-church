@@ -38,7 +38,7 @@ const CardLinks = props => {
           trigger: cardTrigger.current,
           start: "top 75%",
           end: "bottom top",
-          toggleActions: "restart none none reverse",
+          toggleActions: "play none none reverse",
           markers: false,
         },
       })

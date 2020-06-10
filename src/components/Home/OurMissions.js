@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import BGImg from "gatsby-background-image"
 import { Link } from "gatsby"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import {
   colors,
@@ -10,6 +12,7 @@ import {
   buttonOneBlue,
 } from "../../styles/helpers"
 import { createSlug } from "../../utils/helperFunc"
+gsap.registerPlugin(ScrollTrigger)
 
 const OurMissionsSection = styled.section`
   position: relative;
@@ -93,24 +96,66 @@ const OurMissions = ({ ourMission }) => {
   const btnLink = ourMission.acf._wfc_om_button_link
   const slug = createSlug(btnLink)
 
+  const contentEle = useRef(null)
+  const contentEleTitle = useRef(null)
+  const contentElePara = useRef(null)
+  const contentEleButton = useRef(null)
+  const contentEleImage = useRef(null)
+
+  useEffect(() => {
+    const triggerElement = document.querySelector("#sundayService")
+
+    gsap.set(contentEleTitle.current, { y: 100, autoAlpha: 0 })
+    gsap.set(contentElePara.current, { y: 100, autoAlpha: 0 })
+    gsap.set(contentEleButton.current, { y: 100, autoAlpha: 0 })
+    gsap.set(contentEleImage.current, { x: 100, autoAlpha: 0 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: triggerElement,
+          markers: true,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .to(contentEleTitle.current, { y: 0, autoAlpha: 1, duration: 0.5 })
+      .to(
+        contentEleImage.current,
+        { x: 0, autoAlpha: 1, duration: 0.5 },
+        "-=0.5"
+      )
+      .to(
+        contentElePara.current,
+        { y: 0, autoAlpha: 1, duration: 0.5 },
+        "-=0.15"
+      )
+      .to(
+        contentEleButton.current,
+        { y: 0, autoAlpha: 1, duration: 0.5 },
+        "-=0.15"
+      )
+  }, [])
+
   return (
-    <OurMissionsSection id="boxTrigger">
+    <OurMissionsSection id="sundayService">
       <div className="wrapper">
         <div className="content">
-          <div className="content__inner">
-            <div className="content__title">
+          <div className="content__inner" ref={contentEle}>
+            <div className="content__title" ref={contentEleTitle}>
               <h2>{title}</h2>
             </div>
             <div
               className="content__para"
+              ref={contentElePara}
               dangerouslySetInnerHTML={{ __html: content }}
             />
-            <div className="content__link">
+            <div className="content__link" ref={contentEleButton}>
               <Link to={`/${slug}`}>Contact Us</Link>
             </div>
           </div>
         </div>
-        <div className="image">
+        <div className="image" ref={contentEleImage}>
           <BGImg tag="div" fluid={imgFluid} className="image__background" />
         </div>
       </div>
