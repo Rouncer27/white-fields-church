@@ -16,7 +16,7 @@ const SeriesItemStyled = styled.div`
   position: relative;
   width: calc(100%);
   margin: 2rem auto;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.26);
+  box-shadow: 0 0.45rem 0.75rem 0 rgba(0, 0, 0, 0.56);
 
   @media (min-width: 768px) {
     width: calc(50% - 4rem);
@@ -106,7 +106,7 @@ const SeriesItem = ({ item, itemIndex }) => {
       scrollTrigger: {
         trigger: `.item-${itemIndex}`,
         start: "top 90%",
-        markers: false,
+        markers: true,
         scrub: false,
       },
     })

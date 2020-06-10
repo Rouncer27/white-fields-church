@@ -11,7 +11,7 @@ const SeriesSection = styled.section`
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding-bottom: 50rem;
+    padding-bottom: 10rem;
   }
 
   .wrapper {
