@@ -80,7 +80,11 @@ const TimesLocation = ({ timesLocations }) => {
             )
           })}
           <div className="link">
-            <a target="_blank" href={timesLocations.acf._wfc_tal_directions}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={timesLocations.acf._wfc_tal_directions}
+            >
               Get Directions
             </a>
           </div>

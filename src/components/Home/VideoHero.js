@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 // Animations Packages. //
-import * as ScrollMagic from "scrollmagic"
-import gsap from "gsap"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 // import addIndicators from "debug.addIndicators"
 
 import LogoWhite from "../Logos/LogoWhite"
 import GuitarImage from "../../images/guitar.jpg"
 import GuitarVideo from "../../assets/guitar.mp4"
-
 import { H4LatoWhite, colors } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const VideoHeroSection = styled.section`
   position: relative;
@@ -74,24 +75,19 @@ const VideoHero = ({ logoDisplay, quote, video }) => {
   const heroContent = useRef(null)
 
   useEffect(() => {
-    const controller = new ScrollMagic.Controller()
-    const timeLine = gsap
-      .timeline()
-      .fromTo(
-        ".heroContent",
-        { y: 100, scale: 1, duration: 3 },
-        { y: -250, scale: 0.75, duration: 3 }
-      )
-
-    new ScrollMagic.Scene({
-      duration: 1500,
-      offset: 190,
-      triggerElement: "#boxTrigger",
-      reverse: true,
+    gsap.set(".heroContent", { y: 100, scale: 1 })
+    gsap.to(".heroContent", {
+      y: -250,
+      scale: 0.75,
+      duration: 3,
+      scrollTrigger: {
+        trigger: "#boxTrigger",
+        markers: false,
+        scrub: true,
+        start: "top 25%%",
+        end: "bottom -75%",
+      },
     })
-      .setTween(timeLine)
-      // .addIndicators()
-      .addTo(controller)
   }, [])
 
   return (
