@@ -114,7 +114,7 @@ const OurMissions = ({ ourMission }) => {
       .timeline({
         scrollTrigger: {
           trigger: triggerElement,
-          markers: true,
+          markers: false,
           start: "top 75%",
           toggleActions: "play none none reverse",
         },
