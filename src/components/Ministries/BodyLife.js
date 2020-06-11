@@ -1,12 +1,16 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import BGImg from "gatsby-background-image"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
   medWrapper,
   H2LatoBlue,
   B1OpenSansBlue,
   colors,
 } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const BodyLifeSection = styled.section`
   padding: 5rem 0;
@@ -96,21 +100,73 @@ const BodyLifeSection = styled.section`
 `
 
 const BodyLife = ({ wfBodyLife }) => {
+  const triggerElement = useRef(null)
+  const bodyImage = useRef(null)
+  const bodyBackground = useRef(null)
+
+  const bodyTitle = useRef(null)
+  const bodyContent = useRef(null)
+
+  useEffect(() => {
+    const bodyBgImg = bodyImage.current.querySelector(".image__background")
+    gsap.set(bodyBgImg, { y: -20 })
+    gsap.to(bodyBgImg, {
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: triggerElement.current,
+        markers: false,
+        scrub: true,
+        start: "top 100%",
+        end: "top -120%",
+      },
+    })
+
+    gsap.to(bodyTitle.current, { autoAlpha: 0, x: -150 })
+    gsap.to(bodyContent.current, { autoAlpha: 0, x: -150 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: triggerElement.current,
+          markers: false,
+          scrub: false,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .to(bodyTitle.current, {
+        autoAlpha: 1,
+        x: 0,
+        duration: 1,
+      })
+      .to(
+        bodyContent.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1,
+        },
+        "-=0.5"
+      )
+  }, [])
+
   return (
     <BodyLifeSection>
-      <div className="wrapper">
+      <div ref={triggerElement} className="wrapper">
         <div className="content">
-          <div className="content__title">
+          <div ref={bodyTitle} className="content__title">
             <h2>{wfBodyLife.acf._wfc_blg_title}</h2>
           </div>
           <div
+            ref={bodyContent}
             className="content__wysiwyg"
             dangerouslySetInnerHTML={{
               __html: wfBodyLife.acf._wfc_blg_contact,
             }}
           />
         </div>
-        <div className="image">
+        <div ref={bodyImage} className="image">
           <BGImg
             tag="div"
             className="image__background"
@@ -118,7 +174,7 @@ const BodyLife = ({ wfBodyLife }) => {
               wfBodyLife.acf._wfc_blg_image.localFile.childImageSharp.fluid
             }
           />
-          <div className="image__graphic" />
+          <div ref={bodyBackground} className="image__graphic" />
         </div>
       </div>
     </BodyLifeSection>
