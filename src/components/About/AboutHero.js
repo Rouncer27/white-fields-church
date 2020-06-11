@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import BGImage from "gatsby-background-image"
 import styled from "styled-components"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { H1LatoWhite } from "../../styles/helpers"
 import BrushStrokesTwo from "../Graphics/BrushStrokeTwo"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const HeroImage = styled.section`
   position: relative;
@@ -73,12 +77,41 @@ const HeroImage = styled.section`
 `
 
 const AboutHero = ({ aboutHero }) => {
+  const heroSection = useRef(null)
+  const heroTitle = useRef(null)
+  const heroGraphic = useRef(null)
+
+  useEffect(() => {
+    gsap.set(heroGraphic.current, { y: 50 })
+
+    gsap
+      .timeline()
+      .add("start")
+      .fromTo(
+        heroTitle.current,
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0, duration: 1.5 }
+      )
+
+    gsap.to(heroGraphic.current, {
+      y: 0,
+      duration: 100,
+      scrollTrigger: {
+        trigger: heroSection.current,
+        markers: false,
+        scrub: 1,
+        start: "top 20%",
+        end: "top -120%",
+      },
+    })
+  }, [])
+
   return (
-    <HeroImage>
-      <div className="title">
+    <HeroImage ref={heroSection}>
+      <div ref={heroTitle} className="title">
         <h2>{aboutHero.acf._wfc_mhs_hero_title}</h2>
       </div>
-      <div className="graphic">
+      <div ref={heroGraphic} className="graphic">
         <BrushStrokesTwo />
       </div>
       <div className="hero">
