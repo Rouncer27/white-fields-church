@@ -1,9 +1,13 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import QuoteWWB from "../Quotes/QuoteWWB"
 import DoveWhite from "../Graphics/DoveWhite"
 import { colors, H2LatoGold, B1OpenSansWhite } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const AdultsSection = styled.section`
   position: relative;
@@ -97,9 +101,26 @@ const AdultsSection = styled.section`
 `
 
 const Adults = ({ wfyAdults }) => {
+  const triggerElement = useRef(null)
+  const doveGraphic = useRef(null)
+
+  useEffect(() => {
+    gsap.set(doveGraphic.current, { y: 50 })
+    gsap.to(doveGraphic.current, {
+      y: -50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: triggerElement.current,
+        markers: false,
+        scrub: 1,
+        start: "top 100%",
+        end: "bottom -50%",
+      },
+    })
+  }, [])
   return (
     <AdultsSection>
-      <div className="wrapper">
+      <div ref={triggerElement} className="wrapper">
         <div className="images">
           <Img
             className="images__top"
@@ -123,7 +144,7 @@ const Adults = ({ wfyAdults }) => {
           />
         </div>
       </div>
-      <div className="graphicDove">
+      <div ref={doveGraphic} className="graphicDove">
         <DoveWhite />
       </div>
     </AdultsSection>

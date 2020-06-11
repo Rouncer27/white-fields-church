@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import BGImg from "gatsby-background-image"
 import { Link } from "gatsby"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
   medWrapper,
   H2LatoBlue,
@@ -9,6 +11,8 @@ import {
   buttonOneWhite,
   colors,
 } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const YouthSection = styled.section`
   padding: 5rem 0;
@@ -106,9 +110,29 @@ const YouthSection = styled.section`
 `
 
 const Youth = ({ wfYouth }) => {
+  const triggerElement = useRef(null)
+  const youthImage = useRef(null)
+  const youthBackground = useRef(null)
+
+  useEffect(() => {
+    const youthBgImg = youthImage.current.querySelector(".image__background")
+    gsap.set(youthBgImg, { y: -20 })
+    gsap.to(youthBgImg, {
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: triggerElement.current,
+        markers: false,
+        scrub: true,
+        start: "top 100%",
+        end: "top -120%",
+      },
+    })
+  }, [])
+
   return (
     <YouthSection>
-      <div className="wrapper">
+      <div ref={triggerElement} className="wrapper">
         <div className="content">
           <div className="content__title">
             <h2>{wfYouth.acf._wfc_wfy_title}</h2>
@@ -121,13 +145,14 @@ const Youth = ({ wfYouth }) => {
             <Link to="/events">Event Calendar</Link>
           </div>
         </div>
-        <div className="image">
+        <div ref={youthImage} className="image">
           <BGImg
             tag="div"
             className="image__background"
             fluid={wfYouth.acf._wfc_wfy_image.localFile.childImageSharp.fluid}
           />
-          <div className="image__graphic" />
+
+          <div ref={youthBackground} className="image__graphic" />
         </div>
       </div>
     </YouthSection>
