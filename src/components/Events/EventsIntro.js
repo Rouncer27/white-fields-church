@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import BGImg from "gatsby-background-image"
 import styled from "styled-components"
+import { gsap } from "gsap"
 import { H1LatoBlue, B1OpenSansBlue } from "../../styles/helpers"
 import Dove from "../Graphics/Dove"
 
@@ -94,10 +95,36 @@ const EventsIntroSection = styled.section`
 `
 
 const EventsIntro = ({ eventsIntro }) => {
+  const introImage = useRef(null)
+  const introTitle = useRef(null)
+  const introContent = useRef(null)
+
+  useEffect(() => {
+    gsap
+      .timeline()
+      .add("start")
+      .fromTo(
+        introImage.current,
+        { autoAlpha: 0, x: -100 },
+        { autoAlpha: 1, x: 0 }
+      )
+      .fromTo(
+        introTitle.current,
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0 },
+        "start+=0.25"
+      )
+      .fromTo(
+        introContent.current,
+        { autoAlpha: 0, y: 100 },
+        { autoAlpha: 1, y: 0 },
+        "start+=0.5"
+      )
+  }, [])
   return (
     <EventsIntroSection>
       <div className="wrapper">
-        <div className="image">
+        <div ref={introImage} className="image">
           <BGImg
             className="image__background"
             tag="div"
@@ -107,10 +134,11 @@ const EventsIntro = ({ eventsIntro }) => {
           />
         </div>
         <div className="content">
-          <div>
+          <div ref={introTitle}>
             <h2>{eventsIntro.acf._wfc_evin_title}</h2>
           </div>
           <div
+            ref={introContent}
             className="content__description"
             dangerouslySetInnerHTML={{
               __html: eventsIntro.acf._wfc_evin_content,
