@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 import { createSlug } from "../../utils/helperFunc"
-import { navOne, colors, fontSizer } from "../../styles/helpers"
+import { navOne, colors, fontSizer, fonts } from "../../styles/helpers"
 
 const NavItem = styled.li`
   position: relative;
@@ -49,7 +50,8 @@ const SubMenu = styled.ul`
     margin: 0;
     padding: 0;
 
-    a.subLink {
+    a.subLink,
+    button.subLink {
       ${navOne};
       ${fontSizer(1.2, 1.2, 76.8, 150, 1.8)};
       display: block;
@@ -57,10 +59,19 @@ const SubMenu = styled.ul`
       margin-top: 0.75rem;
       margin-bottom: 0.75rem;
       padding: 0;
+      background-color: transparent;
+      border: none;
+      text-align: left;
+      font-weight: normal;
+      font-family: ${fonts.fontPrimary};
       color: ${colors.colorSecondary};
 
       &:hover {
         cursor: pointer;
+      }
+
+      &:focus {
+        outline: none;
       }
     }
   }
@@ -93,13 +104,24 @@ const HeaderBottomNavItem = ({ item, location }) => {
           onMouseLeave={handleIsActiveOff}
         >
           {subMenu.map(subItem => {
-            return (
-              <li key={subItem.wordpress_id}>
-                <Link className="subLink" to={subItem.url}>
-                  {subItem.title}
-                </Link>
-              </li>
+            const justHash = subItem.url.split("#")[1]
+            const noHash = subItem.url.split("#").join("/").split("/")[1]
+            const locationMas = location.pathname.split("/").join("")
+            const subItemSamePage = noHash === locationMas
+            const subItemLink = subItemSamePage ? (
+              <button
+                className="subLink"
+                onClick={() => scrollTo(`#${justHash}`)}
+              >
+                {subItem.title}
+              </button>
+            ) : (
+              <Link className="subLink" to={subItem.url}>
+                {subItem.title}
+              </Link>
             )
+
+            return <li key={subItem.wordpress_id}>{subItemLink}</li>
           })}
         </SubMenu>
       )}
