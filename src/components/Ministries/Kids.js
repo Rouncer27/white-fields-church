@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Dove from "../Graphics/Dove"
 import {
   colors,
@@ -8,6 +10,8 @@ import {
   H4LatoBlue,
   B1OpenSansBlue,
 } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const KidsSection = styled.section`
   position: relative;
@@ -81,9 +85,27 @@ const KidsSection = styled.section`
 `
 
 const Kids = ({ wfKids }) => {
+  const triggerElement = useRef(null)
+  const doveGraphic = useRef(null)
+
+  useEffect(() => {
+    gsap.set(doveGraphic.current, { y: 150 })
+    gsap.to(doveGraphic.current, {
+      y: -150,
+      duration: 3,
+      scrollTrigger: {
+        trigger: triggerElement.current,
+        markers: false,
+        scrub: 2,
+        start: "top 75%",
+        end: "bottom -25%",
+      },
+    })
+  }, [])
+
   return (
     <KidsSection>
-      <div className="wrapper">
+      <div ref={triggerElement} className="wrapper">
         <div className="content">
           <div>
             <h2>{wfKids.acf._wfc_wfk_title}</h2>
@@ -113,7 +135,7 @@ const Kids = ({ wfKids }) => {
           })}
         </div>
       </div>
-      <div className="graphic">
+      <div ref={doveGraphic} className="graphic">
         <Dove />
       </div>
     </KidsSection>

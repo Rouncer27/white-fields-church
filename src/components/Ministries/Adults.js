@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import QuoteWWB from "../Quotes/QuoteWWB"
-import Dove from "../Graphics/Dove"
+import DoveWhite from "../Graphics/DoveWhite"
 import { colors, H2LatoGold, B1OpenSansWhite } from "../../styles/helpers"
 
 const AdultsSection = styled.section`
@@ -124,7 +124,7 @@ const Adults = ({ wfyAdults }) => {
         </div>
       </div>
       <div className="graphicDove">
-        <Dove />
+        <DoveWhite />
       </div>
     </AdultsSection>
   )
