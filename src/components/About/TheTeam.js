@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
   standardWrapper,
   H2LatoBlue,
@@ -8,6 +10,8 @@ import {
   B2OpenSansBlueBold,
   B1OpenSansBlue,
 } from "../../styles/helpers"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const TheTeamSection = styled.section`
   padding: 5rem 0;
@@ -77,16 +81,37 @@ const Member = styled.div`
 
 const TheTeam = ({ theTeam }) => {
   const team = theTeam.acf._wfc_tts_the_team
+  const triggerElement = useRef(null)
+
+  useEffect(() => {
+    const members = [...document.querySelectorAll(".teamMember")]
+    gsap.set(members, { autoAlpha: 0, y: 100 })
+
+    gsap.to(members, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: {
+        amount: 1,
+      },
+      scrollTrigger: {
+        trigger: triggerElement.current,
+        markers: false,
+        start: "top 75%",
+      },
+    })
+  }, [])
+
   return (
     <TheTeamSection id="team">
       <div className="wrapper">
         <div className="title">
           <h2>The Team</h2>
         </div>
-        <div className="teamContainer">
+        <div className="teamContainer" ref={triggerElement}>
           {team.map((member, index) => {
             return (
-              <Member key={index}>
+              <Member key={index} className="teamMember">
                 <div className="memberImage">
                   <Img
                     fluid={member.image.localFile.childImageSharp.fluid}
