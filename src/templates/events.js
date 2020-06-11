@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import EventsIntro from "../components/Events/EventsIntro"
+import EventsCalendar from "../components/Events/EventsCalendar"
 
 const Events = props => {
   const { seoInfo, eventsIntro } = props.data
@@ -17,6 +18,7 @@ const Events = props => {
         location={props.location.pathname}
       />
       <EventsIntro eventsIntro={eventsIntro} />
+      <EventsCalendar />
     </Layout>
   )
 }

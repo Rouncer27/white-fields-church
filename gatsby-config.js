@@ -48,6 +48,7 @@ module.exports = {
           "**/wp-api-menus/v2/menus",
           "**/audio_messages",
           "**/message_type",
+          "**/calendar",
         ],
       },
     },
