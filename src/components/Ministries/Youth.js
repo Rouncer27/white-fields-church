@@ -114,6 +114,10 @@ const Youth = ({ wfYouth }) => {
   const youthImage = useRef(null)
   const youthBackground = useRef(null)
 
+  const youthTitle = useRef(null)
+  const youthContent = useRef(null)
+  const youthButton = useRef(null)
+
   useEffect(() => {
     const youthBgImg = youthImage.current.querySelector(".image__background")
     gsap.set(youthBgImg, { y: -20 })
@@ -128,20 +132,59 @@ const Youth = ({ wfYouth }) => {
         end: "top -120%",
       },
     })
+
+    gsap.to(youthTitle.current, { autoAlpha: 0, x: -150 })
+    gsap.to(youthContent.current, { autoAlpha: 0, x: -150 })
+    gsap.to(youthButton.current, { autoAlpha: 0, y: 150 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: triggerElement.current,
+          markers: false,
+          scrub: false,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .to(youthTitle.current, {
+        autoAlpha: 1,
+        x: 0,
+        duration: 1,
+      })
+      .to(
+        youthContent.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1,
+        },
+        "-=0.5"
+      )
+      .to(
+        youthButton.current,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+        },
+        "-=0.5"
+      )
   }, [])
 
   return (
     <YouthSection>
       <div ref={triggerElement} className="wrapper">
         <div className="content">
-          <div className="content__title">
+          <div ref={youthTitle} className="content__title">
             <h2>{wfYouth.acf._wfc_wfy_title}</h2>
           </div>
           <div
+            ref={youthContent}
             className="content__wysiwyg"
             dangerouslySetInnerHTML={{ __html: wfYouth.acf._wfc_wfy_content }}
           />
-          <div className="content__link">
+          <div ref={youthButton} className="content__link">
             <Link to="/events">Event Calendar</Link>
           </div>
         </div>
