@@ -5,10 +5,10 @@ import Layout from "../components/Layout"
 import SEO from "../components/seo"
 import IntroQuote from "../components/Missions/IntroQuote"
 import ContentBlocks from "../components/Missions/ContentBlocks"
-import Churches from "../components/Missions/Churches"
+import OurMissions from "../components/Missions/OurMissions"
 
 const Mission = props => {
-  const { seoInfo, quoteSection, contentBlocks, churches } = props.data
+  const { seoInfo, quoteSection, contentBlocks, ourMissions } = props.data
   const location = props.location
   return (
     <Layout location={location}>
@@ -20,7 +20,7 @@ const Mission = props => {
       />
       <IntroQuote quoteSection={quoteSection} />
       <ContentBlocks contentBlocks={contentBlocks} />
-      <Churches churches={churches} />
+      <OurMissions ourMissions={ourMissions} />
     </Layout>
   )
 }
@@ -73,23 +73,26 @@ export const missionQuery = graphql`
         }
       }
     }
-    churches: wordpressPage(wordpress_id: { eq: $id }) {
+
+    ourMissions: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
-        _wfc_chas_churches_associated {
-          name
-          decription
-        }
-        _wfc_chas_information_questions
-        _wfc_chas_image {
-          alt_text
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid_withWebp
+        _wfc_orms_missions {
+          title
+          content
+          button_required
+          button_link
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
               }
             }
           }
         }
+        _wfc_orms_questions
       }
     }
   }
