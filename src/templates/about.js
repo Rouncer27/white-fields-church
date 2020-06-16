@@ -7,9 +7,17 @@ import AboutHero from "../components/About/AboutHero"
 import ContentBlockTop from "../components/About/ContentBlockTop"
 import TheTeam from "../components/About/TheTeam"
 import WeBelieve from "../components/About/WeBelieve"
+import OurValues from "../components/About/OurValues"
 
 const About = props => {
-  const { seoInfo, aboutHero, contentBlockTop, theTeam, weBelieve } = props.data
+  const {
+    seoInfo,
+    aboutHero,
+    contentBlockTop,
+    theTeam,
+    weBelieve,
+    ourValues,
+  } = props.data
   const location = props.location
   return (
     <Layout location={location}>
@@ -23,6 +31,7 @@ const About = props => {
       <ContentBlockTop contentBlockTop={contentBlockTop} />
       <TheTeam theTeam={theTeam} />
       <WeBelieve weBelieve={weBelieve} />
+      <OurValues ourVlaues={ourValues} />
     </Layout>
   )
 }
@@ -120,6 +129,35 @@ export const aboutQuery = graphql`
           point
         }
         _wfc_wwb_bot_sep_img {
+          alt_text
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+
+    ourValues: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _wfc_ourval_title_copy
+        _wfc_ourval_image_copy {
+          alt_text
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+        _wfc_ourval_points_copy {
+          point
+        }
+        _wfc_ourval_bot_sep_img_copy {
           alt_text
           localFile {
             childImageSharp {

@@ -6,7 +6,7 @@ import { colors, H2LatoGold, B3OpenSans } from "../../styles/helpers"
 import BrushStrokeFour from "../Graphics/BrushStrokeFour"
 import QuoteWWB from "../Quotes/QuoteWWB"
 
-const WeBelieveSection = styled.section`
+const OurValuesSection = styled.section`
   position: relative;
   background-color: ${colors.colorPrimary};
   overflow: hidden;
@@ -14,7 +14,7 @@ const WeBelieveSection = styled.section`
   .wrapper {
     position: relative;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
@@ -27,15 +27,15 @@ const WeBelieveSection = styled.section`
 
     @media (min-width: 768px) {
       width: calc(70% - 3rem);
-      margin-right: auto;
-      margin-left: 3rem;
+      margin-left: auto;
+      margin-right: 3rem;
     }
 
     @media (min-width: 1024px) {
       width: calc(65% - 5.5rem);
       max-width: 70rem;
-      margin-right: auto;
-      margin-left: 5.5rem;
+      margin-left: auto;
+      margin-right: 5.5rem;
       padding: 5rem 0;
     }
 
@@ -128,16 +128,16 @@ const WeBelieveSection = styled.section`
   }
 `
 
-const WeBelieve = ({ weBelieve }) => {
+const OurValues = ({ ourVlaues }) => {
   return (
-    <WeBelieveSection id="believe">
+    <OurValuesSection id="values">
       <div className="wrapper">
         <div className="pointsContainer">
           <div className="mainTitle">
-            <h2>{weBelieve.acf._wfc_wwb_title}</h2>
+            <h2>{ourVlaues.acf._wfc_ourval_title_copy}</h2>
           </div>
           <div className="points">
-            {weBelieve.acf._wfc_wwb_points.map((point, i) => (
+            {ourVlaues.acf._wfc_ourval_points_copy.map((point, i) => (
               <div key={i} dangerouslySetInnerHTML={{ __html: point.point }} />
             ))}
           </div>
@@ -147,7 +147,8 @@ const WeBelieve = ({ weBelieve }) => {
             <Img
               className="imageContainer__image"
               fluid={
-                weBelieve.acf._wfc_wwb_image.localFile.childImageSharp.fluid
+                ourVlaues.acf._wfc_ourval_image_copy.localFile.childImageSharp
+                  .fluid
               }
               alt="What we believe"
             />
@@ -165,12 +166,13 @@ const WeBelieve = ({ weBelieve }) => {
           tag="div"
           className="sepImage__image"
           fluid={
-            weBelieve.acf._wfc_wwb_bot_sep_img.localFile.childImageSharp.fluid
+            ourVlaues.acf._wfc_ourval_bot_sep_img_copy.localFile.childImageSharp
+              .fluid
           }
         />
       </div>
-    </WeBelieveSection>
+    </OurValuesSection>
   )
 }
 
-export default WeBelieve
+export default OurValues
