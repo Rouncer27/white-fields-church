@@ -14,15 +14,24 @@ const ContentBlocksSection = styled.section`
   padding: 0 0 5rem;
 
   @media (min-width: 768px) {
-    padding: 7.5rem 0;
+    padding: 2.5rem 0;
   }
 
   @media (min-width: 1024px) {
-    padding: 10rem 0;
+    padding: 4rem 0;
   }
 
   .qWrapper {
     ${standardWrapper};
+    margin-top: 5rem;
+
+    @media (min-width: 768px) {
+      margin-top: 7.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      margin-top: 10rem;
+    }
   }
 
   .questionsInformation {
@@ -36,21 +45,23 @@ const ContentBlocksSection = styled.section`
     position: relative;
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     z-index: 5;
-
-    @media (min-width: 768px) {
-      margin: 5rem auto;
-    }
-    @media (min-width: 1025px) {
-      margin: 10rem auto;
-    }
   }
 
   .wrapper.wrapReverse {
-    flex-direction: row-reverse;
+    flex-direction: row;
+    margin: 5rem auto;
+
+    @media (min-width: 768px) {
+      margin: 7.5rem auto;
+    }
+    @media (min-width: 1025px) {
+      margin: 14rem auto;
+    }
   }
 
   .content {
