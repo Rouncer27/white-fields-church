@@ -52,18 +52,6 @@ const ContentBlocksSection = styled.section`
     z-index: 5;
   }
 
-  .wrapper.wrapReverse {
-    flex-direction: row;
-    margin: 5rem auto;
-
-    @media (min-width: 768px) {
-      margin: 7.5rem auto;
-    }
-    @media (min-width: 1025px) {
-      margin: 14rem auto;
-    }
-  }
-
   .content {
     width: 100%;
     padding: 2rem;
@@ -78,8 +66,8 @@ const ContentBlocksSection = styled.section`
     @media (min-width: 1024px) {
       width: calc(60% - 5.5rem);
       max-width: 75rem;
-      margin-right: 5.5rem;
-      margin-left: auto;
+      margin-left: 5.5rem;
+      margin-right: auto;
       padding: 8.5rem 0;
       padding-left: 2rem;
     }
@@ -148,12 +136,40 @@ const ContentBlocksSection = styled.section`
     &__graphic {
       position: absolute;
       top: 2rem;
-      left: -2rem;
+      left: auto;
+      right: -2rem;
       width: 100%;
       height: 100%;
       background-color: ${colors.colorTertiary};
       opacity: 0.2;
       z-index: 1;
+    }
+  }
+
+  .wrapper.wrapReverse {
+    flex-direction: row;
+    margin: 5rem auto;
+
+    @media (min-width: 768px) {
+      margin: 7.5rem auto;
+    }
+    @media (min-width: 1025px) {
+      margin: 14rem auto;
+    }
+
+    .content {
+      @media (min-width: 1024px) {
+        margin-right: 5.5rem;
+        margin-left: auto;
+        text-align: right;
+      }
+    }
+
+    .image {
+      &__graphic {
+        right: auto;
+        left: -2rem;
+      }
     }
   }
 `
