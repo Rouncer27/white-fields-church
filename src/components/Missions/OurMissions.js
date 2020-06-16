@@ -8,6 +8,7 @@ import {
   H3LatoBlue,
   standardWrapper,
   B2OpenSansBlue,
+  buttonOneBlue,
 } from "../../styles/helpers"
 
 const ContentBlocksSection = styled.section`
@@ -101,6 +102,15 @@ const ContentBlocksSection = styled.section`
         }
       }
     }
+
+    &__button {
+      width: 100%;
+      margin-top: 5rem;
+
+      a {
+        ${buttonOneBlue};
+      }
+    }
   }
 
   .image {
@@ -176,9 +186,11 @@ const ContentBlocksSection = styled.section`
 
 const OurMissions = ({ ourMissions }) => {
   console.log("ourMissions: ", ourMissions)
+
   return (
     <ContentBlocksSection>
       {ourMissions.acf._wfc_orms_missions.map((mission, index) => {
+        const buttonRequired = mission.button_required === "yes" ? true : false
         return (
           <div
             className={`wrapper${index % 2 ? " wrapReverse" : ""}`}
@@ -194,6 +206,17 @@ const OurMissions = ({ ourMissions }) => {
                   __html: mission.content,
                 }}
               />
+              {buttonRequired && (
+                <div className="content__button">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={mission.button_link}
+                  >
+                    Learn More
+                  </a>
+                </div>
+              )}
             </div>
             <div className="image">
               <BGImg
