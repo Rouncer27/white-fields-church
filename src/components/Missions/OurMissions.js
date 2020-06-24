@@ -185,8 +185,6 @@ const ContentBlocksSection = styled.section`
 `
 
 const OurMissions = ({ ourMissions }) => {
-  console.log("ourMissions: ", ourMissions)
-
   return (
     <ContentBlocksSection>
       {ourMissions.acf._wfc_orms_missions.map((mission, index) => {

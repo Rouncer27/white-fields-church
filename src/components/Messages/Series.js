@@ -68,6 +68,7 @@ const Series = ({ series }) => {
     <SeriesSection>
       <div className="wrapper">
         {series.edges.map((item, index) => {
+          if (item.node.count <= 0) return
           return (
             <SeriesItem
               key={item.node.wordpress_id}

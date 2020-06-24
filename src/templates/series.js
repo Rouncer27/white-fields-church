@@ -23,6 +23,7 @@ export const seriesQuery = graphql`
   query seriesPage($id: Int!) {
     series: wordpressWpMessageType(wordpress_id: { eq: $id }) {
       name
+      wordpress_id
       acf {
         _wfc_mescat_featured_image {
           alt_text
@@ -40,6 +41,8 @@ export const seriesQuery = graphql`
     messages: allWordpressWpAudioMessages {
       edges {
         node {
+          title
+          message_type
           acf {
             _wfc_mespod_audio_embed
           }
