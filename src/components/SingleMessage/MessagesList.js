@@ -31,9 +31,6 @@ const Message = styled.div`
 
 const MessagesList = props => {
   const { messages, series } = props
-  console.log("messages: ", messages)
-  console.log("series: ", series)
-
   const selectedCategoryMessages = messages.edges.filter(
     mess => mess.node.message_type[0] === series.wordpress_id
   )
