@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { colors, footerType } from "../../styles/helpers"
+import { Link } from "gatsby"
 
 const CopySection = styled.div`
   width: 100%;
@@ -25,6 +26,11 @@ const CopySection = styled.div`
 const FooterCopy = ({ swbCred }) => {
   return (
     <CopySection>
+      <p>
+        <Link to="/privacy-policy">Privacy Policy</Link>
+        <span> | </span>
+        <Link to="/disclaimer">Disclaimer</Link>
+      </p>
       <p>
         Copyright © {new Date().getFullYear()} White Fields Calvary Church.{" "}
         {swbCred && (
