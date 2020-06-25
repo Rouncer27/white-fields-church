@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import BGImg from "gatsby-background-image"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
   medWrapper,
   H2LatoBlue,
@@ -8,6 +10,7 @@ import {
   buttonOneWhite,
   colors,
 } from "../../styles/helpers"
+gsap.registerPlugin(ScrollTrigger)
 
 const WorshipSection = styled.section`
   padding: 5rem 0;
@@ -99,22 +102,73 @@ const WorshipSection = styled.section`
 `
 
 const Worship = ({ worship }) => {
+  const triggerElement = useRef(null)
+  const bodyImage = useRef(null)
+  const bodyBackground = useRef(null)
+
+  const bodyTitle = useRef(null)
+  const bodyContent = useRef(null)
+
+  useEffect(() => {
+    const bodyBgImg = bodyImage.current.querySelector(".image__background")
+    gsap.set(bodyBgImg, { y: -20 })
+    gsap.to(bodyBgImg, {
+      y: 50,
+      duration: 1,
+      scrollTrigger: {
+        trigger: triggerElement.current,
+        markers: false,
+        scrub: true,
+        start: "top 100%",
+        end: "top -120%",
+      },
+    })
+
+    gsap.to(bodyTitle.current, { autoAlpha: 0, x: 150 })
+    gsap.to(bodyContent.current, { autoAlpha: 0, x: 150 })
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: triggerElement.current,
+          markers: false,
+          scrub: false,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
+      })
+      .to(bodyTitle.current, {
+        autoAlpha: 1,
+        x: 0,
+        duration: 1,
+      })
+      .to(
+        bodyContent.current,
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 1,
+        },
+        "-=0.5"
+      )
+  }, [])
   return (
     <WorshipSection>
-      <div className="wrapper">
-        <div className="image">
+      <div ref={triggerElement} className="wrapper">
+        <div ref={bodyImage} className="image">
           <BGImg
             fluid={worship.acf._wfc_wor_image.localFile.childImageSharp.fluid}
             tag="div"
             className="image__background"
           />
-          <div className="image__graphic" />
+          <div ref={bodyBackground} className="image__graphic" />
         </div>
         <div className="content">
-          <div className="content__title">
+          <div ref={bodyTitle} className="content__title">
             <h2>{worship.acf._wfc_wor_title}</h2>
           </div>
           <div
+            ref={bodyContent}
             className="content__wysiwyg"
             dangerouslySetInnerHTML={{
               __html: worship.acf._wfc_wor_content,
