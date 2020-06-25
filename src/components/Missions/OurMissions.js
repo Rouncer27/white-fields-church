@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import BGImg from "gatsby-background-image"
 import styled from "styled-components"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import {
   colors,
   H2LatoBlue,
@@ -10,6 +12,7 @@ import {
   B2OpenSansBlue,
   buttonOneBlue,
 } from "../../styles/helpers"
+gsap.registerPlugin(ScrollTrigger)
 
 const ContentBlocksSection = styled.section`
   padding: 0 0 5rem;
@@ -185,13 +188,31 @@ const ContentBlocksSection = styled.section`
 `
 
 const OurMissions = ({ ourMissions }) => {
+  useEffect(() => {
+    const blocks = [...document.querySelectorAll(".contentBlock")]
+    gsap.set(blocks, { autoAlpha: 0, y: 175 })
+
+    blocks.forEach(block => {
+      gsap.to(block, {
+        autoAlpha: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: block,
+          start: "top 75%",
+          end: "bottom top",
+          toggleActions: "play none none none",
+          markers: false,
+        },
+      })
+    })
+  }, [])
   return (
     <ContentBlocksSection>
       {ourMissions.acf._wfc_orms_missions.map((mission, index) => {
         const buttonRequired = mission.button_required === "yes" ? true : false
         return (
           <div
-            className={`wrapper${index % 2 ? " wrapReverse" : ""}`}
+            className={`wrapper${index % 2 ? " wrapReverse" : ""} contentBlock`}
             key={index}
           >
             <div className="content">
