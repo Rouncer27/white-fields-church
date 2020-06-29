@@ -11,6 +11,7 @@ import {
   standardWrapper,
   B2OpenSansBlue,
   buttonOneBlue,
+  buttonOneWhite,
 } from "../../styles/helpers"
 gsap.registerPlugin(ScrollTrigger)
 
@@ -186,6 +187,12 @@ const ContentBlocksSection = styled.section`
       ul,
       li {
         color: ${colors.white} !important;
+      }
+
+      &__button {
+        a {
+          ${buttonOneWhite};
+        }
       }
     }
 
