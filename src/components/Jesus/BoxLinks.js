@@ -1,15 +1,15 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
 import { Link } from "gatsby"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import {
   colors,
   medWrapper,
-  H2LatoBlue,
   B1OpenSansWhite,
   B2OpenSansWhiteBold,
-  buttonOneWhite,
 } from "../../styles/helpers"
 import BrushStrokeFour from "../Graphics/BrushStrokeFour"
 import { createSlug } from "../../utils/helperFunc"
@@ -25,29 +25,6 @@ const BoxLinksSection = styled.section`
 
   .wrapper {
     ${medWrapper};
-    align-items: flex-start;
-  }
-
-  .title {
-    width: 100%;
-    margin: 3rem auto 7.5rem;
-    text-align: center;
-
-    h2 {
-      ${H2LatoBlue};
-      margin: 0;
-      color: ${colors.colorPrimary};
-    }
-  }
-
-  .calBtn {
-    width: 100%;
-    margin: 7.5rem auto 3rem;
-    text-align: center;
-
-    a {
-      ${buttonOneWhite};
-    }
   }
 
   .backgroundGraphic {
@@ -62,6 +39,7 @@ const BoxLinksSection = styled.section`
 `
 
 const BoxLink = styled.div`
+  display: flex;
   position: relative;
   width: 100%;
   margin: 3rem auto;
@@ -71,10 +49,23 @@ const BoxLink = styled.div`
 
   @media (min-width: 768px) {
     width: calc(33.33% - 4rem);
-    margin: auto 2rem;
+    margin: 0 2rem;
+  }
+
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image {
+    flex-grow: 1;
+    background-color: ${colors.colorPrimary};
   }
 
   .content {
+    flex-grow: 1;
     padding: 1rem 3rem;
     transition: background-color 0.3s ease-in;
     background-color: ${colors.colorPrimary};
@@ -110,16 +101,40 @@ const BoxLink = styled.div`
 `
 
 const BoxLinks = ({ boxLinks }) => {
+  const eleContainer = useRef(null)
+  let cards = []
+
+  useEffect(() => {
+    cards = [...eleContainer.current.querySelectorAll(".eventItem")]
+    gsap.set(cards, { autoAlpha: 0, y: 200 })
+    gsap.to(cards, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.75,
+      stagger: {
+        each: 0.25,
+        from: "center",
+      },
+      scrollTrigger: {
+        trigger: cards,
+        markers: false,
+        start: "top 90%",
+        end: "bottom 0%",
+        toggleActions: "play none none reverse",
+      },
+    })
+  }, [])
+
   return (
     <BoxLinksSection>
-      <div className="wrapper">
+      <div ref={eleContainer} className="wrapper">
         {boxLinks.acf._wfc_bxlk_box_links.map((box, index) => {
           const slug = createSlug(box.link)
           const boxLinkItem =
             box.internal__external === "internal" ? (
-              <BoxLink key={index}>
+              <BoxLink key={index} className="eventItem">
                 <Link to={`${slug === "/" ? slug : `/${slug}`}`}>
-                  <div>
+                  <div className="image">
                     <Img fluid={box.image.localFile.childImageSharp.fluid} />
                   </div>
                   <div className="content">
@@ -133,9 +148,9 @@ const BoxLinks = ({ boxLinks }) => {
                 </Link>
               </BoxLink>
             ) : (
-              <BoxLink key={index}>
+              <BoxLink key={index} className="eventItem">
                 <a target="_blank" rel="noopener noreferrer" href={box.url}>
-                  <div>
+                  <div className="image">
                     <Img fluid={box.image.localFile.childImageSharp.fluid} />
                   </div>
                   <div className="content">
