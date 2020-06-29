@@ -6,15 +6,12 @@ import QuoteHospitality from "../Quotes/QuoteHospitality"
 
 const HospitalitySection = styled.section`
   position: relative;
-
   background-color: ${colors.colorPrimary};
 
   @media (min-width: 768px) {
-    margin-bottom: 5rem;
   }
 
   @media (min-width: 1025px) {
-    margin-bottom: 10rem;
   }
 
   .wrapper {

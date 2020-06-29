@@ -22,7 +22,7 @@ const ContentBlocksSection = styled.section`
   }
 
   @media (min-width: 1024px) {
-    padding: 4rem 0;
+    padding: 1rem 0;
   }
 
   .qWrapper {
@@ -53,6 +53,7 @@ const ContentBlocksSection = styled.section`
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
+    padding: 4rem 0;
     z-index: 5;
   }
 
@@ -162,19 +163,29 @@ const ContentBlocksSection = styled.section`
   .wrapper.wrapReverse {
     flex-direction: row;
     margin: 5rem auto;
+    background: ${colors.colorPrimary};
 
     @media (min-width: 768px) {
       margin: 7.5rem auto;
     }
     @media (min-width: 1025px) {
-      margin: 14rem auto;
+      margin: 10rem auto;
     }
 
     .content {
+      color: ${colors.white} !important;
       @media (min-width: 1024px) {
         margin-right: 5.5rem;
         margin-left: auto;
         text-align: right;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li {
+        color: ${colors.white} !important;
       }
     }
 
