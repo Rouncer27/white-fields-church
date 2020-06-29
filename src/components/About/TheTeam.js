@@ -106,7 +106,7 @@ const TheTeam = ({ theTeam }) => {
     <TheTeamSection id="team">
       <div className="wrapper">
         <div className="title">
-          <h2>The Team</h2>
+          <h2>Our Team</h2>
         </div>
         <div className="teamContainer" ref={triggerElement}>
           {team.map((member, index) => {

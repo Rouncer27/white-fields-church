@@ -11,6 +11,7 @@ import BodyLife from "../components/Ministries/BodyLife"
 import Mens from "../components/Ministries/Mens"
 import Ladies from "../components/Ministries/Ladies"
 import Worship from "../components/Ministries/Worship"
+import ContentBlocks from "../components/Ministries/ContentBlocks"
 import Hospitality from "../components/Ministries/Hospitality"
 
 const Ministries = props => {
@@ -24,6 +25,7 @@ const Ministries = props => {
     wfMens,
     wfLadies,
     worship,
+    contentBlocks,
     hospitality,
   } = props.data
   const location = props.location
@@ -43,6 +45,7 @@ const Ministries = props => {
       <Mens wfMens={wfMens} />
       <Ladies wfLadies={wfLadies} />
       <Worship worship={worship} />
+      <ContentBlocks contentBlocks={contentBlocks} />
       <Hospitality hospitality={hospitality} />
     </Layout>
   )
@@ -197,6 +200,25 @@ export const ministriesQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+
+    contentBlocks: wordpressPage(wordpress_id: { eq: $id }) {
+      acf {
+        _wfc_cnbl_blocks {
+          image {
+            alt_text
+            localFile {
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid_withWebp
+                }
+              }
+            }
+          }
+          title
+          content
         }
       }
     }

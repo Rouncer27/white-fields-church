@@ -4,7 +4,7 @@ import Img from "gatsby-image"
 import BGImage from "gatsby-background-image"
 import { colors, H2LatoGold, B3OpenSans } from "../../styles/helpers"
 import BrushStrokeFour from "../Graphics/BrushStrokeFour"
-import QuoteWWB from "../Quotes/QuoteWWB"
+import QuoteNowWhat from "../Quotes/QuoteNowWhat"
 
 const OurValuesSection = styled.section`
   position: relative;
@@ -154,7 +154,7 @@ const OurValues = ({ ourVlaues }) => {
             />
           </div>
           <div className="imageBot">
-            <QuoteWWB />
+            <QuoteNowWhat />
           </div>
         </div>
       </div>
