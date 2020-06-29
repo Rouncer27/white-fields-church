@@ -115,21 +115,42 @@ const BoxLinks = ({ boxLinks }) => {
       <div className="wrapper">
         {boxLinks.acf._wfc_bxlk_box_links.map((box, index) => {
           const slug = createSlug(box.link)
-          return (
-            <BoxLink key={index}>
-              <Link to={`${slug === "/" ? slug : `/${slug}`}`}>
-                <div>
-                  <Img fluid={box.image.localFile.childImageSharp.fluid} />
-                </div>
-                <div className="content">
+          const boxLinkItem =
+            box.internal__external === "internal" ? (
+              <BoxLink key={index}>
+                <Link to={`${slug === "/" ? slug : `/${slug}`}`}>
                   <div>
-                    <h3>{box.title}</h3>
+                    <Img fluid={box.image.localFile.childImageSharp.fluid} />
                   </div>
-                  <div dangerouslySetInnerHTML={{ __html: box.description }} />
-                </div>
-              </Link>
-            </BoxLink>
-          )
+                  <div className="content">
+                    <div>
+                      <h3>{box.title}</h3>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: box.description }}
+                    />
+                  </div>
+                </Link>
+              </BoxLink>
+            ) : (
+              <BoxLink key={index}>
+                <a target="_blank" rel="noopener noreferrer" href={box.url}>
+                  <div>
+                    <Img fluid={box.image.localFile.childImageSharp.fluid} />
+                  </div>
+                  <div className="content">
+                    <div>
+                      <h3>{box.title}</h3>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: box.description }}
+                    />
+                  </div>
+                </a>
+              </BoxLink>
+            )
+
+          return boxLinkItem
         })}
       </div>
       <div className="backgroundGraphic">

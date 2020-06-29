@@ -94,7 +94,9 @@ export const jesusQuery = graphql`
           }
           title
           description
+          internal__external
           link
+          url
         }
       }
     }
