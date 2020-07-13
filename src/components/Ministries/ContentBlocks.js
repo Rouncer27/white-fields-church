@@ -84,13 +84,18 @@ const ContentBlocksSection = styled.section`
 `
 
 const BlockWrapper = styled.div`
-  ${medWrapper};
-  flex-direction: ${props => (props.reversed ? "row-reverse" : "row")};
-  position: relative;
-  align-items: center;
+  background-color: ${props =>
+    props.reversed ? colors.white : colors.colorPrimary};
+  .wrapper {
+    ${medWrapper};
+    flex-direction: ${props => (props.reversed ? "row-reverse" : "row")};
+    position: relative;
+    align-items: center;
 
-  @media (min-width: 1024px) {
-    padding-top: 10rem;
+    @media (min-width: 1024px) {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
   }
 
   .content {
@@ -109,6 +114,15 @@ const BlockWrapper = styled.div`
       margin-right: auto;
       margin-right: ${props => (props.reversed ? "auto" : "7.5rem")};
       margin-left: ${props => (props.reversed ? "7.5rem" : "auto")};
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    li {
+      color: ${props => (props.reversed ? colors.colorPrimary : colors.white)};
     }
   }
 
@@ -134,25 +148,27 @@ const ContentBlocks = ({ contentBlocks }) => {
         const layout = index % 2 === 0 ? true : false
         console.log(block, " --> ", layout)
         return (
-          <BlockWrapper className="wrapper" key={index} reversed={!layout}>
-            <div className="content">
-              <div className="content__title">
-                <h2>{block.title}</h2>
+          <BlockWrapper key={index} reversed={!layout}>
+            <div className="wrapper">
+              <div className="content">
+                <div className="content__title">
+                  <h2>{block.title}</h2>
+                </div>
+                <div
+                  className="content__wysiwyg"
+                  dangerouslySetInnerHTML={{
+                    __html: block.content,
+                  }}
+                />
               </div>
-              <div
-                className="content__wysiwyg"
-                dangerouslySetInnerHTML={{
-                  __html: block.content,
-                }}
-              />
-            </div>
-            <div className="image">
-              <BGImg
-                tag="div"
-                className="image__background"
-                fluid={block.image.localFile.childImageSharp.fluid}
-              />
-              <div className="image__graphic" />
+              <div className="image">
+                <BGImg
+                  tag="div"
+                  className="image__background"
+                  fluid={block.image.localFile.childImageSharp.fluid}
+                />
+                <div className="image__graphic" />
+              </div>
             </div>
           </BlockWrapper>
         )

@@ -40,6 +40,7 @@ export const liveFeedQuery = graphql`
     liveFeed: wordpressPage(wordpress_id: { eq: $id }) {
       acf {
         _wfc_linkfeed_life_feed
+        _wfc_linkfeed_embed_link
       }
     }
 

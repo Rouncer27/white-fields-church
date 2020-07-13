@@ -13,11 +13,12 @@ const LiveFeedLinkSection = styled.section`
 `
 
 const LiveFeedLink = ({ liveFeed }) => {
+  console.log(liveFeed)
   return (
     <LiveFeedLinkSection>
       <div className="wrapper">
         <div>
-          <h2>Live Feed - Content missing...</h2>
+          <h2>Live Feed</h2>
         </div>
       </div>
     </LiveFeedLinkSection>

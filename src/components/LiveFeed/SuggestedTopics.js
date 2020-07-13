@@ -14,12 +14,13 @@ const SuggestedTopicsSection = styled.section`
   padding: 5rem 0;
   .wrapper {
     ${medWrapper};
+    align-items: center;
   }
 
   .content {
     width: 100%;
     @media (min-width: 768px) {
-      width: calc(50% - 5rem);
+      width: calc(35% - 5rem);
       margin-right: 5rem;
     }
 
@@ -39,7 +40,7 @@ const SuggestedTopicsSection = styled.section`
     justify-content: center;
     width: 100%;
     @media (min-width: 768px) {
-      width: calc(50%);
+      width: calc(65%);
     }
   }
 `
@@ -51,7 +52,7 @@ const Topic = styled.div`
   margin-bottom: 0.5rem;
 
   @media (min-width: 768px) {
-    width: calc(33.33%);
+    width: calc(25%);
     height: 17.5rem;
     margin-bottom: 0;
   }
@@ -106,7 +107,7 @@ const Topic = styled.div`
 
 const SuggestedTopics = ({ suggestedTopics, series }) => {
   const shuffled = series.edges.sort(() => 0.5 - Math.random())
-  let selected = shuffled.slice(0, 3)
+  let selected = shuffled.slice(0, 4)
 
   return (
     <SuggestedTopicsSection>
@@ -115,11 +116,6 @@ const SuggestedTopics = ({ suggestedTopics, series }) => {
           <div>
             <h2>{suggestedTopics.acf._wfc_sugtop_title}</h2>
           </div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: suggestedTopics.acf._wfc_sugtop_content,
-            }}
-          />
         </div>
         <div className="suggestions">
           {selected.map(item => {
