@@ -12,8 +12,15 @@ const FooterNav = styled.div`
     padding: 0;
     margin-bottom: 1rem;
 
-    a {
+    a,
+    button {
       ${footerTypeSemiBold};
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
   }
 
@@ -22,7 +29,7 @@ const FooterNav = styled.div`
   }
 `
 
-const FooterLeftNav = () => {
+const FooterLeftNav = ({ handleModalState }) => {
   return (
     <FooterNav>
       <ul>
@@ -30,10 +37,10 @@ const FooterLeftNav = () => {
           <Link to="/about">About Us</Link>
         </li>
         <li>
-          <Link to="/">Donate Online</Link>
+          <button onClick={handleModalState}>Donate Online</button>
         </li>
         <li>
-          <Link to="/">Listen Online</Link>
+          <Link to="/live-feed">Listen Online</Link>
         </li>
         <li>
           <Link to="/events">Events</Link>

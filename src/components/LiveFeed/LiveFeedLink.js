@@ -1,14 +1,31 @@
 import React from "react"
 import styled from "styled-components"
-import { medWrapper, H2LatoBlue } from "../../styles/helpers"
+import { medWrapper, H2LatoBlue, B1OpenSansBlue } from "../../styles/helpers"
+import YoutubeImage from "../Graphics/YoutubeImage"
 
 const LiveFeedLinkSection = styled.section`
   .wrapper {
     ${medWrapper}
   }
 
-  h2 {
-    ${H2LatoBlue};
+  .title {
+    width: 100%;
+    text-align: center;
+
+    h2 {
+      ${H2LatoBlue};
+    }
+
+    p {
+      ${B1OpenSansBlue};
+    }
+  }
+
+  .image {
+    width: 100%;
+    max-width: 75rem;
+    margin: 2rem auto;
+    text-align: center;
   }
 `
 
@@ -17,9 +34,21 @@ const LiveFeedLink = ({ liveFeed }) => {
   return (
     <LiveFeedLinkSection>
       <div className="wrapper">
-        <div>
+        <div className="title">
           <h2>Live Feed</h2>
+          <p>
+            Stay tuned for our live fed here, or click to view our youtube
+            channel.
+          </p>
         </div>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={liveFeed.acf._wfc_linkfeed_life_feed}
+          className="image"
+        >
+          <YoutubeImage />
+        </a>
       </div>
     </LiveFeedLinkSection>
   )

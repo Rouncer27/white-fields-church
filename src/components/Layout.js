@@ -46,7 +46,7 @@ const Layout = ({ children, location }) => {
           />
           <MobileNav handleModalState={handelModalState} />
           <main>{children}</main>
-          <Footer />
+          <Footer handleModalState={handelModalState} />
         </SiteWrapper>
       </ThemeProvider>
     </>
