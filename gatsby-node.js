@@ -23,6 +23,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
 
+        events: allWordpressWpEventsPost {
+          edges {
+            node {
+              slug
+              wordpress_id
+            }
+          }
+        }
+
         series: allWordpressWpMessageType {
           edges {
             node {
@@ -148,6 +157,22 @@ exports.createPages = async ({ graphql, actions }) => {
           prev: index === 0 ? null : series[index - 1].node.slug,
           next:
             index === series.length - 1 ? null : series[index + 1].node.slug,
+        },
+      })
+    })
+
+    const events = data.events.edges
+
+    events.forEach(({ node }, index) => {
+      createPage({
+        path: `/events/${node.slug}/`,
+        component: path.resolve("./src/templates/singleEvent.js"),
+        context: {
+          id: node.wordpress_id,
+          slug: node.slug,
+          prev: index === 0 ? null : events[index - 1].node.slug,
+          next:
+            index === events.length - 1 ? null : events[index + 1].node.slug,
         },
       })
     })

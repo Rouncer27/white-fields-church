@@ -21,6 +21,7 @@ const IndexPage = props => {
     requestPrayer,
     ourMission,
     happeningNow,
+    happeningNowPost,
   } = props.data
   const location = props.location
 
@@ -38,7 +39,10 @@ const IndexPage = props => {
         <RequestPrayer requestPrayer={requestPrayer} />
       </ContentWrapper>
       <OurMissions ourMission={ourMission} />
-      <HappeningNow happeningNow={happeningNow} />
+      <HappeningNow
+        happeningNow={happeningNow}
+        happeningNowPost={happeningNowPost}
+      />
       <BannerSocialMedia />
     </Layout>
   )
@@ -119,24 +123,32 @@ export const homeQuery = graphql`
       }
     }
 
-    happeningNow: wordpressPage(slug: { eq: "home" }) {
-      acf {
-        _wfc_hpn_title
-        _wfc_hpn_events {
+    happeningNowPost: allWordpressWpEventsPost {
+      edges {
+        node {
           title
-          excerpt
-          url
-          image {
-            alt_text
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1250) {
-                  ...GatsbyImageSharpFluid_withWebp
+          slug
+          acf {
+            _wfcc_evepos_content
+            _wfcc_evepos_excerpt
+            _wfcc_evepos_featured_image {
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1800) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
                 }
               }
             }
           }
         }
+      }
+    }
+
+    happeningNow: wordpressPage(slug: { eq: "home" }) {
+      acf {
+        _wfc_hpn_title
       }
     }
   }

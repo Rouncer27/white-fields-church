@@ -21,6 +21,7 @@ const Home = props => {
     requestPrayer,
     ourMission,
     happeningNow,
+    happeningNowPost,
   } = props.data
   const location = props.location
 
@@ -43,7 +44,10 @@ const Home = props => {
         <RequestPrayer requestPrayer={requestPrayer} />
       </ContentWrapper>
       <OurMissions ourMission={ourMission} />
-      <HappeningNow happeningNow={happeningNow} />
+      <HappeningNow
+        happeningNow={happeningNow}
+        happeningNowPost={happeningNowPost}
+      />
     </Layout>
   )
 }
@@ -115,6 +119,27 @@ export const homeQuery = graphql`
             childImageSharp {
               fluid(maxWidth: 1250) {
                 ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+
+    happeningNowPost: allWordpressWpEventsPost {
+      edges {
+        node {
+          title
+          acf {
+            _wfcc_evepos_content
+            _wfcc_evepos_featured_image {
+              alt_text
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1800) {
+                    ...GatsbyImageSharpFluid_withWebp
+                  }
+                }
               }
             }
           }

@@ -59,7 +59,7 @@ const HappeningNowSection = styled.section`
   }
 `
 
-const EventItem = styled.div`
+const EventItem = styled(Link)`
   position: relative;
   width: 100%;
   margin: 3rem auto;
@@ -107,10 +107,10 @@ const EventItem = styled.div`
   }
 `
 
-const HappeningNow = ({ happeningNow }) => {
+const HappeningNow = ({ happeningNow, happeningNowPost }) => {
   const eleContainer = useRef(null)
   const title = happeningNow.acf._wfc_hpn_title
-  const events = happeningNow.acf._wfc_hpn_events
+  const events = happeningNowPost.edges
   let cards = []
 
   useEffect(() => {
@@ -142,17 +142,28 @@ const HappeningNow = ({ happeningNow }) => {
         </div>
 
         {events.map((event, index) => {
-          const imgFluid = event.image.localFile.childImageSharp.fluid
+          console.log(event)
+          const imgFluid =
+            event.node.acf._wfcc_evepos_featured_image.localFile.childImageSharp
+              .fluid
           return (
-            <EventItem key={index} className="eventItem">
+            <EventItem
+              to={`/events/${event.node.slug}`}
+              key={index}
+              className="eventItem"
+            >
               <div>
                 <Img fluid={imgFluid} />
               </div>
               <div className="content">
                 <div>
-                  <h3>{event.title}</h3>
+                  <h3>{event.node.title}</h3>
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: event.excerpt }} />
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: event.node.acf._wfcc_evepos_excerpt,
+                  }}
+                />
               </div>
             </EventItem>
           )

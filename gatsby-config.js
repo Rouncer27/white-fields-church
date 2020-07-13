@@ -49,6 +49,7 @@ module.exports = {
           "**/audio_messages",
           "**/message_type",
           "**/calendar",
+          "**/events_post",
         ],
       },
     },
