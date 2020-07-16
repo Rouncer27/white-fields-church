@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import {
   H2LatoBlue,
@@ -79,7 +80,7 @@ const TimesLocation = ({ services }) => {
         )
       })}
       <div className="directions">
-        <a href={`${directions}`}>Get Directions</a>
+        <Link to="/events/open-air-church">More Info</Link>
       </div>
     </TimesLocationDiv>
   )

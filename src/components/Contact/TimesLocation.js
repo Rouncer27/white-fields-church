@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 import {
   standardWrapper,
   H2LatoBlue,
@@ -80,13 +81,7 @@ const TimesLocation = ({ timesLocations }) => {
             )
           })}
           <div className="link">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={timesLocations.acf._wfc_tal_directions}
-            >
-              Get Directions
-            </a>
+            <Link to="/events/open-air-church">More Info</Link>
           </div>
         </div>
       </div>
