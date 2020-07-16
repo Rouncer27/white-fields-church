@@ -17,20 +17,28 @@ import FormErrors from "../modals/FormErrors"
 import FormSuccess from "../modals/FormSuccess"
 
 const ContactFormSection = styled.section`
-  padding-top: 10rem;
+  padding-top: 2rem;
   background-color: ${colors.colorPrimary};
+
+  @media (min-width: 768px) {
+    padding-top: 10rem;
+  }
 
   .contactWrapper {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
-    width: calc(100% - 10rem);
+    width: calc(100%);
     max-width: 110rem;
     margin: 0 auto 10rem;
     padding: 2rem;
     background-color: ${colors.white};
     overflow: hidden;
+
+    @media (min-width: 768px) {
+      width: calc(100% - 10rem);
+    }
   }
 
   .graphicWheat {
