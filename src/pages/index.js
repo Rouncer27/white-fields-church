@@ -15,6 +15,7 @@ import BannerSocialMedia from "../components/Home/BannerSocialMedia"
 
 const IndexPage = props => {
   const {
+    seoInfo,
     heroVideo,
     cardLinks,
     services,
@@ -27,7 +28,12 @@ const IndexPage = props => {
 
   return (
     <Layout location={location}>
-      <SEO title="Home" />
+      <SEO
+        title={seoInfo.acf._swb_theme_meta_title}
+        description={seoInfo.acf._swb_theme_description}
+        metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
+        location={props.location.pathname}
+      />
       <VideoHero
         logoDisplay={heroVideo.acf._wfc_hv_display_logo}
         quote={heroVideo.acf._wfc_hv_quote}

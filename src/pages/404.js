@@ -22,21 +22,28 @@ const Main404 = styled.section`
   }
 `
 
-const NotFoundPage = ({ location }) => (
-  <Layout location={location}>
-    <SEO title="404: Not found" />
-    <Main404>
-      <div className="wrapper">
-        <div>
-          <h1>NOT FOUND</h1>
+const NotFoundPage = props => {
+  const location = props.location
+  return (
+    <Layout location={location}>
+      <SEO
+        title="404: Not found"
+        description="The information contained in this website is for general information purposes only. This website makes no representations or warranties, express or implied."
+        location={props.location.pathname}
+      />
+      <Main404>
+        <div className="wrapper">
+          <div>
+            <h1>NOT FOUND</h1>
+          </div>
+          <div>
+            <p>You just hit a page that doesn&#39;t exist.</p>
+            <Link to="/">Home</Link>
+          </div>
         </div>
-        <div>
-          <p>You just hit a page that doesn&#39;t exist.</p>
-          <Link to="/">Home</Link>
-        </div>
-      </div>
-    </Main404>
-  </Layout>
-)
+      </Main404>
+    </Layout>
+  )
+}
 
 export default NotFoundPage
