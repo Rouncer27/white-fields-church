@@ -1,3 +1,7 @@
+# Optional: Redirect default Netlify subdomain to primary domain
+https://white-fields.netlify.app/* https://whitefields.ca/ 301!
+
+
 /home                                   /
 
 /what-we-believe                        /about
