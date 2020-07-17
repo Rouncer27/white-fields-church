@@ -99,10 +99,11 @@ const SeriesItem = ({ item, itemIndex }) => {
   useEffect(() => {
     gsap.set(element.current, { y: 400, autoAlpha: 0 })
     gsap.to(element.current, {
-      y: 100,
+      // y: 100,
+      y: 0,
       autoAlpha: 1,
       duration: 0.75,
-      onComplete: () => startPara(),
+      // onComplete: () => startPara(),
       scrollTrigger: {
         trigger: `.item-${itemIndex}`,
         start: "top 90%",
@@ -129,7 +130,7 @@ const SeriesItem = ({ item, itemIndex }) => {
     <SeriesItemStyled
       key={item.node.wordpress_id}
       ref={element}
-      widthValue={getRandomInt(3, 1)}
+      widthValue={2}
       className={`item-${itemIndex}`}
     >
       <Link to={`/series/${item.node.slug}`}>
