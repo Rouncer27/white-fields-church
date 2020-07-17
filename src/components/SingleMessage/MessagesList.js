@@ -84,6 +84,7 @@ const MessagesList = props => {
                 <div className="videoButton">
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     href={mess.node.acf._wfc_messages_video_link}
                   >
                     Watch Sermon Video Here.
