@@ -38,13 +38,15 @@ export const seriesQuery = graphql`
       }
     }
 
-    messages: allWordpressWpAudioMessages {
+    messages: allWordpressWpAudioMessages(sort: { order: DESC, fields: date }) {
       edges {
         node {
           title
           message_type
           acf {
             _wfc_mespod_audio_embed
+            _wfc_messages_video_link_req
+            _wfc_messages_video_link
           }
         }
       }

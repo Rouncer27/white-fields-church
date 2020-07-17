@@ -37,6 +37,14 @@ const Message = styled.div`
     width: calc(100%);
     margin: 5rem auto;
   }
+
+  .videoButton {
+    margin-top: 2.5rem;
+    margin-bottom: 5rem;
+    a {
+      ${buttonOneBlue}
+    }
+  }
 `
 
 const MessagesList = props => {
@@ -70,6 +78,20 @@ const MessagesList = props => {
       <div className="wrapper">
         <div className="listContainer">
           {currentDisplay.allCurrentCat.map((mess, index) => {
+            let videoBtn = null
+            if (mess.node.acf._wfc_messages_video_link_req) {
+              videoBtn = (
+                <div className="videoButton">
+                  <a
+                    target="_blank"
+                    href={mess.node.acf._wfc_messages_video_link}
+                  >
+                    Watch Sermon Video Here.
+                  </a>
+                </div>
+              )
+            }
+
             return (
               <Message key={index}>
                 <div
@@ -77,6 +99,7 @@ const MessagesList = props => {
                     __html: mess.node.acf._wfc_mespod_audio_embed,
                   }}
                 />
+                {videoBtn}
               </Message>
             )
           })}
