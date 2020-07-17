@@ -22,9 +22,12 @@ const HappeningNowSection = styled.section`
   padding: 4rem 0;
   background-color: ${colors.white};
 
+  .wrapperTitle {
+    ${medWrapper};
+  }
+
   .wrapper {
     ${medWrapper};
-    align-items: flex-start;
   }
 
   .title {
@@ -59,7 +62,8 @@ const HappeningNowSection = styled.section`
   }
 `
 
-const EventItem = styled(Link)`
+const EventItem = styled.div`
+  display: flex;
   position: relative;
   width: 100%;
   margin: 3rem auto;
@@ -69,11 +73,24 @@ const EventItem = styled(Link)`
 
   @media (min-width: 768px) {
     width: calc(33.33% - 4rem);
-    margin: auto 2rem;
+    margin: 0 2rem;
+  }
+
+  .eventItem__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image {
+    flex-grow: 1;
+    transition: background-color 0.3s ease-in;
+    background-color: ${colors.colorPrimary};
   }
 
   .content {
-    min-height: 18rem;
+    flex-grow: 1;
     padding: 1rem 4rem;
     transition: background-color 0.3s ease-in;
     background-color: ${colors.colorPrimary};
@@ -94,6 +111,10 @@ const EventItem = styled(Link)`
   &:hover {
     box-shadow: 0 0.75rem 1rem 0 rgba(0, 0, 0, 0.35);
     cursor: pointer;
+
+    .image {
+      background-color: ${colors.colorTertiary};
+    }
 
     .content {
       background-color: ${colors.colorTertiary};
@@ -137,38 +158,41 @@ const HappeningNow = ({ happeningNow, happeningNowPost }) => {
 
   return (
     <HappeningNowSection>
-      <div ref={eleContainer} className="wrapper">
+      <div className="wrapperTitle">
         <div className="title">
           <h2>{title}</h2>
         </div>
-
+      </div>
+      <div ref={eleContainer} className="wrapper">
         {events.map((event, index) => {
-          console.log(event)
           const imgFluid =
             event.node.acf._wfcc_evepos_featured_image.localFile.childImageSharp
               .fluid
           return (
-            <EventItem
-              to={`/events/${event.node.slug}`}
-              key={index}
-              className="eventItem"
-            >
-              <div>
-                <Img fluid={imgFluid} />
-              </div>
-              <div className="content">
-                <div>
-                  <h3>{event.node.title}</h3>
+            <EventItem key={index} className="eventItem">
+              <Link
+                to={`/events/${event.node.slug}`}
+                className="eventItem__inner"
+              >
+                <div className="image">
+                  <Img fluid={imgFluid} />
                 </div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: event.node.acf._wfcc_evepos_excerpt,
-                  }}
-                />
-              </div>
+                <div className="content">
+                  <div>
+                    <h3>{event.node.title}</h3>
+                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: event.node.acf._wfcc_evepos_excerpt,
+                    }}
+                  />
+                </div>
+              </Link>
             </EventItem>
           )
         })}
+      </div>
+      <div className="wrapperTitle">
         <div className="calBtn">
           <Link to="/events">Event Calendar</Link>
         </div>

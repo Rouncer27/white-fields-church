@@ -61,6 +61,7 @@ const BoxLink = styled.div`
 
   .image {
     flex-grow: 1;
+    transition: background-color 0.3s ease-in;
     background-color: ${colors.colorPrimary};
   }
 
@@ -86,6 +87,10 @@ const BoxLink = styled.div`
   &:hover {
     box-shadow: 0 0.75rem 1rem 0 rgba(0, 0, 0, 0.35);
     cursor: pointer;
+
+    .image {
+      background-color: ${colors.colorTertiary};
+    }
 
     .content {
       background-color: ${colors.colorTertiary};
