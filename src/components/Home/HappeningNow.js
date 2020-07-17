@@ -73,6 +73,7 @@ const EventItem = styled(Link)`
   }
 
   .content {
+    min-height: 18rem;
     padding: 1rem 4rem;
     transition: background-color 0.3s ease-in;
     background-color: ${colors.colorPrimary};
