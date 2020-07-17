@@ -63,7 +63,7 @@ export const messagesQuery = graphql`
       }
     }
 
-    series: allWordpressWpMessageType {
+    series: allWordpressWpMessageType(sort: { fields: slug }) {
       edges {
         node {
           acf {

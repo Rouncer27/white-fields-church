@@ -144,7 +144,7 @@ const SeriesItem = ({ item, itemIndex }) => {
         </div>
         <div className="title">
           <div className="title__content">
-            <h2>{item.node.name}</h2>
+            <h2 dangerouslySetInnerHTML={{ __html: item.node.name }} />
           </div>
           <div className="title__button">
             <button>View Series</button>
