@@ -78,7 +78,7 @@ const FooterRightSocial = () => {
           <span>Facebook</span>
         </a>
         <a
-          href="https://twitter.com"
+          href="https://twitter.com/WFCCAirdrie"
           className="twitterIcon"
           target="_blank"
           rel="noopener noreferrer"
