@@ -32,7 +32,6 @@ export default React.memo(
         ],
         url: "https://www.whitefields.ca/",
         image: image,
-        priceRange: "$",
         description: description,
         address: {
           "@type": "PostalAddress",
