@@ -18,7 +18,7 @@ export default React.memo(
     const baseSchema = [
       {
         "@context": "http://schema.org",
-        "@type": "HealthAndBeautyBusiness",
+        "@type": "Church",
         "@id": "https://www.whitefields.ca/",
         name: "White Fields Calvary Church",
         alternateName: "White Fields Calvary Church",
