@@ -25,7 +25,11 @@ export default React.memo(
         logo: logo,
         telephone: "403-888-9428",
         email: "",
-        sameAs: ["https://www.facebook.com/", "https://www.instagram.com/"],
+        sameAs: [
+          "https://www.facebook.com/",
+          "https://www.instagram.com/whitefieldscalvarychurch",
+          "https://twitter.com/WFCCAirdrie",
+        ],
         url: "https://www.whitefields.ca/",
         image: image,
         priceRange: "$$",
