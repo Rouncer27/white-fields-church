@@ -26,7 +26,7 @@ export default React.memo(
         telephone: "587-997-4886",
         email: "admin@whitefields.ca",
         sameAs: [
-          "https://www.facebook.com/",
+          "https://www.facebook.com/WhiteFieldsCalvary/",
           "https://www.instagram.com/whitefieldscalvarychurch",
           "https://twitter.com/WFCCAirdrie",
         ],

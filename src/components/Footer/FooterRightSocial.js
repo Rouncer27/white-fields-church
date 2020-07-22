@@ -69,7 +69,7 @@ const FooterRightSocial = () => {
       <p>
         Follow us on Social Media:{" "}
         <a
-          href="https://facebook.com"
+          href="https://www.facebook.com/WhiteFieldsCalvary/"
           className="facebookIcon"
           target="_blank"
           rel="noopener noreferrer"

@@ -99,7 +99,7 @@ const BannerSocialMedia = () => {
           </div>
           <div className="bannerContent__icons">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/WhiteFieldsCalvary/"
               className="facebookIcon"
               target="_blank"
               rel="noopener noreferrer"
