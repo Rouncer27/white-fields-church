@@ -179,7 +179,9 @@ const HappeningNow = ({ happeningNow, happeningNowPost }) => {
                 </div>
                 <div className="content">
                   <div>
-                    <h3>{event.node.title}</h3>
+                    <h3
+                      dangerouslySetInnerHTML={{ __html: event.node.title }}
+                    />
                   </div>
                   <div
                     dangerouslySetInnerHTML={{
