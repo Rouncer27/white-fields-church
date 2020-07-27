@@ -309,7 +309,7 @@ const singleEvent = props => {
             />
           </div>
           <div className="eventTitle">
-            <h1>{event.title}</h1>
+            <h1 dangerouslySetInnerHTML={{ __html: event.title }} />
           </div>
           <div
             className="eventWysiwyg"
