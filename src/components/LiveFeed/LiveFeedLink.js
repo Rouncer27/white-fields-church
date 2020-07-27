@@ -35,11 +35,8 @@ const LiveFeedLink = ({ liveFeed }) => {
     <LiveFeedLinkSection>
       <div className="wrapper">
         <div className="title">
-          <h2>Live Feed</h2>
-          <p>
-            Stay tuned for our live fed here, or click to view our youtube
-            channel.
-          </p>
+          <h2>Live Stream</h2>
+          <p>Live Stream available Sundays at 11am</p>
         </div>
         <a
           target="_blank"

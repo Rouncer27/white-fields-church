@@ -81,7 +81,9 @@ const TimesLocation = ({ timesLocations }) => {
             )
           })}
           <div className="link">
-            <Link to="/events/open-air-church">More Info</Link>
+            <Link to="/events/temporary-location-town-country-centre">
+              More Info
+            </Link>
           </div>
         </div>
       </div>
