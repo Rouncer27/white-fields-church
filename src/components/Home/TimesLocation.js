@@ -80,7 +80,7 @@ const TimesLocation = ({ services }) => {
         )
       })}
       <div className="directions">
-        <Link to="/events/temporary-location-town-country-centre">More Info</Link>
+        <Link to="/events/st-martin-de-porres-high-school">More Info</Link>
       </div>
     </TimesLocationDiv>
   )

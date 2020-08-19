@@ -81,9 +81,7 @@ const TimesLocation = ({ timesLocations }) => {
             )
           })}
           <div className="link">
-            <Link to="/events/temporary-location-town-country-centre">
-              More Info
-            </Link>
+            <Link to="/events/st-martin-de-porres-high-school">More Info</Link>
           </div>
         </div>
       </div>
