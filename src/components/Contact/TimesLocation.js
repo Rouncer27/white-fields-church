@@ -60,6 +60,29 @@ const TimesLocationSection = styled.section`
 `
 
 const TimesLocation = ({ timesLocations }) => {
+  const directions = timesLocations.acf._wfc_tal_directions
+  const createSlug = directions => {
+    const slug = directions
+      .split("/")
+      .filter(part => {
+        if (
+          part !== "" &&
+          part !== "http:" &&
+          part !== "https:" &&
+          part !== "localhost" &&
+          part !== "events_post"
+        )
+          return part
+      })
+      .filter((slug, index) => {
+        if (index !== 0) return slug
+      })
+      .join("/")
+
+    return slug === "home" ? "/" : slug
+  }
+  const slug = createSlug(directions)
+
   return (
     <TimesLocationSection>
       <div className="wrapper">
@@ -81,7 +104,7 @@ const TimesLocation = ({ timesLocations }) => {
             )
           })}
           <div className="link">
-            <Link to="/events/st-martin-de-porres-high-school">More Info</Link>
+            <Link to={`/events/${slug}`}>More Info</Link>
           </div>
         </div>
       </div>

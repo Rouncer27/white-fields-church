@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
-
 import {
   H2LatoBlue,
   H4LatoGold,
@@ -62,6 +61,27 @@ const TimeStyled = styled.div`
 const TimesLocation = ({ services }) => {
   const times = services.acf._wfc_service_times
   const directions = services.acf._wfc_service_directions
+  const createSlug = directions => {
+    const slug = directions
+      .split("/")
+      .filter(part => {
+        if (
+          part !== "" &&
+          part !== "http:" &&
+          part !== "https:" &&
+          part !== "localhost" &&
+          part !== "events_post"
+        )
+          return part
+      })
+      .filter((slug, index) => {
+        if (index !== 0) return slug
+      })
+      .join("/")
+
+    return slug === "home" ? "/" : slug
+  }
+  const slug = createSlug(directions)
   return (
     <TimesLocationDiv>
       <div className="header">
@@ -80,7 +100,7 @@ const TimesLocation = ({ services }) => {
         )
       })}
       <div className="directions">
-        <Link to="/events/st-martin-de-porres-high-school">More Info</Link>
+        <Link to={`/events/${slug}`}>More Info</Link>
       </div>
     </TimesLocationDiv>
   )
