@@ -150,21 +150,6 @@ export const homeQuery = graphql`
     happeningNow: wordpressPage(slug: { eq: "home" }) {
       acf {
         _wfc_hpn_title
-        _wfc_hpn_events {
-          title
-          excerpt
-          url
-          image {
-            alt_text
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1250) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-        }
       }
     }
   }
