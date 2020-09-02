@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import Img from "gatsby-image"
+import BGImage from "gatsby-background-image"
 import { Link } from "gatsby"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -24,19 +25,25 @@ const SeriesItemStyled = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: calc(
-      ${props =>
-          props.widthValue === 3
-            ? 33.333333
-            : props.widthValue === 2
-            ? 50
-            : 66.666666}% - 4rem
-    );
+    width: calc(50% - 4rem);
     margin: 5rem 2rem;
   }
 
   .image {
     width: 100%;
+    height: 40rem;
+
+    @media (min-width: 768px) {
+      height: 35rem;
+    }
+    @media (min-width: 1025px) {
+      height: 50rem;
+    }
+
+    div {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .title {
@@ -96,35 +103,35 @@ const SeriesItemStyled = styled.div`
 const SeriesItem = ({ item, itemIndex }) => {
   const element = useRef(null)
 
-  useEffect(() => {
-    gsap.set(element.current, { y: 400, autoAlpha: 0 })
-    gsap.to(element.current, {
-      // y: 100,
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.75,
-      // onComplete: () => startPara(),
-      scrollTrigger: {
-        trigger: `.item-${itemIndex}`,
-        start: "top 90%",
-        markers: false,
-        scrub: false,
-      },
-    })
-  }, [])
+  // useEffect(() => {
+  //   gsap.set(element.current, { y: 400, autoAlpha: 0 })
+  //   gsap.to(element.current, {
+  //     // y: 100,
+  //     y: 0,
+  //     autoAlpha: 1,
+  //     duration: 0.75,
+  //     // onComplete: () => startPara(),
+  //     scrollTrigger: {
+  //       trigger: `.item-${itemIndex}`,
+  //       start: "top 90%",
+  //       markers: false,
+  //       scrub: false,
+  //     },
+  //   })
+  // }, [])
 
-  const startPara = () => {
-    gsap.to(element.current, {
-      y: -100,
-      scrollTrigger: {
-        trigger: `.item-${itemIndex}`,
-        start: "top 100%",
-        end: "bottom 0%",
-        markers: false,
-        scrub: 1.25,
-      },
-    })
-  }
+  // const startPara = () => {
+  //   gsap.to(element.current, {
+  //     y: -100,
+  //     scrollTrigger: {
+  //       trigger: `.item-${itemIndex}`,
+  //       start: "top 100%",
+  //       end: "bottom 0%",
+  //       markers: false,
+  //       scrub: 1.25,
+  //     },
+  //   })
+  // }
 
   return (
     <SeriesItemStyled
@@ -135,12 +142,12 @@ const SeriesItem = ({ item, itemIndex }) => {
     >
       <Link to={`/series/${item.node.slug}`}>
         <div className="image">
-          <Img
+          <BGImage
+            tag="div"
             fluid={
               item.node.acf._wfc_mescat_featured_image.localFile.childImageSharp
                 .fluid
             }
-            alt={item.node.name}
           />
         </div>
         <div className="title">

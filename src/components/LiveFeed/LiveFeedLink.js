@@ -30,7 +30,6 @@ const LiveFeedLinkSection = styled.section`
 `
 
 const LiveFeedLink = ({ liveFeed }) => {
-  console.log(liveFeed)
   return (
     <LiveFeedLinkSection>
       <div className="wrapper">
