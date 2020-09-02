@@ -53,9 +53,6 @@ const HeroImageSection = styled.section`
 const HeroImage = ({ series }) => {
   return (
     <HeroImageSection>
-      <div className="title">
-        <h2>{series.name}</h2>
-      </div>
       <div className="hero">
         <BGImage
           tag="div"
