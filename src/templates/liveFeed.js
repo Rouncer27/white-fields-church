@@ -65,6 +65,7 @@ export const liveFeedQuery = graphql`
                 }
               }
             }
+            _wfc_mescat_set_suggested
           }
           wordpress_id
           slug

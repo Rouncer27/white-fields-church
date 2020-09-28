@@ -106,7 +106,23 @@ const Topic = styled.div`
 `
 
 const SuggestedTopics = ({ suggestedTopics, series }) => {
-  const shuffled = series.edges.sort(() => 0.5 - Math.random())
+  const notSuggestedTeaching = series.edges.filter(item => {
+    if (!item.node.acf._wfc_mescat_set_suggested) return true
+  })
+  const allNonShuffled = notSuggestedTeaching.sort(() => 0.5 - Math.random())
+
+  const suggestedTeachings = series.edges.filter(item => {
+    if (item.node.acf._wfc_mescat_set_suggested) return true
+  })
+
+  if (suggestedTeachings.length < 4) {
+    const numToAdd = 4 - suggestedTeachings.length
+    for (var i = 0; i < numToAdd; i++) {
+      suggestedTeachings.push(allNonShuffled[i])
+    }
+  }
+
+  const shuffled = suggestedTeachings.sort(() => 0.5 - Math.random())
   let selected = shuffled.slice(0, 4)
 
   return (
