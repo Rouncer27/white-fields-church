@@ -78,6 +78,7 @@ export const messagesQuery = graphql`
                 }
               }
             }
+            _wfc_mescat_set_current
           }
           wordpress_id
           slug

@@ -64,10 +64,16 @@ const SeriesSection = styled.section`
 `
 
 const Series = ({ series }) => {
+  const sortedSeries = series.edges.sort((a, b) => {
+    const aValue = a.node.acf._wfc_mescat_set_current
+    const bValue = b.node.acf._wfc_mescat_set_current
+    return aValue === bValue ? 0 : aValue ? -1 : 1
+  })
+
   return (
     <SeriesSection>
       <div className="wrapper">
-        {series.edges.map((item, index) => {
+        {sortedSeries.map((item, index) => {
           if (item.node.count <= 0) return
           return (
             <SeriesItem
