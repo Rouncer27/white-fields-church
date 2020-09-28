@@ -80,6 +80,7 @@ const Series = ({ series }) => {
               key={item.node.wordpress_id}
               item={item}
               itemIndex={index}
+              currentTeaching={item.node.acf._wfc_mescat_set_current}
             />
           )
         })}

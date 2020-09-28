@@ -25,8 +25,9 @@ const SeriesItemStyled = styled.div`
   }
 
   @media (min-width: 1025px) {
-    width: calc(50% - 4rem);
-    margin: 5rem 2rem;
+    width: ${props =>
+      props.currentTeaching ? "calc(50%)" : "calc(50% - 4rem)"};
+    margin: ${props => (props.currentTeaching ? "5rem 25%" : "5rem 2rem")};
   }
 
   .image {
@@ -100,8 +101,10 @@ const SeriesItemStyled = styled.div`
   }
 `
 
-const SeriesItem = ({ item, itemIndex }) => {
+const SeriesItem = ({ item, itemIndex, currentTeaching }) => {
   const element = useRef(null)
+
+  console.log({ currentTeaching })
 
   // useEffect(() => {
   //   gsap.set(element.current, { y: 400, autoAlpha: 0 })
@@ -139,6 +142,7 @@ const SeriesItem = ({ item, itemIndex }) => {
       ref={element}
       widthValue={2}
       className={`item-${itemIndex}`}
+      currentTeaching={currentTeaching}
     >
       <Link to={`/series/${item.node.slug}`}>
         <div className="image">
