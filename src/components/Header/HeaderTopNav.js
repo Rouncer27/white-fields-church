@@ -52,17 +52,17 @@ const HeaderTopNav = ({ handleModalState, location, isActive }) => {
           </span>
         </Link>
       </TopDiv>
-      <TopDiv active={isActive} onClick={handleModalState}>
-        <span>
-          <Gift />
-        </span>
-      </TopDiv>
       <TopDiv active={location.pathname === "/contact" ? true : undefined}>
         <Link to="/contact">
           <span>
             <Contact />
           </span>
         </Link>
+      </TopDiv>
+      <TopDiv active={isActive} onClick={handleModalState}>
+        <span>
+          <Gift />
+        </span>
       </TopDiv>
     </TopNav>
   )

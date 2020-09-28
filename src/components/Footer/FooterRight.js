@@ -58,7 +58,7 @@ const FooterRight = () => {
             rel="noopener noreferrer"
             href="http://eepurl.com/TYNPD"
           >
-            Newsletter Signup
+            e-Link Signup
           </a>
         </div>
       </div>

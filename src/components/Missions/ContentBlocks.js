@@ -10,6 +10,7 @@ import {
 
 const ContentBlocksSection = styled.section`
   padding: 0 0 5rem;
+  background-color: ${colors.colorPrimary};
 
   @media (min-width: 768px) {
     padding: 7.5rem 0;
@@ -53,12 +54,18 @@ const ContentBlocksSection = styled.section`
       h1,
       h2 {
         ${H2LatoBlue};
+        color: ${props =>
+          props.reversed ? colors.colorPrimary : colors.white};
       }
       h3 {
         ${H3LatoBlue};
+        color: ${props =>
+          props.reversed ? colors.colorPrimary : colors.white};
       }
       p {
         ${B1OpenSansBlue};
+        color: ${props =>
+          props.reversed ? colors.colorPrimary : colors.white};
       }
 
       ul {
@@ -69,6 +76,8 @@ const ContentBlocksSection = styled.section`
         li {
           ${B1OpenSansBlue};
           list-style-type: disc;
+          color: ${props =>
+            props.reversed ? colors.colorPrimary : colors.white};
         }
       }
     }
@@ -110,7 +119,8 @@ const ContentBlocksSection = styled.section`
       left: -2rem;
       width: 100%;
       height: 100%;
-      background-color: ${colors.colorTertiary};
+      background-color: ${props =>
+        props.reversed ? colors.colorTertiary : colors.white};
       opacity: 0.2;
       z-index: 1;
     }
@@ -121,8 +131,10 @@ const ContentBlocks = ({ contentBlocks }) => {
   return (
     <ContentBlocksSection>
       {contentBlocks.acf._wfc_cnbl_blocks.map((block, index) => {
+        const reversed = index % 2 ? true : false
+        console.log(reversed)
         return (
-          <div className="wrapper" key={index}>
+          <div className="wrapper" reversed={reversed} key={index}>
             <div className="content">
               <div
                 className="content__wysiwyg"
