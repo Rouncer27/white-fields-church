@@ -32,7 +32,8 @@ const FooterLeftDetails = () => {
         </p>
         <p>
           White Fields Ministry Centre and Office{" "}
-          <span>111, 2966 Main St. South Airdrie</span>
+          <span>111, 2966 Main St. South </span>
+          <span>Airdrie, T4B 3G5</span>
         </p>
       </div>
     </LeftDetails>
