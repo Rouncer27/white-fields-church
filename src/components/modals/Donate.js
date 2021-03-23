@@ -86,6 +86,19 @@ const DonateModal = styled.div`
         width: 100%;
       }
     }
+
+    .creditCard {
+      h3 {
+        ${H4LatoGold};
+      }
+
+      p {
+        span {
+          color: ${colors.colorSecondary};
+          font-weight: bold;
+        }
+      }
+    }
   }
 `
 
@@ -220,10 +233,11 @@ const Donate = ({ isActive, handleModalState }) => {
                 </a>{" "}
                 or call <a href="tel: +1-587-997-4886">587-997-4886</a>.
               </p>
-              <div>
+              <div className="creditCard">
+                <h3>Credit Card Only</h3>
                 <p>
-                  To send by credit card: Please click here to send your
-                  donation by credit card
+                  To send by credit card: Please click the "give" button below
+                  to send your donation by <span>credit card</span>
                 </p>
                 <iframe
                   src="https://wallet.subsplash.com/ui/embed/QX268Q"
