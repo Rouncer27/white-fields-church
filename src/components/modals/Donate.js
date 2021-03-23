@@ -17,7 +17,7 @@ const DonateModal = styled.div`
   height: 100%;
   padding: 2rem;
   z-index: 99999999;
-  overflow-y: scroll;
+  overflow: scroll;
 
   .modalBackground {
     position: absolute;
@@ -37,17 +37,19 @@ const DonateModal = styled.div`
     opacity: 0.95;
     box-shadow: 8px 9px 19px 0 rgba(0, 0, 0, 0.49);
     z-index: 999999999;
+    overflow: scroll;
 
     @media (min-width: 768px) {
       position: absolute;
       top: 50%;
       left: 50%;
+      margin: 9rem auto 0;
       transform: translate(-50%, -50%);
     }
 
     @media (min-width: 1025px) {
       max-width: 110rem;
-      height: auto;
+      margin: 9rem auto 0;
       padding: 8rem;
     }
 
@@ -75,6 +77,8 @@ const DonateModal = styled.div`
     }
 
     &__content {
+      overflow: scroll;
+
       @media (min-width: 768px) {
         display: flex;
         flex-wrap: wrap;
@@ -87,6 +91,7 @@ const DonateModal = styled.div`
 
 const Details = styled.div`
   width: 100%;
+  overflow: scroll;
 
   @media (min-width: 768px) {
     width: calc(50%);
@@ -215,6 +220,20 @@ const Donate = ({ isActive, handleModalState }) => {
                 </a>{" "}
                 or call <a href="tel: +1-587-997-4886">587-997-4886</a>.
               </p>
+              <div>
+                <p>
+                  To send by credit card: Please click here to send your
+                  donation by credit card
+                </p>
+                <iframe
+                  src="https://wallet.subsplash.com/ui/embed/QX268Q"
+                  width="100%"
+                  height="200"
+                  style={{ border: "none", overflow: "hidden" }}
+                  frameborder="0"
+                  scrolling="no"
+                />
+              </div>
             </div>
           </Details>
           <Explain>

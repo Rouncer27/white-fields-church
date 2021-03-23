@@ -17,6 +17,20 @@ const SuggestedTopicsSection = styled.section`
     align-items: center;
   }
 
+  div.sap-embed-player {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+  div.sap-embed-player > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   .content {
     width: 100%;
     @media (min-width: 768px) {
@@ -128,7 +142,7 @@ const SuggestedTopics = ({ suggestedTopics, series }) => {
   return (
     <SuggestedTopicsSection>
       <div className="wrapper">
-        <div className="content">
+        {/* <div className="content">
           <div>
             <h2>{suggestedTopics.acf._wfc_sugtop_title}</h2>
           </div>
@@ -155,6 +169,15 @@ const SuggestedTopics = ({ suggestedTopics, series }) => {
               </Topic>
             )
           })}
+        </div> */}
+        <div className="sap-embed-player">
+          <iframe
+            src="https://subsplash.com/+t639/embed/mi/*recent?audio&video&info&logoWatermark&shareable&embeddable"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </SuggestedTopicsSection>

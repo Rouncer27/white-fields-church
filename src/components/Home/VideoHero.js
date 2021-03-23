@@ -55,6 +55,16 @@ const VideoHeroSection = styled.section`
         margin: 0;
         color: ${colors.white};
       }
+
+      a {
+        ${H4LatoWhite};
+        margin: 0;
+        color: ${colors.white};
+
+        &:hover {
+          color: ${colors.colorPrimary};
+        }
+      }
     }
   }
 

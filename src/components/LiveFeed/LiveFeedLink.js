@@ -27,24 +27,48 @@ const LiveFeedLinkSection = styled.section`
     margin: 2rem auto;
     text-align: center;
   }
+
+  .sap-embed-player {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%;
+  }
+
+  div.sap-embed-player > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const LiveFeedLink = ({ liveFeed }) => {
   return (
     <LiveFeedLinkSection>
       <div className="wrapper">
-        <div className="title">
+        {/* <div className="title">
           <h2>Live Stream</h2>
           <p>Live Stream available Sundays at 11am</p>
-        </div>
-        <a
+        </div> */}
+        {/* <a
           target="_blank"
           rel="noopener noreferrer"
           href={liveFeed.acf._wfc_linkfeed_life_feed}
           className="image"
         >
           <YoutubeImage />
-        </a>
+        </a> */}
+        <div className="sap-embed-player">
+          <iframe
+            src="https://subsplash.com/+t639/embed/mi/*next-live?audio&embeddable&info&logoWatermark&shareable&video"
+            frameborder="0"
+            webkitallowfullscreen
+            mozallowfullscreen
+            allowfullscreen
+          />
+        </div>
       </div>
     </LiveFeedLinkSection>
   )
