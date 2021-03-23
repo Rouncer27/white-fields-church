@@ -1,11 +1,11 @@
-import React, { useEffect } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
 import Play from "../Icons/Play"
 import Gift from "../Icons/Gift"
 import Contact from "../Icons/Contact"
-import { colors } from "../../styles/helpers"
+import { buttonOneBlue, buttonOneWhite, colors } from "../../styles/helpers"
 
 const TopNav = styled.div`
   display: flex;
@@ -18,6 +18,17 @@ const TopNav = styled.div`
   @media (min-width: 768px) {
     width: 30rem;
     margin-top: 0;
+  }
+`
+
+const TopDivDownload = styled.div`
+  width: 100%;
+  text-align: center;
+
+  button {
+    ${buttonOneWhite};
+    margin-top: 2rem;
+    margin-bottom: 0;
   }
 `
 
@@ -42,29 +53,18 @@ const TopDiv = styled.div`
   }
 `
 
-const HeaderTopNav = ({ handleModalState, location, isActive }) => {
-  useEffect(() => {
-    // if (window !== undefined) {
-    //   const script = document.createElement("script")
-    //   script.type = "text/javascript"
-    //   script.src =
-    //     "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js"
-    //   script.onload = function () {
-    //     window.subsplashEmbed(
-    //       "+t639/ap",
-    //       "https://subsplash.com/",
-    //       "subsplash-embed-t639"
-    //     )
-    //   }
-    //   document.body.appendChild(script)
-    // }
-  }, [])
-
+const HeaderTopNav = ({
+  handleModalState,
+  location,
+  isActive,
+  setAppDownload,
+  popactive,
+}) => {
   return (
     <TopNav>
-      <TopDiv>
-        <div id="subsplash-embed-t639" />
-      </TopDiv>
+      <TopDivDownload>
+        <button onClick={setAppDownload}>Download our app</button>
+      </TopDivDownload>
       <TopDiv active={location.pathname === "/live-feed" ? true : undefined}>
         <Link to="/live-feed">
           <span>

@@ -6,6 +6,7 @@ import styled, { ThemeProvider } from "styled-components"
 import theme from "../styles/theme/Theme"
 import GlobalStyle from "../styles/global/Golbal"
 import Donate from "./modals/Donate"
+import AppPopup from "./modals/AppPopup"
 import MobileNav from "./MobileNav/MobileNav"
 import Header from "./Header/Header"
 import Footer from "./Footer/Footer"
@@ -26,23 +27,33 @@ const Layout = ({ children, location }) => {
       }
     }
   `)
-
+  const [appDownload, setAppDownload] = useState(false)
   const [isActive, setIsActive] = useState(false)
   const handelModalState = () => {
     setIsActive(!isActive)
+  }
+
+  const handleSetAppDownload = () => {
+    setAppDownload(!appDownload)
   }
 
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
+        <AppPopup
+          popactive={appDownload}
+          handleSetAppDownload={handleSetAppDownload}
+        />
         <Donate isActive={isActive} handleModalState={handelModalState} />
-        <SiteWrapper isActive={isActive}>
+        <SiteWrapper isActive={isActive || appDownload}>
           <Header
             siteTitle={data.site.siteMetadata.title}
             location={location}
             handleModalState={handelModalState}
             isActive={isActive}
+            setAppDownload={handleSetAppDownload}
+            popactive={appDownload}
           />
           <MobileNav handleModalState={handelModalState} />
           <main>{children}</main>

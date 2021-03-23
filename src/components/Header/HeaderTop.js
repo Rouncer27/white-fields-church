@@ -26,7 +26,14 @@ const TopHeaderSec = styled.div`
   }
 `
 
-const HeaderTop = ({ siteTitle, handleModalState, location, isActive }) => {
+const HeaderTop = ({
+  siteTitle,
+  handleModalState,
+  location,
+  isActive,
+  setAppDownload,
+  popactive,
+}) => {
   return (
     <TopHeaderSec>
       <div className="wrapper">
@@ -35,6 +42,8 @@ const HeaderTop = ({ siteTitle, handleModalState, location, isActive }) => {
           handleModalState={handleModalState}
           location={location}
           isActive={isActive}
+          setAppDownload={setAppDownload}
+          popactive={popactive}
         />
       </div>
     </TopHeaderSec>
