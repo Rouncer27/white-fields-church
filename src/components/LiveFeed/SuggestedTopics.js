@@ -31,6 +31,15 @@ const SuggestedTopicsSection = styled.section`
     height: 100%;
   }
 
+  .prevTitle {
+    width: 100%;
+    margin-bottom: 3rem;
+    text-align: center;
+    h2 {
+      ${H2LatoBlue};
+    }
+  }
+
   .content {
     width: 100%;
     @media (min-width: 768px) {
@@ -73,6 +82,13 @@ const Topic = styled.div`
 
   @media (min-width: 1025px) {
     height: 17.5rem;
+  }
+
+  .prevTitle {
+    width: 100%;
+    h2 {
+      ${H4LatoWhite};
+    }
   }
 
   .title {
@@ -170,6 +186,9 @@ const SuggestedTopics = ({ suggestedTopics, series }) => {
             )
           })}
         </div> */}
+        <div className="prevTitle">
+          <h2>Previous Service</h2>
+        </div>
         <div className="sap-embed-player">
           <iframe
             src="https://subsplash.com/+t639/embed/mi/*recent?audio&video&info&logoWatermark&shareable&embeddable"

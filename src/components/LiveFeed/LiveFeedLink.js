@@ -60,6 +60,7 @@ const LiveFeedLink = ({ liveFeed }) => {
         >
           <YoutubeImage />
         </a> */}
+
         <div className="sap-embed-player">
           <iframe
             src="https://subsplash.com/+t639/embed/mi/*next-live?audio&embeddable&info&logoWatermark&shareable&video"

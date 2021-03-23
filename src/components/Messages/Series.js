@@ -63,7 +63,7 @@ const SeriesSection = styled.section`
   }
 `
 
-const Series = ({ series }) => {
+const Series = ({ series, subSplash }) => {
   const sortedSeries = series.edges.sort((a, b) => {
     const aValue = a.node.acf._wfc_mescat_set_current
     const bValue = b.node.acf._wfc_mescat_set_current
@@ -71,13 +71,6 @@ const Series = ({ series }) => {
   })
 
   useEffect(() => {
-    //     <script id="subsplash-embed-zczqjkt" type="text/javascript">var target =
-    // document.getElementById("subsplash-embed-zczqjkt");var script =
-    // document.createElement("script");script.type = "text/
-    // javascript";script.onload = function() {subsplashEmbed("+t639/lb/li/
-    // +py9mzq8?embed&branding&1616164079306","https://
-    // subsplash.com/","subsplash-embed-zczqjkt");}</script>
-
     if (window !== undefined) {
       const script = document.createElement("script")
       script.type = "text/javascript"

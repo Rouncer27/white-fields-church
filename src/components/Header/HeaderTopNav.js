@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
 
@@ -43,8 +43,28 @@ const TopDiv = styled.div`
 `
 
 const HeaderTopNav = ({ handleModalState, location, isActive }) => {
+  useEffect(() => {
+    // if (window !== undefined) {
+    //   const script = document.createElement("script")
+    //   script.type = "text/javascript"
+    //   script.src =
+    //     "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js"
+    //   script.onload = function () {
+    //     window.subsplashEmbed(
+    //       "+t639/ap",
+    //       "https://subsplash.com/",
+    //       "subsplash-embed-t639"
+    //     )
+    //   }
+    //   document.body.appendChild(script)
+    // }
+  }, [])
+
   return (
     <TopNav>
+      <TopDiv>
+        <div id="subsplash-embed-t639" />
+      </TopDiv>
       <TopDiv active={location.pathname === "/live-feed" ? true : undefined}>
         <Link to="/live-feed">
           <span>
