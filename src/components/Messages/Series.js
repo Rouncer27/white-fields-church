@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { medWrapper } from "../../styles/helpers"
 
@@ -70,10 +70,35 @@ const Series = ({ series }) => {
     return aValue === bValue ? 0 : aValue ? -1 : 1
   })
 
+  useEffect(() => {
+    //     <script id="subsplash-embed-zczqjkt" type="text/javascript">var target =
+    // document.getElementById("subsplash-embed-zczqjkt");var script =
+    // document.createElement("script");script.type = "text/
+    // javascript";script.onload = function() {subsplashEmbed("+t639/lb/li/
+    // +py9mzq8?embed&branding&1616164079306","https://
+    // subsplash.com/","subsplash-embed-zczqjkt");}</script>
+
+    if (window !== undefined) {
+      const script = document.createElement("script")
+      script.type = "text/javascript"
+      script.src =
+        "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js"
+      script.onload = function () {
+        window.subsplashEmbed(
+          "+t639/lb/li/+py9mzq8?embed&branding&1616164079306",
+          "https://subsplash.com/",
+          "subsplash-embed-zczqjkt"
+        )
+      }
+
+      document.body.appendChild(script)
+    }
+  }, [])
+
   return (
     <SeriesSection>
       <div className="wrapper">
-        {sortedSeries.map((item, index) => {
+        {/* {sortedSeries.map((item, index) => {
           if (item.node.count <= 0) return
           return (
             <SeriesItem
@@ -83,7 +108,8 @@ const Series = ({ series }) => {
               currentTeaching={item.node.acf._wfc_mescat_set_current}
             />
           )
-        })}
+        })} */}
+        <div id="subsplash-embed-zczqjkt" />
       </div>
       <div className="graphic">
         <BrushStrokeSeven />
