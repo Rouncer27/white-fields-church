@@ -65,6 +65,47 @@ const VideoHeroSection = styled.section`
           color: ${colors.colorPrimary};
         }
       }
+
+      /* WordPress Core */
+      .alignnone {
+        margin: 5px 20px 20px 0;
+      }
+
+      .aligncenter,
+      div.aligncenter {
+        display: block;
+        margin: 2rem auto;
+      }
+
+      .alignright {
+        float: right;
+        margin: 5px 0 20px 20px;
+      }
+
+      .alignleft {
+        float: left;
+        margin: 5px 20px 20px 0;
+      }
+
+      a img.alignright {
+        float: right;
+        margin: 5px 0 20px 20px;
+      }
+
+      a img.alignnone {
+        margin: 5px 20px 20px 0;
+      }
+
+      a img.alignleft {
+        float: left;
+        margin: 5px 20px 20px 0;
+      }
+
+      a img.aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 
@@ -101,7 +142,7 @@ const VideoHero = ({ logoDisplay, quote, video }) => {
   return (
     <VideoHeroSection id="boxTrigger">
       <div className="heroContent" ref={heroContent}>
-        {logoDisplay && (
+        {logoDisplay === "yes" && (
           <div className="heroContent__logo">
             <LogoWhite />
           </div>

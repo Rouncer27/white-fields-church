@@ -60,7 +60,7 @@ const FooterLeftSection = styled.div`
   }
 `
 
-const FooterLeft = ({ handleModalState }) => {
+const FooterLeft = ({ handleModalState, setAppDownload }) => {
   return (
     <FooterLeftSection>
       <div className="wrapper">
@@ -69,7 +69,10 @@ const FooterLeft = ({ handleModalState }) => {
           <FooterLeftDetails />
         </div>
         <div className="wrapper__nav">
-          <FooterLeftNav handleModalState={handleModalState} />
+          <FooterLeftNav
+            handleModalState={handleModalState}
+            setAppDownload={setAppDownload}
+          />
         </div>
       </div>
     </FooterLeftSection>

@@ -29,7 +29,7 @@ const FooterNav = styled.div`
   }
 `
 
-const FooterLeftNav = ({ handleModalState }) => {
+const FooterLeftNav = ({ handleModalState, setAppDownload }) => {
   return (
     <FooterNav>
       <ul>
@@ -44,6 +44,9 @@ const FooterLeftNav = ({ handleModalState }) => {
         </li>
         <li>
           <Link to="/events">Events</Link>
+        </li>
+        <li>
+          <button onClick={setAppDownload}>Download App</button>
         </li>
         <li>
           <Link to="/contact">Contact</Link>

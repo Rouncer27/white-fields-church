@@ -43,12 +43,15 @@ const FooterSection = styled.footer`
   }
 `
 
-const Footer = ({ handleModalState }) => {
+const Footer = ({ handleModalState, setAppDownload }) => {
   const swbCred = true
   return (
     <FooterSection>
       <div className="wrapper">
-        <FooterLeft handleModalState={handleModalState} />
+        <FooterLeft
+          handleModalState={handleModalState}
+          setAppDownload={setAppDownload}
+        />
         <FooterRight />
         <FooterCopy swbCred={swbCred} />
       </div>

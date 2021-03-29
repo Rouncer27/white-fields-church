@@ -5,6 +5,7 @@ import { Link } from "gatsby"
 import Play from "../Icons/Play"
 import Gift from "../Icons/Gift"
 import Contact from "../Icons/Contact"
+import Download from "../Icons/Download"
 import { buttonOneBlue, buttonOneWhite, colors } from "../../styles/helpers"
 
 const TopNav = styled.div`
@@ -36,6 +37,12 @@ const TopDiv = styled.div`
   background-color: ${props =>
     props.active ? colors.colorPrimary : "transparent"};
 
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
   span {
     display: block;
     padding: 4.5rem 0;
@@ -62,16 +69,20 @@ const HeaderTopNav = ({
 }) => {
   return (
     <TopNav>
-      <TopDivDownload>
-        <button onClick={setAppDownload}>Download our app</button>
-      </TopDivDownload>
-      <TopDiv active={location.pathname === "/live-feed" ? true : undefined}>
+      <TopDiv>
+        <button onClick={setAppDownload}>
+          <span>
+            <Download />
+          </span>
+        </button>
+      </TopDiv>
+      {/* <TopDiv active={location.pathname === "/live-feed" ? true : undefined}>
         <Link to="/live-feed">
           <span>
             <Play />
           </span>
         </Link>
-      </TopDiv>
+      </TopDiv> */}
       <TopDiv active={location.pathname === "/contact" ? true : undefined}>
         <Link to="/contact">
           <span>

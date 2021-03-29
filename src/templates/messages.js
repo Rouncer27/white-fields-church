@@ -18,8 +18,8 @@ const Messages = props => {
         metaImg={seoInfo.acf._swb_theme_image.localFile.publicURL}
         location={props.location.pathname}
       />
-      <MessagesIntro messagesIntro={messagesIntro} />
-      <BannerLiveStreem liveFeed={liveFeed} />
+      {/* <MessagesIntro messagesIntro={messagesIntro} />
+      <BannerLiveStreem liveFeed={liveFeed} /> */}
       <Series series={series} />
     </Layout>
   )

@@ -234,7 +234,7 @@ const Donate = ({ isActive, handleModalState }) => {
                 or call <a href="tel: +1-587-997-4886">587-997-4886</a>.
               </p>
               <div className="creditCard">
-                <h3>Credit Card Only</h3>
+                <h3>To Send By Credit Card</h3>
                 <p>
                   To send by credit card: Please click the "give" button below
                   to send your donation by <span>credit card</span>
