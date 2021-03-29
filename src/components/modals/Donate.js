@@ -236,8 +236,8 @@ const Donate = ({ isActive, handleModalState }) => {
               <div className="creditCard">
                 <h3>To Send By Credit Card</h3>
                 <p>
-                  To send by credit card: Please click the "give" button below
-                  to send your donation by <span>credit card</span>
+                  Please click the "give" button below to send your donation by{" "}
+                  <span>credit card</span>
                 </p>
                 <iframe
                   src="https://wallet.subsplash.com/ui/embed/QX268Q"
