@@ -2,9 +2,11 @@ import React, { useEffect } from "react"
 import styled from "styled-components"
 import { colors } from "../../styles/helpers"
 
+const isBrowser = () => typeof window !== "undefined"
+
 const AppPopup = ({ popactive, handleSetAppDownload }) => {
   useEffect(() => {
-    if (window !== undefined) {
+    if (isBrowser()) {
       const script = document.createElement("script")
       script.type = "text/javascript"
       script.src =

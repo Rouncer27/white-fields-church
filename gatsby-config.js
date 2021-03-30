@@ -57,6 +57,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
+        minimizeDeprecationNotice: true,
         baseUrl: process.env.GATSBY_URL,
         protocol: process.env.GATSBY_PROTOCOL,
         hostingWPCOM: false,

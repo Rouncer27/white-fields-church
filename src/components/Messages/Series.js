@@ -63,6 +63,8 @@ const SeriesSection = styled.section`
   }
 `
 
+const isBrowser = () => typeof window !== "undefined"
+
 const Series = ({ series, subSplash }) => {
   const sortedSeries = series.edges.sort((a, b) => {
     const aValue = a.node.acf._wfc_mescat_set_current
@@ -71,7 +73,7 @@ const Series = ({ series, subSplash }) => {
   })
 
   useEffect(() => {
-    if (window !== undefined) {
+    if (isBrowser()) {
       const script = document.createElement("script")
       script.type = "text/javascript"
       script.src =
@@ -83,7 +85,6 @@ const Series = ({ series, subSplash }) => {
           "subsplash-embed-zczqjkt"
         )
       }
-
       document.body.appendChild(script)
     }
   }, [])
