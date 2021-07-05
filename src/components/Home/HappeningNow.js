@@ -73,7 +73,7 @@ const EventItem = styled.div`
 
   @media (min-width: 768px) {
     width: calc(33.33% - 4rem);
-    margin: 0 2rem;
+    margin: 0 2rem 4rem 2rem;
   }
 
   .eventItem__inner {

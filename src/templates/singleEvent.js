@@ -33,6 +33,8 @@ const SingleEventStyle = styled.article`
 
     h1 {
       ${H1LatoBlue};
+      ${props => console.log(props)};
+      text-align: ${props => props.maintitlecentre === "yes" ? 'center' : 'left' };
     }
   }
 
@@ -297,7 +299,7 @@ const singleEvent = props => {
   return (
     <Layout location={location}>
       <SEO title="Home" />
-      <SingleEventStyle>
+      <SingleEventStyle maintitlecentre={event.acf._wfcc_centre_title}>
         <div className="wrapper">
           <div className="eventImage">
             <Img
@@ -327,6 +329,7 @@ export const eventsPostQuery = graphql`
       title
       acf {
         _wfcc_evepos_content
+        _wfcc_centre_title
         _wfcc_evepos_featured_image {
           alt_text
           localFile {
